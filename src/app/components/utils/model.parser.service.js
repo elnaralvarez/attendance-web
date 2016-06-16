@@ -7,7 +7,7 @@
 
   function service () {
     return {
-      store: function (response) {
+      attendance: function (response) {
         response.forEach(function (item) {
           item.id = parseInt(item.id, 10);
           item.category = parseFloat(item.category);

@@ -25,7 +25,7 @@
         Session.login(sessionCredentiales, function(response) {
           Sess.login(response, function() {
             console.info('starts session');
-            $state.go('store.shipping.list');
+            $state.go('attendance.tomato.list');
           });
         });
       }, LocalError.request);

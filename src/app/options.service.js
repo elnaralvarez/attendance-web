@@ -8,7 +8,7 @@
   function service() {
     var nav = [
       {
-        route: 'store',
+        route: 'attendance',
         value: 'Principal'
       }
     ];

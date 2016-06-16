@@ -8,8 +8,8 @@
   /** @ngInject */
   function config($logProvider, $mdThemingProvider, $httpProvider) {
     $mdThemingProvider.theme('default')
-      .primaryPalette('grey')
-      .accentPalette('orange');
+      .primaryPalette('red');
+      // .accentPalette('red');
 
     // Session
    $httpProvider.interceptors.push('authInterceptor');
