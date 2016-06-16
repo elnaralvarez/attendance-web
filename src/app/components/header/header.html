@@ -1,0 +1,64 @@
+<md-toolbar layout="row" ng-if="!user">
+  <div class="md-toolbar-tools">
+    <a ui-sref="store">
+      <h3>
+        Store
+      </h3>
+    </a>
+    <span flex></span>
+    <div layout="row">
+      <md-button class="md-raised" ui-sref="home.login">log in</md-button>
+      <md-button aria-label="Second Button" ui-sref="home.register">
+        or registrarse
+      </md-button>
+    </div>
+  </div>
+</md-toolbar>
+
+<md-toolbar layout="row" ng-if="user">
+  <div class="md-toolbar-tools">
+      <md-button ng-click="toggleSidenav('left')"
+                 hide-gt-sm class="md-icon-button">
+        <ng-md-icon icon="menu" style="fill: black"></ng-md-icon>
+      </md-button>
+      <a ui-sref="store">
+        <h1>Store</h1>
+      </a>
+    <div layout="row" hide-xs hide-sm>
+      <md-button ng-repeat="option in options"
+                 ui-sref="{{option.route}}">
+        {{option.value}}
+      </md-button>
+    </div>
+    <span flex></span>
+    <div layout="row">
+      <md-button aria-label="username">
+        {{user.name}}
+      </md-button>
+      <md-button class="md-raised"
+                 ng-click="logout()"
+                 style="color: #333">cerrar session</md-button>
+    </div>
+  </div>
+</md-toolbar>
+
+<md-sidenav layout="column"
+            class="md-sidenav-left md-whiteframe-z2"
+            md-component-id="left"
+            hide-gt-sm
+            md-is-locked-open="$mdMedia('gt-sm')">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h1 ui-sref="home">
+          Store
+        </h1>
+      </div>
+    </md-toolbar>
+    <div layout="column">
+      <md-button ng-repeat="option in options"
+                 ui-sref="{{option.route}}">
+        {{option.value}}
+      </md-button>
+    </div>
+  </div>
+</md-sidenav>
