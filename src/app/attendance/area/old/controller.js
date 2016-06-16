@@ -26,16 +26,9 @@
     $scope.total = $scope.query.limit * 2;
     $scope.searchkey = null;
 
-    $scope.FindbyName = function (searchKey) {
-      // if (!searchKey) {
-      //   throw new Error('searchKey is empty');
-      // }
-      $scope.onPaginate(1, 20);
-    };
-
     function getDesserts(query) {
       var query_item = {
-        _id: Global.counter._id,
+        counter: Global.counter._id,
         page: query.page,
         name: $scope.searchkey
       };

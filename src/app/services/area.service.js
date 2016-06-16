@@ -23,7 +23,7 @@
        search_pagination: {
          method: 'GET',
          isArray: true,
-         url: Global.PATH + '/p2/areas/:_id/search/:page'
+         url: Global.PATH + '/v1/areas/page/:page'
        },
      });
   }
