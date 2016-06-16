@@ -9,7 +9,6 @@
   function config($logProvider, $mdThemingProvider, $httpProvider) {
     $mdThemingProvider.theme('default')
       .primaryPalette('red');
-      // .accentPalette('red');
 
     // Session
    $httpProvider.interceptors.push('authInterceptor');

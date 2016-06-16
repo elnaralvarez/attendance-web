@@ -30,10 +30,10 @@
       templateUrl: base_url + '/provider/index.html',
       controller: 'StoreProviderController'
     });
-    $stateProvider.state('attendance.tomato', {
-      url: '/tomato',
-      templateUrl: base_url + '/tomato/index.html',
-      controller: 'StoreTomatoController'
+    $stateProvider.state('attendance.area', {
+      url: '/area',
+      templateUrl: base_url + '/area/index.html',
+      controller: 'StoreAreaController'
     });
   }
 

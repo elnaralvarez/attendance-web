@@ -3,14 +3,14 @@
 
   angular
     .module('wargos')
-    .controller('TomatoOldController', controller);
+    .controller('AreaOldController', controller);
 
   /** @ngInject */
   function controller(
     $scope,
     Toast,
     $state,
-    Tomato,
+    Area,
     Global,
     LocalError
   ) {
@@ -39,7 +39,7 @@
         page: query.page,
         name: $scope.searchkey
       };
-      Tomato.search_pagination(query_item, function(response) {
+      Area.search_pagination(query_item, function(response) {
         if (response.length == $scope.query.limit &&
           $scope.total <= $scope.query.page * $scope.query.limit) {
           $scope.total += $scope.query.limit;

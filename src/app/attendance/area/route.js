@@ -7,22 +7,22 @@
 
   /** @ngInject */
   function routeConfig ($stateProvider) {
-    var base_url = 'app/attendance/tomato';
+    var base_url = 'app/attendance/area';
 
-    $stateProvider.state('attendance.tomato.list', {
+    $stateProvider.state('attendance.area.list', {
       url: '/list',
       templateUrl: base_url + '/list/index.html',
-      controller: 'TomatoListController'
+      controller: 'AreaListController'
     });
-    $stateProvider.state('attendance.tomato.detail', {
-      url: '/detail/:tomato_id',
+    $stateProvider.state('attendance.area.detail', {
+      url: '/detail/:area_id',
       templateUrl: base_url + '/detail/index.html',
-      controller: 'TomatoDetailController'
+      controller: 'AreaDetailController'
     });
-    $stateProvider.state('attendance.tomato.old', {
+    $stateProvider.state('attendance.area.old', {
       url: '/old',
       templateUrl: base_url + '/old/index.html',
-      controller: 'TomatoOldController'
+      controller: 'AreaOldController'
     });
   }
 })();

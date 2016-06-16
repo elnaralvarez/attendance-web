@@ -14,9 +14,7 @@ md-toolbar {
     border-radius: 99%; // round toolbar buttons
   }
 }
-h2 {
-  font-weight: 400;
-}
+
 .md-toolbar-tools-bottom {
   font-size: small;
   & :last-child {
@@ -27,13 +25,7 @@ md-toolbar:not(.md-hue-1),
 .md-fab {
   fill: #fff;
 }
-// md-sidenav {
-//   fill: #737373;
-//   ng-md-icon {
-//     position: relative;
-//     top: 5px; // adjust for svg viewbox
-//   }
-// }
+
 .user-avatar {
   border-radius: 99%;
 }

@@ -3,10 +3,10 @@
 
   angular
     .module('wargos')
-    .factory('Tomato', service);
+    .factory('Area', service);
 
   function service($resource, Global) {
-    var url = Global.PATH + '/v1/tomatos';
+    var url = Global.PATH + '/v1/areas';
 
      return $resource(url + '/:_id', {
        _id: '@_id',
@@ -23,7 +23,7 @@
        search_pagination: {
          method: 'GET',
          isArray: true,
-         url: Global.PATH + '/p2/tomatos/:_id/search/:page'
+         url: Global.PATH + '/p2/areas/:_id/search/:page'
        },
      });
   }

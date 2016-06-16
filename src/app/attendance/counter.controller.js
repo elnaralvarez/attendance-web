@@ -30,13 +30,39 @@
       });
     };
 
+    $scope.areas = [
+      {
+        name: 'Areas1',
+        _id: 1
+      }, {
+        name: 'Areas2',
+        _id: 2
+      }, {
+        name: 'Areas3',
+        _id: 3
+      }
+    ];
+
     $scope.options = [
       {
-        title: 'Mi tienda',
+        title: 'My institucion',
         route: 'attendance.defaults'
       }, {
-        title: 'Tomates podridos',
-        route: 'attendance.tomato.list'
+        title: 'Areas',
+        route: 'attendance.area.list'
+      }, {
+        title: 'Proveedores',
+        route: 'attendance.provider'
+      }
+    ];
+
+    $scope.options = [
+      {
+        title: 'My institucion',
+        route: 'attendance.defaults'
+      }, {
+        title: 'Areas',
+        route: 'attendance.area.list'
       }, {
         title: 'Proveedores',
         route: 'attendance.provider'

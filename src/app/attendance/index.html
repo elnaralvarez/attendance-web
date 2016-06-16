@@ -13,6 +13,12 @@
     </div>
   </md-toolbar>
   <md-list>
+    <md-subheader class="md-no-sticky">Areas</md-subheader>
+    <md-list-item ng-repeat="area in areas" ng-click="selectOption(option)">
+       <ng-md-icon icon="done" style="fill: black"></ng-md-icon>
+       <p>{{area.name}}</p>
+    </md-list-item>
+    <md-divider></md-divider>
     <md-subheader class="md-no-sticky">Opciones globales</md-subheader>
     <md-list-item ng-repeat="option in options" ng-click="selectOption(option)">
        <ng-md-icon icon="done" style="fill: black"></ng-md-icon>
@@ -30,5 +36,26 @@
     </md-list-item>
   </md-list>
 </md-sidenav>
-<ui-view layout="column" layout-fill>
-</ui-view>
+
+<!-- RIGHT PARENT PANEL -->
+
+<div layout="column" layout-fill>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <md-button ng-click="toggleSidenav('left')" hide-gt-md aria-label="Menu">
+        <ng-md-icon icon="menu"></ng-md-icon>
+      </md-button>
+      <h3>
+        Attendance
+      </h3>
+      <span flex></span>
+      <md-button aria-label="Open Settings" ng-click="showGridBottomSheet($event)">
+        <ng-md-icon icon="more_vert"></ng-md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-content>
+    <ui-view layout="column" layout-fill>
+    </ui-view>
+  </md-content>
+</div>

@@ -3,20 +3,20 @@
 
   angular
     .module('wargos')
-    .controller('TomatoListController', controller);
+    .controller('AreaListController', controller);
 
   /** @ngInject */
   function controller(
     $scope,
     Toast,
     $state,
-    Tomato,
+    Area,
     Global,
     LocalError
   ) {
     Toast.show('Cargando...');
-    Tomato.query({
-      attendance: Global.counter._id,
+    Area.query({
+      counter: Global.counter._id,
       enabled: true
     }, function(response) {
       $scope.items = response;

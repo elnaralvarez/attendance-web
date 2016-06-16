@@ -3,7 +3,7 @@
 
   angular
     .module('wargos')
-    .controller('StoreTomatoController', controller);
+    .controller('StoreAreaController', controller);
 
   /** @ngInject */
   function controller(
@@ -13,37 +13,37 @@
     Toast,
     Global,
     LocalError,
-    Tomato
+    Area
   ) {
 
     $scope.openPage = function() {
-      $state.go('attendance.tomato.create');
+      $state.go('attendance.area.create');
     };
 
     $scope.deleteItem = function(item) {
       Toast.show('Cargando...');
       item.$delete(function(response) {
         Toast.show('Se actualizo correctamente');
-        $state.go('attendance.tomato.list');
+        $state.go('attendance.area.list');
       }, LocalError.request);
     };
 
     $scope.selectItem = function(item) {
-      $state.go('attendance.tomato.detail', {
-        tomato_id: item._id
+      $state.go('attendance.area.detail', {
+        area_id: item._id
       });
     };
 
-    $scope.create_tomato = function() {
-      Tomato.save({
-        attendance: Global.counter._id,
+    $scope.create_area = function() {
+      Area.save({
+        counter: Global.counter._id,
         name: 'lorem ipsum sit',
         description: 'lorem ipsum',
         year: 2016,
         enabled: true
       }, function(response) {
-        $state.go('attendance.tomato.detail', {
-          tomato_id: response._id
+        $state.go('attendance.area.detail', {
+          area_id: response._id
         });
       }, LocalError.request);
     };
@@ -52,7 +52,7 @@
       Toast.show('Cargando...');
       item.$update(function(response) {
         Toast.show('Se actualizo correctamente');
-        $state.go('attendance.tomato.list');
+        $state.go('attendance.area.list');
       }, LocalError.request);
     };
   }
