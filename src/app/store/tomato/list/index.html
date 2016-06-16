@@ -1,0 +1,20 @@
+<md-content>
+  <md-list>
+    <md-subheader class="md-no-sticky">Rooten tomatos</md-subheader>
+    <div layout="row" layout-align="end">
+      <md-button class="md-raised md-primary"
+                 ng-click="create_tomato()">
+                 <ng-md-icon icon="add"></ng-md-icon>
+                 Crear tomates podridos
+               </md-button>
+    </div>
+    <md-list-item ng-repeat="item in items"
+                  ng-click="selectItem(item)">
+         <p>{{item.name}}</p>
+         <md-switch class="md-secondary"
+                    ng-change="updateItem(item)"
+                    ng-model="item.enabled"></md-switch>
+    </md-list-item>
+    <md-divider></md-divider>
+  </md-list>
+</md-content>

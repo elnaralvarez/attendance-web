@@ -5,8 +5,3 @@ coverage/
 .idea/
 .tmp/
 dist/
-src/app/event
-
-#TODO
-src/app/store
-src/app/services

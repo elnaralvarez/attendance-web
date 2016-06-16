@@ -1,0 +1,195 @@
+  <md-toolbar class="md-whiteframe-5dp">
+    <div class="md-toolbar-tools">
+      <h1>Update tomato</h1>
+    </div>
+  </md-toolbar>
+  <md-content layout-padding class="md-inline-form">
+    <div layout="row">
+      <div flex=70>
+        <form ng-submit="updateItem(item)">
+          <div layout="column">
+            <md-input-container class="md-block" flex-gt-xs>
+              <label>titulo</label>
+              <input ng-model="item.name"
+                     type="text"
+                     required>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-xs>
+              <label>Description</label>
+              <input ng-model="item.description"
+                     type="text"
+                     required>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-xs>
+              <label>Año</label>
+              <!-- ng-change="do_something()" -->
+              <input ng-model="item.year"
+                     type="number"
+                     step="any"
+                     required>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-xs>
+              <label>Image</label>
+              <input required type="text" name="image" ng-model="item.image">
+              <div ng-messages="containerForm.image.$error">
+                <div ng-message="required">This is required.</div>
+              </div>
+            </md-input-container>
+            <button class="button" ngf-select="upload($file)">Cargar una foto</button>
+
+            <div layout="row">
+              <!-- Calidad -->
+              <div flex>
+                <div layout="column">
+                  <md-list>
+                    <md-subheader class="md-no-sticky">Calidad</md-subheader>
+                    <md-list-item ng-repeat="quality_id in item.quality_ids">
+                         <p>{{find_item(quality_id, qualities).quality}}</p>
+                         <ng-md-icon icon="delete" ng-click="remove_item($index, item.quality_ids)"></ng-md-icon>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                  </md-list>
+                  <md-input-container>
+                    <label>lista de calidad</label>
+                    <md-select ng-model="item_select"
+                               ng-change="add_item(item_select, item.quality_ids)">
+                      <md-option ng-repeat="quality in qualities"
+                                 value="{{quality._id}}">
+                        {{quality.quality}}
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
+                </div>
+              </div>
+            </div>
+
+            <div layout="row">
+              <!-- DIRECTORS -->
+              <div flex>
+                <div layout="column">
+                  <md-list>
+                    <md-subheader class="md-no-sticky">Directores</md-subheader>
+                    <md-list-item ng-repeat="director_id in item.director_ids">
+                         <p>{{find_item(director_id, directors).name}}</p>
+                         <ng-md-icon icon="delete" ng-click="remove_item($index, item.director_ids)"></ng-md-icon>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                  </md-list>
+                  <md-input-container>
+                    <label>lista de directores</label>
+                    <md-select ng-model="item_select"
+                               ng-change="add_item(item_select, item.director_ids)">
+                      <md-option ng-repeat="director in directors"
+                                 value="{{director._id}}">
+                        {{director.name}}
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
+                </div>
+              </div>
+
+              <!-- STUDIOS -->
+              <div flex>
+                <div layout="column">
+                  <md-list>
+                    <md-subheader class="md-no-sticky">Estudios</md-subheader>
+                    <md-list-item ng-repeat="studio_id in item.studio_ids">
+                         <p>{{find_item(studio_id, studios).name}}</p>
+                         <ng-md-icon icon="delete" ng-click="remove_item($index, item.studio_ids)"></ng-md-icon>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                  </md-list>
+                  <md-input-container>
+                    <label>lista de estudios</label>
+                    <md-select ng-model="item_select"
+                               ng-change="add_item(item_select, item.studio_ids)">
+                      <md-option ng-repeat="studio in studios"
+                                 value="{{studio._id}}">
+                        {{studio.name}}
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
+                </div>
+              </div>
+            </div>
+
+            <div layout="row">
+              <!-- ACTORS -->
+              <div flex>
+                <div layout="column">
+                  <md-list>
+                    <md-subheader class="md-no-sticky">Actores</md-subheader>
+                    <md-list-item ng-repeat="actor_id in item.actor_ids">
+                         <p>{{find_item(actor_id, actors).name}}</p>
+                         <ng-md-icon icon="delete" ng-click="remove_item($index, item.actor_ids)"></ng-md-icon>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                  </md-list>
+                  <md-input-container>
+                    <label>lista de actores</label>
+                    <md-select ng-model="item_select"
+                               ng-change="add_item(item_select, item.actor_ids)">
+                      <md-option ng-repeat="actor in actors"
+                                 value="{{actor._id}}">
+                        {{actor.name}}
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
+                </div>
+              </div>
+
+              <!-- CATEGORIES -->
+              <div flex>
+                <div layout="column">
+                  <md-list>
+                    <md-subheader class="md-no-sticky">Genero</md-subheader>
+                    <md-list-item ng-repeat="category_id in item.category_ids">
+                         <p>{{find_item(category_id, categories).name}}</p>
+                         <ng-md-icon icon="delete" ng-click="remove_item($index, item.category_ids)"></ng-md-icon>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                  </md-list>
+                  <md-input-container>
+                    <label>lista de generos</label>
+                    <md-select ng-model="item_select"
+                               ng-change="add_item(item_select, item.category_ids)">
+                      <md-option ng-repeat="category in categories"
+                                 value="{{category._id}}">
+                        {{category.name}}
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
+                </div>
+              </div>
+            </div>
+
+            <div layout="row" layout-align="end">
+              <md-button class="md-raised" ui-sref="store.tomato.list">
+                Cancelar
+              </md-button>
+              <md-button class="md-raised md-primary"
+                         type="submit">Actualizar</md-button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div flex=30>
+        <img class="md-card-image" ng-src="{{current_image}}" />
+      </div>
+    </div>
+
+    <md-toolbar class="md-warn">
+      <h1 class="md-toolbar-tools">
+        Eliminar
+      </h1>
+    </md-toolbar>
+    <md-content layout-padding>
+      <div layout="row">
+        <md-button class="md-raised"
+        ng-click="deleteItem(item)">Eliminar</md-button>
+      </div>
+    </md-content>
+  </md-content>
