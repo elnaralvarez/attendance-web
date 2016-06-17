@@ -16,29 +16,12 @@
             </md-input-container>
 
             <md-input-container class="md-block" flex-gt-xs>
-              <label>Description</label>
-              <input ng-model="item.description"
-                     type="text"
-                     required>
-            </md-input-container>
-
-            <md-input-container class="md-block" flex-gt-xs>
-              <label>Año</label>
-              <!-- ng-change="do_something()" -->
-              <input ng-model="item.year"
-                     type="number"
-                     step="any"
-                     required>
-            </md-input-container>
-
-            <md-input-container class="md-block" flex-gt-xs>
               <label>Image</label>
               <input required type="text" name="image" ng-model="item.image">
               <div ng-messages="containerForm.image.$error">
                 <div ng-message="required">This is required.</div>
               </div>
             </md-input-container>
-            <button class="button" ngf-select="upload($file)">Cargar una foto</button>
 
             <div layout="row" layout-align="end">
               <md-button class="md-raised" ui-sref="attendance.area.list">
@@ -52,18 +35,20 @@
       </div>
       <div flex=30>
         <img class="md-card-image" ng-src="{{current_image}}" />
+        <button ngf-select="upload($file)">Cargar una foto</button>
       </div>
     </div>
 
-    <md-toolbar class="md-warn">
-      <h1 class="md-toolbar-tools">
-        Eliminar
-      </h1>
-    </md-toolbar>
-    <md-content layout-padding>
-      <div layout="row">
-        <md-button class="md-raised"
-        ng-click="deleteItem(item)">Eliminar</md-button>
-      </div>
-    </md-content>
+
+  </md-content>
+  <md-toolbar class="md-warn">
+    <h1 class="md-toolbar-tools">
+      Eliminar
+    </h1>
+  </md-toolbar>
+  <md-content layout-padding>
+    <div layout="row">
+      <md-button class="md-raised"
+      ng-click="deleteItem(item)">Eliminar</md-button>
+    </div>
   </md-content>

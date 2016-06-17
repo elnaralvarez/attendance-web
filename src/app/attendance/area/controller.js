@@ -36,10 +36,8 @@
 
     $scope.create_area = function() {
       Area.save({
-        counter: Global.counter._id,
+        counter_id: Global.counter._id,
         name: 'lorem ipsum sit',
-        description: 'lorem ipsum',
-        year: 2016,
         enabled: true
       }, function(response) {
         $state.go('attendance.area.detail', {

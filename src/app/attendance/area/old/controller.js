@@ -39,7 +39,6 @@
         }
         $scope.items = [];
         response.forEach(function(item) {
-          item.enabled = (item.enabled == '1') ? true : false;
           $scope.items.push(item);
         });
       });
@@ -53,7 +52,6 @@
 
     $scope.updateItemLocal = function(item) {
       item.$update(function(response) {
-        response.enabled = response.enabled === '1';
         Toast.show('Se actualizo correctamente');
       }, LocalError.request);
     };
