@@ -14,9 +14,12 @@
     $mdBottomSheet,
     Auth,
     Sess,
+    Toast,
+    Area,
+    Global,
+    LocalError,
     moment
   ) {
-    //$scope.options = Options.nav;
     $scope.loading = true;
 
     Auth.subcrive(function(user) {
@@ -30,18 +33,13 @@
       });
     };
 
-    $scope.areas = [
-      {
-        name: 'Areas1',
-        _id: 1
-      }, {
-        name: 'Areas2',
-        _id: 2
-      }, {
-        name: 'Areas3',
-        _id: 3
-      }
-    ];
+    Toast.show('Cargando...');
+    Area.query({
+      counter: Global.counter._id,
+      enabled: true
+    }, function(response) {
+      $scope.areas = response;
+    }, LocalError.request);
 
     $scope.options = [
       {
@@ -75,6 +73,12 @@
       }
       $mdSidenav('left').close();
       $state.go(option.route);
+    };
+
+    $scope.selectArea = function(area) {
+      $state.go('attendance.detail', {
+        area_id: area._id
+      });
     };
 
     $scope.toggleSidenav = function(menuId) {

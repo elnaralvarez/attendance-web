@@ -13,11 +13,13 @@
     </div>
   </md-toolbar>
   <md-list>
+    <!-- AREAS -->
     <md-subheader class="md-no-sticky">Areas</md-subheader>
-    <md-list-item ng-repeat="area in areas" ng-click="selectOption(option)">
+    <md-list-item ng-repeat="area in areas" ng-click="selectArea(area)">
        <ng-md-icon icon="done" style="fill: black"></ng-md-icon>
        <p>{{area.name}}</p>
     </md-list-item>
+    <!-- AREAS -->
     <md-divider></md-divider>
     <md-subheader class="md-no-sticky">Opciones globales</md-subheader>
     <md-list-item ng-repeat="option in options" ng-click="selectOption(option)">

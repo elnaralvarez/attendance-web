@@ -35,6 +35,11 @@
       templateUrl: base_url + '/area/index.html',
       controller: 'StoreAreaController'
     });
+    $stateProvider.state('attendance.detail', {
+      url: '/:area_id',
+      templateUrl: base_url + '/detail/index.html',
+      controller: 'AreaDetailController'
+    });
   }
 
 })();

@@ -1,0 +1,28 @@
+<md-content layout-padding>
+  <div layout="row" layout-align="end">
+    <md-button aria-label="create"
+               class="md-raised md-primary"
+               ng-click="create_screen($event)">
+      <ng-md-icon icon="add"></ng-md-icon>
+      Nuevo
+    </md-button>
+  </div>
+  <div ng-if="details.length == 0" class="wargos-text-align">
+      <b>No existe elementos requistrados</b>
+  </div>
+  <md-list>
+    <!-- <md-list-item class="md-2-line"
+                  ng-repeat="detail in details"
+                  ng-click="selectItem(detail)">
+      <div class="md-list-item-text">
+        <h3>{{detail.name}}</h3>
+        <p>Lorem ipsum sit</p>
+      </div>
+    </md-list-item> -->
+    <md-list-item ng-repeat="detail in details"
+                  ng-click="selectItem(detail)">
+    <p>{{detail.name}}</p>
+      <!-- <md-checkbox class="md-secondary" ng-model="topping.wanted"></md-checkbox> -->
+    </md-list-item>
+  </md-list>
+</md-content>

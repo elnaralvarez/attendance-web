@@ -16,7 +16,7 @@
     Message
   ) {
     Counter.get({
-      _id: Global.user.attendance
+      _id: Global.user.counter
     }, function(response) {
       $scope.attendance = response;
       $scope.item = _.clone(response);

@@ -1,0 +1,23 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h3>
+      Proveedores
+    </h3>
+    <div layout="row" hide-xs hide-sm>
+      <md-button ng-repeat="page in pages"
+                 ui-sref="{{page.route}}">
+        {{page.title}}
+      </md-button>
+    </div>
+    <span flex></span>
+    <md-button aria-label="Search" ng-click="showSearch = !showSearch">
+      <ng-md-icon icon="search"></ng-md-icon>
+    </md-button>
+    <md-button aria-label="Open Settings" ng-click="showGridBottomSheet($event)">
+      <ng-md-icon icon="more_vert"></ng-md-icon>
+    </md-button>
+  </div>
+</md-toolbar>
+
+<ui-view layout="column" layout-fill>
+</ui-view>
