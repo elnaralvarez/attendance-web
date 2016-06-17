@@ -1,8 +1,8 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
-    <h3>
-      Proveedores
-    </h3>
+    <h2>
+      Area
+    </h2>
     <div layout="row" hide-xs hide-sm>
       <md-button ng-repeat="page in pages"
                  ui-sref="{{page.route}}">
@@ -10,14 +10,30 @@
       </md-button>
     </div>
     <span flex></span>
-    <md-button aria-label="Search" ng-click="showSearch = !showSearch">
-      <ng-md-icon icon="search"></ng-md-icon>
+    <md-button class="md-icon-button" aria-label="Edit" ng-click="goToUpdate()">
+      <ng-md-icon icon="edit" ></ng-md-icon>
     </md-button>
-    <md-button aria-label="Open Settings" ng-click="showGridBottomSheet($event)">
+    <md-button class="md-icon-button" aria-label="More">
       <ng-md-icon icon="more_vert"></ng-md-icon>
     </md-button>
   </div>
 </md-toolbar>
 
 <ui-view layout="column" layout-fill>
+  <md-content layout-padding>
+    <div layout="row" layout-align="end">
+      <md-button aria-label="create"
+                 class="md-raised md-primary"
+                 ng-click="create_screen($event)">
+        <ng-md-icon icon="person_add"></ng-md-icon>
+        Participante
+      </md-button>
+      <md-button aria-label="create"
+                 class="md-raised md-primary"
+                 ng-click="create_screen($event)">
+        <ng-md-icon icon="group_add"></ng-md-icon>
+        grupo
+      </md-button>
+    </div>
+  </md-content>
 </ui-view>
