@@ -39,6 +39,14 @@
               var msg = 'progress: ' + progressPercentage + '% ';
               Toast.show(msg);
           });
+      },
+      loadImage: function(imageName) {
+        imageName = imageName || 'default-person.png';
+        return IMAGE_PATH + imageName;
+      },
+      loadImageGroup: function(imageName) {
+        imageName = imageName || 'default-people.jpg';
+        return IMAGE_PATH + imageName;
       }
     };
   }

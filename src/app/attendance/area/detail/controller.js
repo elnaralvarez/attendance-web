@@ -15,8 +15,6 @@
     UploadImages,
     LocalError
   ) {
-    var loadingCounter = 0;
-    $scope.item_select = null;
     UploadImages.init($scope);
     if (!$state.params.area_id) {
       throw new Error('params is empty');

@@ -28,17 +28,17 @@
     $stateProvider.state('attendance.provider', {
       url: '/provider',
       templateUrl: base_url + '/provider/index.html',
-      controller: 'StoreProviderController'
+      controller: 'AttendanceProviderController'
     });
     $stateProvider.state('attendance.area', {
       url: '/area',
       templateUrl: base_url + '/area/index.html',
-      controller: 'StoreAreaController'
+      controller: 'AttendanceAreaController'
     });
     $stateProvider.state('attendance.detail', {
       url: '/:area_id',
       templateUrl: base_url + '/detail/index.html',
-      controller: 'AreaDetailController'
+      controller: 'AttendanceDetailController'
     });
   }
 

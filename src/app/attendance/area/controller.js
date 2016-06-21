@@ -3,7 +3,7 @@
 
   angular
     .module('wargos')
-    .controller('StoreAreaController', controller);
+    .controller('AttendanceAreaController', controller);
 
   /** @ngInject */
   function controller(
@@ -21,6 +21,7 @@
     };
 
     $scope.deleteItem = function(item) {
+      console.log(item);
       Toast.show('Cargando...');
       item.$delete(function(response) {
         Toast.show('Se actualizo correctamente');

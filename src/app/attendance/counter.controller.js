@@ -115,6 +115,8 @@
     };
 
     // GENERIC
+    $scope.imageUrl = Global.IMAGE_PATH;
+
     $scope.getDate = function (newDate) {
       var day = newDate || new Date();
       return moment(day).format('YYYY-MM-DD HH:mm:ss');
