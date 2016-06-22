@@ -13,6 +13,9 @@
     <md-button class="md-icon-button" aria-label="Edit" ng-click="goToUpdate()">
       <ng-md-icon icon="edit"></ng-md-icon>
     </md-button>
+    <md-button class="md-icon-button" aria-label="Edit" ng-click="goToImport()">
+      <ng-md-icon icon="import_export"></ng-md-icon>
+    </md-button>
     <md-button class="md-icon-button" aria-label="More">
       <ng-md-icon icon="more_vert"></ng-md-icon>
     </md-button>
@@ -24,13 +27,13 @@
     <div layout="row" layout-align="end">
       <md-button aria-label="create"
                  class="md-raised md-primary"
-                 ng-click="create_screen($event)">
+                 ng-click="createParticipant($event)">
         <ng-md-icon icon="person_add"></ng-md-icon>
         Participante
       </md-button>
       <md-button aria-label="create"
                  class="md-raised md-primary"
-                 ng-click="create_screen($event)">
+                 ng-click="createRoom($event)">
         <ng-md-icon icon="group_add"></ng-md-icon>
         grupo
       </md-button>
@@ -43,7 +46,7 @@
         flex-sm="50"
         flex-xs="100"
         ng-repeat="participant in participants">
-      <md-list-item ng-click="changeStatus(participant, $index)">
+      <md-list-item ng-click="goToParticipant(participant, $index)">
         <img alt="{{participant.first_name}}"
              ng-src="{{loadImage(participant.img)}}"
              class="md-avatar" />
@@ -72,7 +75,7 @@
         flex-sm="50"
         flex-xs="100"
         ng-repeat="room in rooms">
-      <md-list-item ng-click="changeStatus(room, $index)">
+      <md-list-item ng-click="goToRoom(room, $index)">
         <img alt="{{room.first_name}}"
              ng-src="{{loadImageGroup(person.img)}}"
              class="md-avatar" />

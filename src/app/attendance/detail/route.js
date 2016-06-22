@@ -19,6 +19,21 @@
       templateUrl: base_url + '/update/index.html',
       controller: 'AreaDetailUpdateController'
     });
+    $stateProvider.state('attendance.detail.import', {
+      url: '/import',
+      templateUrl: base_url + '/import/index.html',
+      controller: 'AreaDetailParticipantController'
+    });
+    $stateProvider.state('attendance.detail.room', {
+      url: '/room/:room_id',
+      templateUrl: base_url + '/room/index.html',
+      controller: 'AreaDetailRoomController'
+    });
+    $stateProvider.state('attendance.detail.participant', {
+      url: '/participant/:_id',
+      templateUrl: base_url + '/participant/index.html',
+      controller: 'AreaDetailParticipantController'
+    });
   }
 
 })();

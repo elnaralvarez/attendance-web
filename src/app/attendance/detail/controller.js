@@ -12,8 +12,14 @@
     Options,
     $mdBottomSheet,
     Auth,
-    UploadImages
+    Room,
+    UploadImages,
+    Global,
+    Area,
+    LocalError,
+    Toast
   ) {
+    $scope.area = {};
     $scope.pages = [
       {
         title: 'Estudio',
@@ -37,21 +43,58 @@
       }
     ];
 
-    $scope.rooms = [
-      {
-        name: 'lorem'
-      }, {
-        name: 'lorem'
-      }, {
-        name: 'lorem'
-      }
-    ];
-
     $scope.loadImage = UploadImages.loadImage;
     $scope.loadImageGroup = UploadImages.loadImageGroup;
 
-    $scope.goToUpdate = function() {
-      $state.go('attendance.detail.update');
+    $scope.goToParticipant = function() {
+      $state.go('attendance.detail.import');
     }
+
+    $scope.goToRoom = function(room) {
+      $state.go('attendance.detail.room', {
+        room_id: room._id
+      });
+    }
+
+    $scope.goToImport = function() {
+      $state.go('attendance.detail.import');
+    }
+
+    $scope.createRoom = function() {
+      Room.save({
+        counter_id: Global.counter._id,
+        area_id: $scope.area._id,
+        name: 'GRUPO!!!'
+      }, function(response) {
+        $scope.goToRoom(response);
+        $scope.rooms.unshift(response);
+      }, LocalError.request);
+    };
+
+    $scope.createParticipant = function() {
+      $state.go('attendance.detail.participant');
+    }
+
+
+    if (!$state.params.area_id) {
+      throw new Error('params is empty');
+    }
+
+    $scope.loadRooms = function() {
+      Toast.show('Cargando...');
+      Room.query({
+        counter: Global.counter._id,
+        area: $state.params.area_id
+      }, function(response) {
+        $scope.rooms = response;
+      }, LocalError.request);
+    }
+    $scope.loadRooms();
+
+    Area.get({
+      _id: $state.params.area_id
+    }, function (response) {
+      $scope.area = response;
+    }, LocalError.request);
   }
 })();

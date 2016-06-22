@@ -32,7 +32,7 @@
         page: query.page,
         name: $scope.searchkey
       };
-      Area.search_pagination(query_item, function(response) {
+      Area.pagination(query_item, function(response) {
         if (response.length == $scope.query.limit &&
           $scope.total <= $scope.query.page * $scope.query.limit) {
           $scope.total += $scope.query.limit;
