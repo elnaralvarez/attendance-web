@@ -1,44 +1,80 @@
-  <md-toolbar class="md-whiteframe-5dp">
-    <div class="md-toolbar-tools">
-      <h1>Actualizar area</h1>
-    </div>
-  </md-toolbar>
-  <md-content layout-padding class="md-inline-form">
-    <form ng-submit="updateItem(item)">
-      <div layout="column">
-        <md-input-container class="md-block" flex-gt-xs>
-          <label>titulo</label>
-          <input ng-model="item.name"
-                 type="text"
-                 required>
-        </md-input-container>
-
-        <md-input-container class="md-block" flex-gt-xs>
-          <label>Image</label>
-          <input required type="text" name="image" ng-model="item.image">
-          <div ng-messages="containerForm.image.$error">
-            <div ng-message="required">This is required.</div>
-          </div>
-        </md-input-container>
-
-        <div layout="row" layout-align="end">
-          <md-button class="md-raised" ui-sref="attendance.area.list">
-            Cancelar
-          </md-button>
-          <md-button class="md-raised md-primary"
-                     type="submit">Actualizar</md-button>
-        </div>
+<md-toolbar class="md-primary">
+  <h1 class="md-toolbar-tools">
+    Actualizar participante
+  </h1>
+</md-toolbar>
+<md-content layout-padding>
+  <form name="containerForm" ng-submit="update(item)">
+    <md-input-container>
+      <label>UID (Identificador unico)</label>
+      <input required type="text" name="uid" ng-model="item.uid" />
+      <div ng-messages="containerForm.uid.$error" role="alert">
+        <div ng-message="required">This is required.</div>
       </div>
-    </form>
-  </md-content>
-  <md-toolbar class="md-warn">
-    <h1 class="md-toolbar-tools">
-      Eliminar
-    </h1>
-  </md-toolbar>
-  <md-content layout-padding>
+    </md-input-container>
+    <md-input-container>
+      <label>Nombre</label>
+      <input required type="text" name="first_name" ng-model="item.first_name" />
+      <div ng-messages="containerForm.first_name.$error" role="alert">
+        <div ng-message="required">This is required.</div>
+      </div>
+    </md-input-container>
+    <md-input-container>
+      <label>Appellidos</label>
+      <input required type="text" name="last_name" ng-model="item.last_name" />
+      <div ng-messages="containerForm.last_name.$error" role="alert">
+        <div ng-message="required">This is required.</div>
+      </div>
+    </md-input-container>
+    <md-input-container>
+      <label>Celular</label>
+      <input required type="text" name="cel" ng-model="item.cel" />
+      <div ng-messages="containerForm.cel.$error" role="alert">
+        <div ng-message="required">This is required.</div>
+      </div>
+    </md-input-container>
+    <md-input-container>
+      <label>CI</label>
+      <input required type="text" name="ci" ng-model="item.ci" />
+      <div ng-messages="containerForm.ci.$error" role="alert">
+        <div ng-message="required">This is required.</div>
+      </div>
+    </md-input-container>
+    <md-input-container>
+      <label>Direccion</label>
+      <input required type="text" name="address" ng-model="item.address" />
+      <div ng-messages="containerForm.address.$error" role="alert">
+        <div ng-message="required">This is required.</div>
+      </div>
+    </md-input-container>
+    <md-input-container>
+      <label>Email</label>
+      <input required type="text" name="email" ng-model="item.email" />
+      <div ng-messages="containerForm.email.$error" role="alert">
+        <div ng-message="required">This is required.</div>
+      </div>
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-xs>
+      <label>Imagen</label>
+      <input type="text" name="image" ng-model="item.image" />
+    </md-input-container>
+    <!-- upload photo -->
+    <button class="button" ngf-select="upload($file)">Cargar una foto</button>
+
     <div layout="row">
-      <md-button class="md-raised"
-      ng-click="deleteItem(item)">Eliminar</md-button>
+      <md-button class="md-raised" ui-sref="attendance.detail">Cancelar</md-button>
+      <md-button type="submit" class="md-raised md-primary">Actualizar</md-button>
     </div>
-  </md-content>
+  </form>
+</md-content>
+<md-toolbar class="md-warn">
+  <h1 class="md-toolbar-tools">
+    Eliminar
+  </h1>
+</md-toolbar>
+<md-content layout-padding>
+  <div layout="row">
+    <md-button class="md-raised"
+               ng-click="remove(item)">Eliminar</md-button>
+  </div>
+</md-content>

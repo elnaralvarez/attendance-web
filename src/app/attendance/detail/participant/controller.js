@@ -8,8 +8,43 @@
   /** @ngInject */
   function controller(
     $scope,
-    $state
+    $state,
+    Participant,
+    LocalError,
+    UploadImages
   ) {
-    console.log($state.params.area_id);
+    UploadImages.init($scope);
+    $scope.upload = UploadImages.upload;
+    $scope.item = {};
+
+    var participant_id = $state.params.participant_id;
+    if (participant_id) {
+      var itemParams = {
+        _id: participant_id
+      };
+      Participant.get(itemParams, function(response) {
+        $scope.item = response;
+      });
+    }
+
+    $scope.remove = function(item) {
+      var itemParams = {
+        _id: participant_id
+      };
+      item.$remove(itemParams, function(response) {
+        $state.go('attendance.detail');
+        $scope.loadParticipants();
+      }, LocalError.request);
+    }
+
+    $scope.update = function(item) {
+      var itemParams = {
+        _id: participant_id
+      };
+      item.$update(itemParams, function(response) {
+        $state.go('attendance.detail');
+        $scope.loadParticipants();
+      }, LocalError.request);
+    }
   }
 })();

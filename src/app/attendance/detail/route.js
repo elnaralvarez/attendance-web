@@ -30,7 +30,7 @@
       controller: 'AreaDetailRoomController'
     });
     $stateProvider.state('attendance.detail.participant', {
-      url: '/participant/:_id',
+      url: '/participant/:participant_id',
       templateUrl: base_url + '/participant/index.html',
       controller: 'AreaDetailParticipantController'
     });

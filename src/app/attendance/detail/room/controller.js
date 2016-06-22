@@ -30,6 +30,7 @@
       };
       item.$remove(itemParams, function(response) {
         $state.go('attendance.detail');
+        $scope.loadRooms();
       }, LocalError.request);
     }
 
