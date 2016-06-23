@@ -72,10 +72,13 @@
     };
 
     $scope.reset = function(room) {
-      console.log('reset');
-      $scope.room = {
+      var data = {
         name: 'Default'
       };
+
+      console.log('reset');
+      $scope.room = room || data;
+      HelperRoom.validateRoomItem($scope.room);
       $scope.loadRooms();
       $scope.loadParticipants();
     }

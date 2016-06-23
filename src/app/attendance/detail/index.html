@@ -30,7 +30,7 @@
   <span ng-click="reset()">
     | HOME
   </span>
-  <span ng-repeat="group in groups">
+  <span ng-repeat="group in groups" ng-click="reset(group)">
     | {{group.name}}
   </span>
 </md-subheader>
@@ -54,6 +54,9 @@
   </md-content>
   <!-- PARTICIPANT -->
   <md-subheader class="md-no-sticky">PARTICIPANTES</md-subheader>
+  <div ng-if="participants.length == 0" class="wargos-text-align">
+      <b>No existe <i>participantes</i> reqistrados</b>
+  </div>
   <div layout="row" layout-wrap>
     <div flex="33"
         flex-sm="50"
@@ -87,6 +90,9 @@
   </div>
   <!--  PEOPLE -->
   <md-subheader class="md-no-sticky">GRUPOS</md-subheader>
+  <div ng-if="rooms.length == 0" class="wargos-text-align">
+      <b>No existe <i>grupos</i> reqistrados</b>
+  </div>
   <div layout="row" layout-wrap>
     <div flex="33"
         flex-sm="50"

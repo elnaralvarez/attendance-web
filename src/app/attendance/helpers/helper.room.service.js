@@ -7,6 +7,29 @@
 
   function service($state, Room, LocalError, Global) {
     var scope = null;
+
+    var validateRoomItem = function(room) {
+      if (!room._id) {
+        scope.groups = [];
+        return;
+      }
+      var position = null;
+      var list = scope.groups;
+      if (room.parent == undefined) {
+        scope.groups = [];
+        scope.groups.push(room);
+        return;
+      }
+      for (var i = 0; i < list.length; i++) {
+        var current_room = list[i];
+        if (room._id == current_room._id) {
+          position = i;
+        }
+      }
+      list = list.slice(0, position);
+      list.push(room);
+      scope.groups = list;
+    }
     return {
       init: function(local_scope) {
         scope = local_scope;
@@ -40,20 +63,12 @@
       },
       loadRoomById: function(room) {
         scope.room = room;
-        scope.groups.push(room);
         scope.loadRooms();
         scope.loadParticipants();
-        // if (!room._id) {
-        //   throw new Error('rooms id is not defined');
-        // }
-        // var itemParams = {
-        //   _id: room._id
-        // };
-        // Room.get(itemParams, function(response) {
-        //   scope.room = response;
-        //   scope.groups.push(response);
-        // });
-      }
+
+        scope.groups.push(room);
+      },
+      validateRoomItem: validateRoomItem
     };
   }
 })();
