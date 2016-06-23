@@ -35,10 +35,7 @@
     }
 
     $scope.update = function(item) {
-      var itemParams = {
-        _id: room_id
-      };
-      item.$update(itemParams, function(response) {
+      item.$update(function(response) {
         $state.go('attendance.detail');
         $scope.loadRooms();
       }, LocalError.request);

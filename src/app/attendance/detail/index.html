@@ -1,14 +1,19 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
     <h2>
-      Area
+      Area {{area.name}} - {{room.name}}
     </h2>
-    <div layout="row" hide-xs hide-sm>
+    <!-- <div layout="row" hide-xs hide-sm>
       <md-button ng-repeat="page in pages"
                  ui-sref="{{page.route}}">
         {{page.title}}
       </md-button>
-    </div>
+    </div> -->
+    <!-- <div layout="row" hide-xs hide-sm>
+      <md-button>
+        {{room.name}}
+      </md-button>
+    </div> -->
     <span flex></span>
     <md-button class="md-icon-button" aria-label="Edit" ng-click="goToUpdate()">
       <ng-md-icon icon="edit"></ng-md-icon>
@@ -21,9 +26,17 @@
     </md-button>
   </div>
 </md-toolbar>
-
+<md-subheader class="md-primary">
+  <span ng-click="reset()">
+    | HOME
+  </span>
+  <span ng-repeat="group in groups">
+    | {{group.name}}
+  </span>
+</md-subheader>
 <ui-view layout="column" layout-fill>
   <md-content layout-padding>
+
     <div layout="row" layout-align="end">
       <md-button aria-label="create"
                  class="md-raised md-primary"
@@ -46,7 +59,7 @@
         flex-sm="50"
         flex-xs="100"
         ng-repeat="participant in participants">
-      <md-list-item ng-click="loadParticipant(participant, $index)">
+      <md-list-item ng-click="loadParticipantById(participant, $index)">
         <img alt="{{participant.first_name}}"
              ng-src="{{loadImage(participant.img)}}"
              class="md-avatar" />
@@ -79,7 +92,7 @@
         flex-sm="50"
         flex-xs="100"
         ng-repeat="room in rooms">
-      <md-list-item ng-click="loadRoom(room, $index)">
+      <md-list-item ng-click="loadRoomById(room, $index)">
         <img alt="{{room.first_name}}"
              ng-src="{{loadImageGroup(person.img)}}"
              class="md-avatar" />

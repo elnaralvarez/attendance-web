@@ -12,7 +12,7 @@
     $stateProvider.state('attendance.detail.studio', {
       url: '/studio',
       templateUrl: base_url + '/studio/index.html',
-      controller: 'DetailStudioController'
+      controller: 'AreaDetailStudioController'
     });
     $stateProvider.state('attendance.detail.update', {
       url: '/update',

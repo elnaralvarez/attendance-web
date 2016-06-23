@@ -20,8 +20,12 @@
     Toast,
     HelperDetailRoute,
     Participant,
-    UUID
+    UUID,
+    HelperRoom
   ) {
+    HelperRoom.init($scope);
+    $scope.room = null;
+    $scope.groups = [];
     $scope.area = {};
     $scope.pages = [
       {
@@ -40,22 +44,14 @@
     $scope.goToRoom = HelperDetailRoute.goToRoom;
     $scope.goToImport = HelperDetailRoute.goToImport;
 
-    $scope.createRoom = function() {
-      Room.save({
-        counter_id: Global.counter._id,
-        area_id: $scope.area._id,
-        name: 'GRUPO!!!'
-      }, function(response) {
-        $scope.rooms.unshift(response);
-      }, LocalError.request);
-    };
-
-    $scope.loadRoom = function(room) {
-      console.log(room);
-    }
+    // helper room
+    $scope.createRoom = HelperRoom.createRoom;
+    $scope.loadRoom = HelperRoom.loadRoom;
+    $scope.loadRoomById = HelperRoom.loadRoomById;
+    $scope.loadRooms = HelperRoom.loadRooms;
 
     $scope.createParticipant = function() {
-      Participant.save({
+      var data = {
         counter_id: Global.counter._id,
         area_id: $scope.area._id,
         uid: UUID.next(),
@@ -66,12 +62,25 @@
         ci: 'lorem ipsum',
         address: 'lorem ipsum',
         email: 'example@wargos.com'
-      }, function(response) {
+      };
+      if ($scope.room._id) {
+        data.room = $scope.room._id;
+      }
+      Participant.save(data, function(response) {
         $scope.participants.unshift(response);
       }, LocalError.request);
     };
 
-    $scope.loadParticipant = function(participant) {
+    $scope.reset = function(room) {
+      console.log('reset');
+      $scope.room = {
+        name: 'Default'
+      };
+      $scope.loadRooms();
+      $scope.loadParticipants();
+    }
+
+    $scope.loadParticipantById = function(participant) {
       console.log(participant);
     }
 
@@ -81,25 +90,23 @@
     }
 
     Toast.show('Cargando...');
-    $scope.loadRooms = function() {
-      Room.query({
-        counter: Global.counter._id,
-        area: $state.params.area_id
-      }, function(response) {
-        $scope.rooms = response;
-      }, LocalError.request);
-    }
-    $scope.loadRooms();
-
     $scope.loadParticipants = function() {
-      Participant.query({
+      var data = {
         counter: Global.counter._id,
         area: $state.params.area_id
-      }, function(response) {
+      };
+      if ($scope.room._id) {
+        data.room = $scope.room._id;
+      } else {
+        data.room = '';
+      }
+      Participant.query(data, function(response) {
         $scope.participants = response;
       }, LocalError.request);
     }
-    $scope.loadParticipants();
+
+    // start loading all screen
+    $scope.reset();
 
     Area.get({
       _id: $state.params.area_id
