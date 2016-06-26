@@ -50,7 +50,7 @@
       loadRooms: function() {
         var data = {
           counter: Global.counter._id,
-          area: $state.params.area_id,
+          area: $state.params.area_id
         };
         if (scope.room._id) {
           data.parent = scope.room._id;
