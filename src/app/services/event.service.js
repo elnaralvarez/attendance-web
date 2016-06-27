@@ -12,7 +12,8 @@
        _id: '@_id',
        counter_id: '@counter_id',
        area_id: '@area_id',
-       page: '@page'
+       page: '@page',
+       limit: '@limit'
      }, {
        update: {
          method: 'PUT'
@@ -24,7 +25,7 @@
        pagination: {
          method: 'GET',
          isArray: true,
-         url: url + '/page/:page'
+         url: url + '/page/:page/limit/:limit'
        }
      });
   }

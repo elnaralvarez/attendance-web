@@ -15,6 +15,7 @@
     }
 
     var loadEvents = function(data) {
+      data.limit = 10;
       if (scope.room._id) {
         data.room = scope.room._id;
       } else {
