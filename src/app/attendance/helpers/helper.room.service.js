@@ -65,6 +65,7 @@
         scope.room = room;
         scope.loadRooms();
         scope.loadParticipants();
+        scope.loadEvents();
 
         scope.groups.push(room);
       },

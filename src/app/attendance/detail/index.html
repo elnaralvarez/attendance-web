@@ -17,15 +17,15 @@
         </md-button>
       </div>
     </md-toolbar>
-    <md-subheader class="md-primary">
-      <span ng-click="reset()">
-        | HOME
-      </span>
-      <span ng-repeat="group in groups" ng-click="reset(group)">
-        | {{group.name}}
-      </span>
-    </md-subheader>
     <ui-view layout="column" layout-fill>
+      <md-subheader class="md-primary">
+        <span ng-click="reset()">
+          | HOME
+        </span>
+        <span ng-repeat="group in groups" ng-click="reset(group)">
+          | {{group.name}}
+        </span>
+      </md-subheader>
       <md-content layout-padding>
 
         <div layout="row" layout-align="end">
@@ -45,7 +45,7 @@
       </md-content>
       <md-subheader class="md-no-sticky">PARTICIPANTES</md-subheader>
       <div ng-if="participants.length == 0" class="wargos-text-align">
-          <b>No existe <i>participantes</i> reqistrados</b>
+          <b>No existe <i>participantes</i> requistrados</b>
       </div>
       <div layout="row" layout-wrap>
         <div flex="33"
@@ -80,7 +80,7 @@
       </div>
       <md-subheader class="md-no-sticky">GRUPOS</md-subheader>
       <div ng-if="rooms.length == 0" class="wargos-text-align">
-          <b>No existe <i>grupos</i> reqistrados</b>
+          <b>No existe <i>grupos</i> requistrados</b>
       </div>
       <div layout="row" layout-wrap>
         <div flex="33"
@@ -111,7 +111,7 @@
           Eventos
         </h2>
         <span flex></span>
-        <md-button class="md-icon-button" aria-label="Edit" ng-click="goToImport()">
+        <md-button class="md-icon-button" aria-label="Edit" ng-click="createEvent()">
           <ng-md-icon icon="add"></ng-md-icon>
         </md-button>
         <md-button class="md-icon-button" aria-label="More">
@@ -119,12 +119,21 @@
         </md-button>
       </div>
     </md-toolbar>
+    <div ng-if="events.length == 0" class="wargos-text-align">
+        <b>No existe <i>eventos</i> requistrados</b>
+    </div>
+    <!-- EVENTS -->
     <md-list>
-      <!-- EVENTS -->
-      <md-list-item ng-repeat="area in areas" ng-click="selectArea(area)">
-         <ng-md-icon icon="done" style="fill: black"></ng-md-icon>
-         <p>{{area.name}}</p>
+      <md-list-item ng-repeat="event in events" ng-click="selectArea(area)">
+         <p>{{event.title}}</p>
+         <ng-md-icon icon="edit"
+                     ng-click="goToEvent(event, $index, $event)"
+                     aria-label="Send Email"
+                     class="md-secondary md-hue-3" ></md-icon>
       </md-list-item>
     </md-list>
+    <div ng-if="events.length > 0" class="wargos-text-align">
+        <b ng-click="loadMoreEvents()">Cargar Mas</b>
+    </div>
   </md-sidenav>
 </div>

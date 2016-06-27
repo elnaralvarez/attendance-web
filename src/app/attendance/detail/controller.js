@@ -21,11 +21,14 @@
     HelperDetailRoute,
     Participant,
     UUID,
-    HelperRoom
+    HelperRoom,
+    HelperEvent
   ) {
     HelperRoom.init($scope);
+    HelperEvent.init($scope);
     $scope.room = null;
     $scope.groups = [];
+    $scope.events = [];
     $scope.area = {};
     $scope.pages = [
       {
@@ -43,12 +46,17 @@
     $scope.goToParticipant = HelperDetailRoute.goToParticipant;
     $scope.goToRoom = HelperDetailRoute.goToRoom;
     $scope.goToImport = HelperDetailRoute.goToImport;
+    $scope.goToEvent = HelperDetailRoute.goToEvent;
 
     // helper room
     $scope.createRoom = HelperRoom.createRoom;
     $scope.loadRoom = HelperRoom.loadRoom;
     $scope.loadRoomById = HelperRoom.loadRoomById;
     $scope.loadRooms = HelperRoom.loadRooms;
+
+    $scope.createEvent = HelperEvent.createEvent;
+    $scope.loadEvents = HelperEvent.loadEvents;
+    $scope.loadMoreEvents = HelperEvent.loadMoreEvents;
 
     $scope.createParticipant = function() {
       var data = {
@@ -81,10 +89,12 @@
       HelperRoom.validateRoomItem($scope.room);
       $scope.loadRooms();
       $scope.loadParticipants();
+      $scope.loadEvents();
     }
 
     $scope.loadParticipantById = function(participant) {
       console.log(participant);
+      //take attendance
     }
 
     // populates view
