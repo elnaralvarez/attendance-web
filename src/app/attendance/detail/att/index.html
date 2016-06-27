@@ -1,0 +1,24 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h2 ui-sref="event.att.list">
+      Asistencia
+    </h2>
+    <span flex></span>
+    <div layout="row">
+      <md-button class="md-raised"
+                 ng-click="goToAttOnlyone()">
+                 Asistencia
+     </md-button>
+      <md-button class="md-raised"
+                 ng-click="goToAttSelectors()">
+                 Asistencia personal
+     </md-button>
+      <md-button class="md-raised"
+                 ng-click="goToAttUnique($event)">
+                 Lector de codigo
+     </md-button>
+    </div>
+  </div>
+</md-toolbar>
+
+<div ui-view></div>

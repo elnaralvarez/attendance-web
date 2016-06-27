@@ -47,6 +47,7 @@
     $scope.goToRoom = HelperDetailRoute.goToRoom;
     $scope.goToImport = HelperDetailRoute.goToImport;
     $scope.goToEvent = HelperDetailRoute.goToEvent;
+    $scope.goToAtt = HelperDetailRoute.goToAtt;
 
     // helper room
     $scope.createRoom = HelperRoom.createRoom;

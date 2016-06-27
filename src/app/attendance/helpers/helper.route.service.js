@@ -23,6 +23,9 @@
       goToImport: function() {
         $state.go('attendance.detail.import');
       },
+      goToAtt: function() {
+        $state.go('attendance.detail.att');
+      },
       goToEvent: function(event) {
         $state.go('attendance.detail.eventupdate', {
           event_id: event._id
