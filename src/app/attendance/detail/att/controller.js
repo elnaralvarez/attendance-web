@@ -25,21 +25,21 @@
 
     // $scope.goToTalk = function(talk) {
     //   $scope.setTalk(talk);
-    //   $state.go('event.att.talk.onlyone', {talkId: talk.id});
+    //   $state.go('event.att.talk.onlyone', {room_id: talk.id});
     // }
     //
     $scope.goToAttUnique = function() {
       // $scope.setTalk(talk);
-      $state.go('attendance.detail.att.unique', {talkId: current_id});
+      $state.go('attendance.detail.att.unique', {room_id: current_id});
     }
 
     $scope.goToAttOnlyone = function() {
       // $scope.setTalk(talk);
-      $state.go('attendance.detail.att.onlyone', {talkId: current_id});
+      $state.go('attendance.detail.att.onlyone', {room_id: current_id});
     }
     $scope.goToAttSelectors = function() {
       // $scope.setTalk(talk);
-      $state.go('attendance.detail.att.selectors', {talkId: current_id});
+      $state.go('attendance.detail.att.selectors', {room_id: current_id});
     }
     //
     // $scope.setTalk = function(talk) {
@@ -49,9 +49,9 @@
     //   $scope.talk = talk;
     // }
     //
-    // if ($state.params.talkId) {
+    // if ($state.params.room_id) {
     //   Talks.get({
-    //     id: $state.params.talkId
+    //     id: $state.params.room_id
     //   }, function(response) {
     //     $scope.setTalk(response);
     //   });

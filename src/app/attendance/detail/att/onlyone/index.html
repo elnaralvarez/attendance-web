@@ -1,23 +1,22 @@
-<md-subheader class="md-no-sticky">
+<!-- <md-subheader class="md-no-sticky">
   Tomar asistencia
-</md-subheader>
-<div layout="row">
-  <md-input-container>
-    <md-button class="md-raised"
-               ng-class="{'true':'md-primary'}[state.status]"
-               ng-click="changeAttendanceAttendanceState(state)"
-               aria-label="changestatus"
-               ng-repeat="state in states">
-               <ng-md-icon icon="{{{'1':'thumb_up', '2': 'thumbs_up_down', '3': 'thumb_down'}[state.id]}}"
-                           style="fill: black"></ng-md-icon>
-     </md-button>
-     <md-button class="md-raised md-warn"
-                ng-click="cleanParticipants()"
-                aria-label="cleanList">
-                <ng-md-icon icon="delete"
-                            style="fill: black"></ng-md-icon>
-    </md-button>
-  </md-input-container>
+</md-subheader> -->
+<div layout="raw">
+    <div flex="80">
+      <md-button class="md-raised"
+                 ng-click="changeAttendanceState(state)"
+                 aria-label="changestatus"
+                 ng-repeat="state in states" style="background:{{state.color}}">
+                 <ng-md-icon icon="done" ng-if="state.status" style="fill: black"></ng-md-icon>
+                 {{state.title}}
+      </md-button>
+    </div>
+    <div flex="20">
+      <md-button class="md-raised"
+                 aria-label="cleanList">
+        {{currentState.title}}
+      </md-button>
+    </div>
 </div>
 <div ng-if="participants.length == 0">
   <h1>Todos los participantes ya fueron registrados</h1>

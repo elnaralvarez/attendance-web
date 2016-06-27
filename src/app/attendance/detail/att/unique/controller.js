@@ -72,7 +72,7 @@
     });
 
     $scope.loadAttendanceAttendance = function() {
-      AttendanceAtts.query({talkId: $state.params.talkId}, function(response) {
+      AttendanceAtts.query({room_id: $state.params.room_id}, function(response) {
         for (var i = 0; i < response.length; i++) {
           $scope.loadParticipantAttendanceAttendance(response[i]);
         };
@@ -105,7 +105,7 @@
         eventId: Global.event.id,
         participantId: participant.id,
         stateId: state.id,
-        talkId: $state.params.talkId
+        room_id: $state.params.room_id
       };
       AttendanceAtts.save(itemParams, function(response) {
         $scope.loadParticipantAttendanceAttendance(response);

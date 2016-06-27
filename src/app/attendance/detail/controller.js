@@ -27,6 +27,7 @@
     HelperRoom.init($scope);
     HelperEvent.init($scope);
     $scope.room = null;
+    $scope.event = null;
     $scope.groups = [];
     $scope.events = [];
     $scope.area = {};
@@ -47,7 +48,13 @@
     $scope.goToRoom = HelperDetailRoute.goToRoom;
     $scope.goToImport = HelperDetailRoute.goToImport;
     $scope.goToEvent = HelperDetailRoute.goToEvent;
-    $scope.goToAtt = HelperDetailRoute.goToAtt;
+    $scope.goToAtt = function() {
+      if ($scope.event) {
+          HelperDetailRoute.goToAtt($scope.event);
+      } else {
+        alert('seleccione un evento');
+      }
+    };
 
     // helper room
     $scope.createRoom = HelperRoom.createRoom;
@@ -58,6 +65,7 @@
     $scope.createEvent = HelperEvent.createEvent;
     $scope.loadEvents = HelperEvent.loadEvents;
     $scope.loadMoreEvents = HelperEvent.loadMoreEvents;
+    $scope.selectEvent = HelperEvent.selectEvent;
 
     $scope.createParticipant = function() {
       var data = {

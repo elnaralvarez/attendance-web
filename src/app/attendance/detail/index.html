@@ -125,12 +125,21 @@
         </md-button>
       </div>
     </md-toolbar>
+    <md-subheader class="md-no-sticky">Actual</md-subheader>
+    <div ng-if="event == null" class="wargos-text-align">
+      <b>seleccione el evento actual</b>
+    </div>
+    <div ng-if="event != null" class="wargos-text-align">
+      <p>{{event.title}}</p>
+    </div>
+
+    <!-- EVENTS -->
+    <md-subheader class="md-no-sticky">Antiguos</md-subheader>
     <div ng-if="events.length == 0" class="wargos-text-align">
         <b>No existe <i>eventos</i> requistrados</b>
     </div>
-    <!-- EVENTS -->
     <md-list>
-      <md-list-item ng-repeat="event in events" ng-click="selectArea(area)">
+      <md-list-item ng-repeat="event in events" ng-click="selectEvent(event)">
          <p>{{event.title}}</p>
          <ng-md-icon icon="edit"
                      ng-click="goToEvent(event, $index, $event)"

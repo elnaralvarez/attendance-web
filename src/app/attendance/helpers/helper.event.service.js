@@ -63,6 +63,9 @@
           page: ++page
         };
         loadEvents(data);
+      },
+      selectEvent: function(event) {
+        scope.event = event;
       }
     };
   }

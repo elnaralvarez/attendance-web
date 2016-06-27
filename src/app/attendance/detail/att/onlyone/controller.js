@@ -18,25 +18,28 @@
     AttendanceAtts,
     LocalError
   ) {
+    var room_id = $state.params.room_id == 'default' ? '' : $state.params.room_id;
+    var event_id = $state.params.event_id;
+    var area_id = $state.params.area_id;
+
     $scope.currentState = null;
     $scope.states = [];
     $scope.participants = [];
     State.query({
-      area: $state.params.area._id
+      area: $state.params.area_id
     }, function(response) {
       $scope.states = response;
-      $scope.changeAttendanceAttendanceState(response[0]);
+      $scope.changeAttendanceState(response[0]);
     });
 
     Event.get({
-      id: $state.params.talkId
+      _id: event_id
     }, function(response) {
-      $scope.talk = response;
+      $scope.current_event = response;
     });
 
-    Participant.v4_get({
-      talkId: $state.params.talkId,
-      eventId: Global.event.id
+    Participant.query({
+      area: area_id
     }, function(response) {
       $scope.participants = response;
     }, LocalError.request);
@@ -52,7 +55,7 @@
         eventId: Global.event.id,
         participantId: participant.id,
         stateId: $scope.currentState.id,
-        talkId: $state.params.talkId
+        room_id: $state.params.room_id
       };
       participant.isloading = true;
       AttendanceAtts.v3_save_or_update(itemParams, function(response) {
@@ -71,7 +74,7 @@
       }
     }
 
-    $scope.changeAttendanceAttendanceState = function(state) {
+    $scope.changeAttendanceState = function(state) {
       $scope.states.forEach(function(item) {
         item.status = false;
       });
@@ -79,15 +82,15 @@
       $scope.currentState.status = true;
     }
 
-    $scope.cleanParticipants = function() {
-      var participants = [];
-      for (var i = 0; i < $scope.participants.length; i++) {
-        if (!$scope.participants[i].done) {
-          participants.push($scope.participants[i]);
-        }
-      }
-      $scope.participants = participants;
-    }
+    // $scope.cleanParticipants = function() {
+    //   var participants = [];
+    //   for (var i = 0; i < $scope.participants.length; i++) {
+    //     if (!$scope.participants[i].done) {
+    //       participants.push($scope.participants[i]);
+    //     }
+    //   }
+    //   $scope.participants = participants;
+    // }
   };
 
 })();
