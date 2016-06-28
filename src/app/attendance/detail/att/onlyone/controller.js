@@ -45,20 +45,22 @@
     }, LocalError.request);
 
     $scope.changeStatus = function(participant, index) {
-      if (!participant.id) {
+      if (!participant._id) {
         throw new Error('participant in undefined');
       };
       if (!$scope.currentState) {
         throw new Error('state in undefined');
       };
       var itemParams = {
-        eventId: Global.event.id,
-        participantId: participant.id,
-        stateId: $scope.currentState.id,
-        room_id: $state.params.room_id
+        // area_id: $state.params.area_id,
+        event: event_id,
+        participant: participant._id,
+        state: $scope.currentState._id,
+
       };
+      itemParams.room = room_id == '' ? null : room_id;
       participant.isloading = true;
-      AttendanceAtts.v3_save_or_update(itemParams, function(response) {
+      AttendanceAtts.save(itemParams, function(response) {
         participant.isloading = false;
         participant.done = true;
         //$scope.removeParticipantById(response);

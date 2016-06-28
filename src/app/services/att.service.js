@@ -6,7 +6,7 @@
     .factory('AttendanceAtts', service);
 
   function service($resource, Global) {
-    var url = Global.PATH + '/v1/events';
+    var url = Global.PATH + '/v1/atts';
 
      return $resource(url + '/:_id', {
        _id: '@_id',
@@ -20,7 +20,8 @@
        },
        save: {
          method: 'POST',
-         url: Global.PATH + '/v1/att/:counter_id/areas/:area_id/events'
+         url: url
+        // url: Global.PATH + '/v1/att/:counter_id/areas/:area_id/atts'
        },
        pagination: {
          method: 'GET',

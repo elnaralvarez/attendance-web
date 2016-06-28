@@ -18,7 +18,7 @@
     "angular-material-icons": "~0.6.0",
     "ng-file-upload": "~9.0.6",
     "angular-qrcode": "monospaced/angular-qrcode#~6.0.3",
-    "angular-material-data-table": "0.9.10",
+    "angular-material-data-table": "0.10.0",
     "lodash": "~4.2.1",
     "angular-material": "~1.0.9"
   },
