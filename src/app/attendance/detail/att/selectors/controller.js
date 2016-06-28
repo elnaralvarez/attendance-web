@@ -10,21 +10,22 @@
     $scope,
     $state,
     Global,
-    Talks,
-    Participants,
-    States,
+    Event,
+    Participant,
+    State,
     AttendanceAtts
   ) {
 
+    var area_id = $state.params.area_id;
     $scope.states = null;
     $scope.participants = [];
 
-    States.query(function(response) {
+    State.query(function(response) {
       $scope.states = response;
     });
 
-    Participants.query({
-      eventId: Global.event.id
+    Participant.query({
+      area: area_id
     }, function(response) {
       $scope.participants = response;
       $scope.loadAttendanceAttendance();

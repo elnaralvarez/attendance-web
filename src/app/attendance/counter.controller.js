@@ -76,8 +76,9 @@
     };
 
     $scope.selectArea = function(area) {
-      $state.go('attendance.detail', {
-        area_id: area._id
+      $state.go('attendance.detail.room', {
+        area_id: area._id,
+        room_id: area._id
       });
     };
 

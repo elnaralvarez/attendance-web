@@ -9,36 +9,33 @@
   function controller(
     $scope,
     $state,
-    Room,
-    LocalError
+    HelperRoom,
+    HelperParticipant
   ) {
-    $scope.item = {};
+    HelperRoom.init($scope);
 
+    var area_id = $state.params.area_id;
     var room_id = $state.params.room_id;
-    if (room_id) {
-      var itemParams = {
-        _id: room_id
-      };
-      Room.get(itemParams, function(response) {
-        $scope.item = response;
-      });
-    }
 
-    $scope.remove = function(item) {
-      var itemParams = {
-        _id: room_id
-      };
-      item.$remove(itemParams, function(response) {
-        $state.go('attendance.detail');
-        $scope.loadRooms();
-      }, LocalError.request);
-    }
+    $scope.loadRoomByURLParam(room_id);
 
-    $scope.update = function(item) {
-      item.$update(function(response) {
-        $state.go('attendance.detail');
-        $scope.loadRooms();
-      }, LocalError.request);
+    // helper room
+    $scope.createRoom = HelperRoom.createRoom;
+    $scope.loadRooms = HelperRoom.loadRooms;
+
+    $scope.loadRoom = HelperRoom.loadRoom;
+    $scope.loadRoomById = HelperRoom.loadRoomById;
+
+
+
+    $scope.init = function(room) {
+      console.log('init');
+      // HelperRoom.validateRoomItem($scope.room);
+      $scope.loadRooms(room_id);
+      // $scope.loadParticipants(room_id);
+      $scope.loadEvents(room_id);
     }
+    $scope.init();
+
   }
 })();

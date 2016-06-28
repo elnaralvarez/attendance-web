@@ -16,11 +16,6 @@
 
     var loadEvents = function(data) {
       data.limit = 10;
-      if (scope.room._id) {
-        data.room = scope.room._id;
-      } else {
-        data.room = $state.params.area_id;
-      }
       Event.pagination(data, function(response) {
         page = data.page;
         response.forEach(function(item) {
@@ -33,34 +28,33 @@
       init: function(local_scope) {
         scope = local_scope;
       },
-      createEvent: function() {
-        var data = {};
-        data.area_id = scope.area._id;
-        data.counter_id = Global.counter._id;
-        data['start_date'] = getDateFormated();
-        data['end_date'] = getDateFormated();
-        data['title'] = getDateFormated();
-        data['enabled'] = true;
-        if (scope.room._id) {
-          data.room = scope.room._id
-        } else {
-          data.room = $state.params.area_id
+      createEvent: function(room_id) {
+        var data = {
+          area_id: scope.area._id,
+          start_date: getDateFormated(),
+          end_date: getDateFormated(),
+          title: getDateFormated(),
+          enabled: true,
+          room: room_id,
+          counter_id: Global.counter._id
         }
         Event.save(data, function(response) {
           scope.events.unshift(response);
         }, LocalError.request);
       },
-      loadEvents: function() {
+      loadEvents: function(room_id) {
         page = 1;
         scope.events.length = 0;
         var data = {
-          page: page
+          page: page,
+          room: room_id
         };
         loadEvents(data);
       },
-      loadMoreEvents: function() {
+      loadMoreEvents: function(room_id) {
         var data = {
-          page: ++page
+          page: ++page,
+          room: room_id
         };
         loadEvents(data);
       },

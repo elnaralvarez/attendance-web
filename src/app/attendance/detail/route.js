@@ -29,6 +29,12 @@
       templateUrl: base_url + '/room/index.html',
       controller: 'AreaDetailRoomController'
     });
+    //TODO UPDATE
+    // $stateProvider.state('attendance.detail.update22', {
+    //   url: '/update22/:room_id',
+    //   templateUrl: base_url + '/update22/index.html',
+    //   controller: 'AreaDetailRoomController'
+    // });
     $stateProvider.state('attendance.detail.participant', {
       url: '/participant/:participant_id',
       templateUrl: base_url + '/participant/index.html',

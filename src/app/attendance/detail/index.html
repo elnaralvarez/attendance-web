@@ -26,29 +26,7 @@
           | {{group.name}}
         </span>
       </md-subheader>
-      <md-content layout-padding>
-
-        <div layout="row" layout-align="end">
-          <md-button aria-label="add att"
-                     class="md-raised md-primary"
-                     ng-click="goToAtt($event)">
-            <ng-md-icon icon="done_all"></ng-md-icon>
-            Asistencia
-          </md-button>
-          <md-button aria-label="create"
-                     class="md-raised md-primary"
-                     ng-click="createParticipant($event)">
-            <ng-md-icon icon="person_add"></ng-md-icon>
-            Participante
-          </md-button>
-          <md-button aria-label="create"
-                     class="md-raised md-primary"
-                     ng-click="createRoom($event)">
-            <ng-md-icon icon="group_add"></ng-md-icon>
-            grupo
-          </md-button>
-        </div>
-      </md-content>
+      
       <md-subheader class="md-no-sticky">PARTICIPANTES</md-subheader>
       <div ng-if="participants.length == 0" class="wargos-text-align">
           <b>No existe <i>participantes</i> requistrados</b>
@@ -84,27 +62,7 @@
           </md-list-item>
         </div>
       </div>
-      <md-subheader class="md-no-sticky">GRUPOS</md-subheader>
-      <div ng-if="rooms.length == 0" class="wargos-text-align">
-          <b>No existe <i>grupos</i> requistrados</b>
-      </div>
-      <div layout="row" layout-wrap>
-        <div flex="33"
-            flex-sm="50"
-            flex-xs="100"
-            ng-repeat="room in rooms">
-          <md-list-item ng-click="loadRoomById(room, $index)">
-            <img alt="{{room.first_name}}"
-                 ng-src="{{loadImageGroup(person.img)}}"
-                 class="md-avatar" />
-            <p>{{room.name}}</p>
-            <ng-md-icon icon="edit"
-                        ng-click="goToRoom(room, $index, $event)"
-                        aria-label="Send Email"
-                        class="md-secondary md-hue-3" ></md-icon>
-          </md-list-item>
-        </div>
-      </div>
+
     </ui-view>
   </div>
   <md-sidenav layout="column"

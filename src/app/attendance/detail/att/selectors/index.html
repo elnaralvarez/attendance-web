@@ -27,12 +27,14 @@
           <h2>
             <md-button ng-if="participant.att"
                        class="md-raised"
+                       aria-label="get status"
                        ng-class="{'1':'md-primary', '2': '', '3': 'md-warn'}[participant.att.stateId]">
                        {{getState(participant.att.stateId)}}
             </md-button>
             <md-button class="md-fab md-mini"
                        ng-class="{'1':'md-primary', '2':'', '3':'md-warn'}[state.id]"
                        ng-click="changeStatus(participant, state)"
+                       aria-label="state"
                        ng-repeat="state in states">
                        <ng-md-icon icon="{{{'1':'thumb_up', '2': 'thumbs_up_down', '3': 'thumb_down'}[state.id]}}" style="fill: black"></ng-md-icon>
             </md-button>
