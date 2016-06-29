@@ -32,8 +32,7 @@
         _id: participant_id
       };
       item.$remove(itemParams, function(response) {
-        $state.go('attendance.detail');
-        $scope.loadParticipants();
+        $scope.goToAreaHome();
       }, LocalError.request);
     }
 
@@ -42,8 +41,7 @@
         _id: participant_id
       };
       item.$update(itemParams, function(response) {
-        $state.go('attendance.detail');
-        $scope.loadParticipants();
+        $scope.goToAreaHome();
       }, LocalError.request);
     }
   }

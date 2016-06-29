@@ -60,9 +60,9 @@
       //   list.push(room);
       //   groups = list;
       // },
-      setGroupItem: function(room) {
-        groups.push(room);
-      },
+      // setGroupItem: function(room) {
+      //   groups.push(room);
+      // },
       // groups: groups
     };
   }

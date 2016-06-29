@@ -30,6 +30,45 @@
       </md-button>
     </div>
   </md-content>
+
+  <!-- PARTICIPANTS  -->
+  <md-subheader class="md-no-sticky">PARTICIPANTES</md-subheader>
+  <div ng-if="participants.length == 0" class="wargos-text-align">
+      <b>No existe <i>participantes</i> requistrados</b>
+  </div>
+  <div layout="row" layout-wrap>
+    <div flex="33"
+        flex-sm="50"
+        flex-xs="100"
+        ng-repeat="participant in participants">
+      <md-list-item ng-click="loadParticipantById(participant, $index)">
+        <img alt="{{participant.first_name}}"
+             ng-src="{{loadImage(participant.img)}}"
+             class="md-avatar" />
+        <p>{{participant.first_name}} {{participant.last_name}}</p>
+        <ng-md-icon icon="edit"
+                    ng-click="goToParticipant(participant, $index, $event)"
+                    aria-label="Send Email"
+                    class="md-secondary md-hue-3" ></md-icon>
+         <md-button ng-if="participant.isloading"
+                    aria-label="isloading"
+                    class="md-fab md-raised md-mini">
+            <ng-md-icon icon="done"
+                        style="fill: black">
+            </ng-md-icon>
+         </md-button>
+         <md-button ng-if="participant.done"
+                    aria-label="done"
+                    class="md-fab md-raised md-mini">
+            <ng-md-icon icon="done_all"
+                        style="fill: black">
+            </ng-md-icon>
+         </md-button>
+      </md-list-item>
+    </div>
+  </div>
+
+  <!-- GROUP -->
   <md-subheader class="md-no-sticky">GRUPOS</md-subheader>
   <div ng-if="rooms.length == 0" class="wargos-text-align">
       <b>No existe <i>grupos</i> requistrados</b>

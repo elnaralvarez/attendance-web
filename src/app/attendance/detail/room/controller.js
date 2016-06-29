@@ -14,6 +14,7 @@
     HelperParticipant
   ) {
     HelperRoom.init($scope);
+    HelperParticipant.init($scope);
 
     var area_id = $state.params.area_id;
     var room_id = $state.params.room_id;
@@ -22,17 +23,16 @@
 
     // helper
     // $scope.goToUpdate = HelperDetailRoute.goToUpdate;
-    // $scope.goToParticipant = HelperDetailRoute.goToParticipant;
-    $scope.goToRoom = HelperDetailRoute.goToRoom;
     // $scope.goToImport = HelperDetailRoute.goToImport;
-    // $scope.goToEvent = HelperDetailRoute.goToEvent;
-    // $scope.goToAtt = function() {
-    //   if ($scope.event) {
-    //       HelperDetailRoute.goToAtt($scope.event);
-    //   } else {
-    //     alert('seleccione un evento');
-    //   }
-    // };
+    $scope.goToParticipant = HelperDetailRoute.goToParticipant;
+    $scope.goToRoom = HelperDetailRoute.goToRoom;
+    $scope.goToAtt = function() {
+      if ($scope.event) {
+          HelperDetailRoute.goToAtt($scope.event);
+      } else {
+        alert('seleccione un evento');
+      }
+    };
 
     // helper room
     $scope.createRoom = HelperRoom.createRoom;
@@ -40,13 +40,21 @@
     $scope.loadRoom = HelperRoom.loadRoom;
     $scope.validateRoomItem = HelperRoom.validateRoomItem;
 
+    // participants
+    $scope.createParticipant = HelperParticipant.createParticipant;
+    $scope.loadParticipants = HelperParticipant.loadParticipants;
+
     $scope.selectRoom = function(room) {
       $state.go('attendance.detail.room', {
         area_id: area_id,
         room_id: room._id
       });
-      HelperRoom.setGroupItem(room);
+      // HelperRoom.setGroupItem(room);
     };
+
+    $scope.loadParticipantById = function(participant) {
+      console.log(participant);
+    }
 
     // $scope.reset = function(room) {
     //   console.log('reset');
@@ -65,6 +73,7 @@
       //$scope.validateRoomItem({});
       $scope.loadRooms(room_id);
       $scope.loadEvents(room_id);
+      $scope.loadParticipants(room_id);
     }
     $scope.init();
 

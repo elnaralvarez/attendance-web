@@ -8,21 +8,12 @@
   /** @ngInject */
   function controller($scope,
     $state,
-    $mdSidenav,
-    Options,
-    $mdBottomSheet,
-    Auth,
-    Room,
     UploadImages,
-    Global,
     Area,
     LocalError,
-    Toast,
-    // HelperDetailRoute,
-    Participant,
-    UUID,
     HelperRoom,
-    HelperEvent
+    HelperEvent,
+    HelperDetailRoute
   ) {
     var area_id = $state.params.area_id;
     var room_id = null;
@@ -33,6 +24,7 @@
 
     // $scope.groups = HelperRoom.group;
     $scope.rooms = [];
+    $scope.participants = [];
     $scope.events = [];
     $scope.area = {};
 
@@ -61,6 +53,9 @@
     $scope.loadEvents = HelperEvent.loadEvents;
     $scope.selectEvent = HelperEvent.selectEvent;
 
+    // helper route
+    $scope.goToEvent = HelperDetailRoute.goToEvent;
+
     $scope.loadMoreEvents = function() {
       HelperEvent.loadMoreEvents(room_id);
     };
@@ -69,57 +64,12 @@
       HelperEvent.createEvent(room_id);
     };
 
-    //
-    // $scope.createParticipant = function() {
-    //   var data = {
-    //     counter_id: Global.counter._id,
-    //     area_id: $scope.area._id,
-    //     uid: UUID.next(),
-    //     first_name: 'lorem ipsum',
-    //     last_name: 'lorem ipsum',
-    //     image: null,
-    //     cel: 'lorem ipsum',
-    //     ci: 'lorem ipsum',
-    //     address: 'lorem ipsum',
-    //     email: 'example@wargos.com'
-    //   };
-    //   if ($scope.room._id) {
-    //     data.room = $scope.room._id;
-    //   }
-    //   Participant.save(data, function(response) {
-    //     $scope.participants.unshift(response);
-    //   }, LocalError.request);
-    // };
-    //
-
-    // $scope.loadParticipantById = function(participant) {
-    //   console.log(participant);
-    //   //take attendance
-    // }
-    //
-    // // populates view
-    // if (!$state.params.area_id) {
-    //   throw new Error('params is empty');
-    // }
-    //
-    // Toast.show('Cargando...');
-    // $scope.loadParticipants = function() {
-    //   var data = {
-    //     counter: Global.counter._id,
-    //     area: $state.params.area_id
-    //   };
-    //   if ($scope.room._id) {
-    //     data.room = $scope.room._id;
-    //   } else {
-    //     data.room = '';
-    //   }
-    //   Participant.query(data, function(response) {
-    //     $scope.participants = response;
-    //   }, LocalError.request);
-    // }
-    //
-    // // start loading all screen
-    // // $scope.reset();
+    $scope.goToAreaHome = function() {
+      $state.go('attendance.detail.room', {
+        area_id: $state.params.area_id,
+        room_id: $state.params.area_id
+      });
+    }
 
     Area.get({
       _id: area_id
