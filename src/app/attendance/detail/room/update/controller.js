@@ -3,7 +3,7 @@
 
   angular
     .module('wargos')
-    .controller('AreaDetail22RoomController', controller);
+    .controller('AreaDetailRoomUpdateController', controller);
 
   /** @ngInject */
   function controller(

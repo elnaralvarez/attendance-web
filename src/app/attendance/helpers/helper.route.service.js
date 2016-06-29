@@ -16,7 +16,7 @@
         });
       },
       goToRoom: function(room) {
-        $state.go('attendance.detail.room', {
+        $state.go('attendance.detail.room.update', {
           room_id: room._id
         });
       },

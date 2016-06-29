@@ -18,13 +18,12 @@
     Area,
     LocalError,
     Toast,
-    HelperDetailRoute,
+    // HelperDetailRoute,
     Participant,
     UUID,
     HelperRoom,
     HelperEvent
   ) {
-    // HelperRoom.init($scope);
     var area_id = $state.params.area_id;
     var room_id = null;
 
@@ -32,7 +31,7 @@
     $scope.room = null;
     $scope.event = null;
 
-    $scope.groups = [];
+    // $scope.groups = HelperRoom.group;
     $scope.rooms = [];
     $scope.events = [];
     $scope.area = {};
@@ -44,6 +43,7 @@
     $scope.loadRoomByURLParam = function(current_room_id) {
       room_id = current_room_id;
       if (area_id === room_id) {
+        $scope.groups = [];
         $scope.setRoom({
           _id: room_id,
           name: 'Default'
@@ -57,26 +57,14 @@
     $scope.loadImage = UploadImages.loadImage;
     $scope.loadImageGroup = UploadImages.loadImageGroup;
 
-    // // helper
-    // $scope.goToUpdate = HelperDetailRoute.goToUpdate;
-    // $scope.goToParticipant = HelperDetailRoute.goToParticipant;
-    // $scope.goToRoom = HelperDetailRoute.goToRoom;
-    // $scope.goToImport = HelperDetailRoute.goToImport;
-    // $scope.goToEvent = HelperDetailRoute.goToEvent;
-    // $scope.goToAtt = function() {
-    //   if ($scope.event) {
-    //       HelperDetailRoute.goToAtt($scope.event);
-    //   } else {
-    //     alert('seleccione un evento');
-    //   }
-    // };
-
     // helper events
     $scope.loadEvents = HelperEvent.loadEvents;
     $scope.selectEvent = HelperEvent.selectEvent;
+
     $scope.loadMoreEvents = function() {
       HelperEvent.loadMoreEvents(room_id);
     };
+
     $scope.createEvent = function() {
       HelperEvent.createEvent(room_id);
     };

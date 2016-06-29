@@ -18,15 +18,8 @@
       </div>
     </md-toolbar>
     <ui-view layout="column" layout-fill>
-      <md-subheader class="md-primary">
-        <span ng-click="reset()">
-          | HOME
-        </span>
-        <span ng-repeat="group in groups" ng-click="reset(group)">
-          | {{group.name}}
-        </span>
-      </md-subheader>
-      
+
+
       <md-subheader class="md-no-sticky">PARTICIPANTES</md-subheader>
       <div ng-if="participants.length == 0" class="wargos-text-align">
           <b>No existe <i>participantes</i> requistrados</b>

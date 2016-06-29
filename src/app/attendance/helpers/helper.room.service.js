@@ -7,29 +7,8 @@
 
   function service($state, Room, LocalError, Global) {
     var scope = null;
+    // var groups = [];
 
-    // var validateRoomItem = function(room) {
-    //   if (!room._id) {
-    //     scope.groups = [];
-    //     return;
-    //   }
-    //   var position = null;
-    //   var list = scope.groups;
-    //   if (room.parent == undefined) {
-    //     scope.groups = [];
-    //     scope.groups.push(room);
-    //     return;
-    //   }
-    //   for (var i = 0; i < list.length; i++) {
-    //     var current_room = list[i];
-    //     if (room._id == current_room._id) {
-    //       position = i;
-    //     }
-    //   }
-    //   list = list.slice(0, position);
-    //   list.push(room);
-    //   scope.groups = list;
-    // }
     return {
       init: function(local_scope) {
         scope = local_scope;
@@ -59,15 +38,32 @@
           scope.setRoom(response);
         }, LocalError.request);
       },
-      // loadRoomById: function(room) {
-      //   scope.room = room;
-      //   scope.loadRooms();
-      //   scope.loadParticipants();
-      //   scope.loadEvents();
-      //
-      //   scope.groups.push(room);
+      // validateRoomItem: function(room) {
+      //   if (!room) {
+      //     groups = [];
+      //     return;
+      //   }
+      //   var position = null;
+      //   var list = groups;
+      //   if (room.parent === scope.area._id) {
+      //     groups = [];
+      //     groups.push(room);
+      //     return;
+      //   }
+      //   for (var i = 0; i < list.length; i++) {
+      //     var current_room = list[i];
+      //     if (room._id == current_room._id) {
+      //       position = i;
+      //     }
+      //   }
+      //   list = list.slice(0, position);
+      //   list.push(room);
+      //   groups = list;
       // },
-      // validateRoomItem: validateRoomItem
+      setGroupItem: function(room) {
+        groups.push(room);
+      },
+      // groups: groups
     };
   }
 })();
