@@ -24,16 +24,6 @@
       templateUrl: base_url + '/import/index.html',
       controller: 'AreaDetailParticipantController'
     });
-    $stateProvider.state('attendance.detail.room', {
-      url: '/room/:room_id',
-      templateUrl: base_url + '/room/index.html',
-      controller: 'AreaDetailRoomController'
-    });
-    $stateProvider.state('attendance.detail.room.update', {
-      url: '/update',
-      templateUrl: base_url + '/room/update/index.html',
-      controller: 'AreaDetailRoomUpdateController'
-    });
     $stateProvider.state('attendance.detail.participant', {
       url: '/participant/:participant_id',
       templateUrl: base_url + '/participant/index.html',
@@ -43,6 +33,16 @@
       url: '/event/:event_id',
       templateUrl: base_url + '/events/update/index.html',
       controller: 'AreaDetailEventUpdateController'
+    });
+    $stateProvider.state('attendance.detail.room', {
+      url: '/room/:room_id',
+      templateUrl: base_url + '/room/index.html',
+      controller: 'AreaDetailRoomController'
+    });
+    $stateProvider.state('attendance.detail.room.update', {
+      url: '/update',
+      templateUrl: base_url + '/room/update/index.html',
+      controller: 'AreaDetailRoomUpdateController'
     });
   }
 
