@@ -1,67 +1,23 @@
-<div layout="row">
-  <div layout="column" layout-fill>
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <h2>
-          Area {{area.name}} - {{room.name}}
-        </h2>
-        <span flex></span>
-        <md-button class="md-icon-button" aria-label="Edit" ng-click="goToUpdate()">
-          <ng-md-icon icon="edit"></ng-md-icon>
-        </md-button>
-        <md-button class="md-icon-button" aria-label="Edit" ng-click="goToImport()">
-          <ng-md-icon icon="import_export"></ng-md-icon>
-        </md-button>
-        <md-button class="md-icon-button" aria-label="More">
-          <ng-md-icon icon="more_vert"></ng-md-icon>
-        </md-button>
-      </div>
-    </md-toolbar>
-    <ui-view layout="column" layout-fill>
-    </ui-view>
+<!-- <div layout="row">
+  <div layout="column" layout-fill> -->
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <h2>
+      Area {{area.name}} - {{room.name}}
+    </h2>
+    <span flex></span>
+    <md-button class="md-icon-button" aria-label="Edit" ng-click="goToUpdate()">
+      <ng-md-icon icon="edit"></ng-md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="Edit" ng-click="goToImport()">
+      <ng-md-icon icon="import_export"></ng-md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="More">
+      <ng-md-icon icon="more_vert"></ng-md-icon>
+    </md-button>
   </div>
-  <md-sidenav layout="column"
-              class="md-sidenav-left md-whiteframe-z2"
-              md-component-id="left"
-              md-is-locked-open="$mdMedia('gt-md')">
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <h2>
-          Eventos
-        </h2>
-        <span flex></span>
-        <md-button class="md-icon-button" aria-label="Edit" ng-click="createEvent()">
-          <ng-md-icon icon="add"></ng-md-icon>
-        </md-button>
-        <md-button class="md-icon-button" aria-label="More">
-          <ng-md-icon icon="more_vert"></ng-md-icon>
-        </md-button>
-      </div>
-    </md-toolbar>
-    <md-subheader class="md-no-sticky">Actual</md-subheader>
-    <div ng-if="event == null" class="wargos-text-align">
-      <b>seleccione el evento actual</b>
-    </div>
-    <div ng-if="event != null" class="wargos-text-align">
-      <p>{{event.title}}</p>
-    </div>
-
-    <!-- EVENTS -->
-    <md-subheader class="md-no-sticky">Antiguos</md-subheader>
-    <div ng-if="events.length == 0" class="wargos-text-align">
-        <b>No existe <i>eventos</i> requistrados</b>
-    </div>
-    <md-list>
-      <md-list-item ng-repeat="event in events" ng-click="selectEvent(event)">
-         <p>{{event.title}}</p>
-         <ng-md-icon icon="edit"
-                     ng-click="goToEvent(event, $index, $event)"
-                     aria-label="Send Email"
-                     class="md-secondary md-hue-3" ></md-icon>
-      </md-list-item>
-    </md-list>
-    <div ng-if="events.length > 0" class="wargos-text-align">
-        <b ng-click="loadMoreEvents()">Cargar Mas</b>
-    </div>
-  </md-sidenav>
-</div>
+</md-toolbar>
+<ui-view layout="column" layout-fill>
+</ui-view>
+  <!-- </div>
+</div> -->
