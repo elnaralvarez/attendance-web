@@ -3,7 +3,7 @@
 
   angular
     .module('wargos')
-    .controller('AttendanceAttTalkOnlyoneController', controller);
+    .controller('AttendanceAttOnlyoneController', controller);
 
   /** @ngInject */
   function controller(
@@ -85,21 +85,17 @@
     //   $scope.participants = participants;
     // }
 
+    Event.get({
+      _id: event_id
+    }, function(response) {
+      $scope.setEvent(response);
+    }, LocalError.request);
+
     // pagination
-    $scope.selected = [];
-
-    // Participant.pagination({
-    //   rooms: [room_id],
-    //   page: 1,
-    //   limit: 15
-    // }, function(response) {
-    //   $scope.participants = response;
-    // }, LocalError.request);
-
     $scope.count = 500;
     $scope.query = {
       rooms: [room_id],
-      limit: 10,
+      limit: 15,
       page: 1
     };
 
@@ -112,7 +108,6 @@
     };
 
     $scope.getParticipants();
-
     // end pagination
 
     $scope.changeAttendanceState = function(state) {

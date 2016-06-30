@@ -10,24 +10,24 @@
     var path = 'app/attendance/detail/att';
 
     $stateProvider.state('attendance.detail.room.att', {
-      url: '/att/:event_id',
+      url: '/att',
       templateUrl: path + '/index.html',
       controller: 'AttendanceAttController'
     });
     $stateProvider.state('attendance.detail.room.att.selectors', {
-      url: '/selectors',
+      url: '/selectors/:event_id',
       templateUrl: path + '/selectors/index.html',
-      controller: 'AttendanceAttTalkSelectorsController'
+      controller: 'AttendanceAttSelectorsController'
     });
     $stateProvider.state('attendance.detail.room.att.unique', {
-      url: '/unique',
+      url: '/unique/:event_id',
       templateUrl: path + '/unique/index.html',
-      controller: 'AttendanceAttTalkUniqueController'
+      controller: 'AttendanceAttUniqueController'
     });
     $stateProvider.state('attendance.detail.room.att.onlyone', {
-      url: '/onlyone',
+      url: '/onlyone/:event_id',
       templateUrl: path + '/onlyone/index.html',
-      controller: 'AttendanceAttTalkOnlyoneController'
+      controller: 'AttendanceAttOnlyoneController'
     });
   }
 

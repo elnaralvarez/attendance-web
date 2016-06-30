@@ -8,22 +8,21 @@
         <span flex></span>
         <div layout="row">
           <md-button class="md-raised"
-                     ng-click="goToAttOnlyone()">
+                     ng-click="goToTakeAttendance('attendance.detail.room.att.onlyone')">
                      Asistencia
          </md-button>
           <md-button class="md-raised"
-                     ng-click="goToAttSelectors()">
+                     ng-click="goToTakeAttendance('attendance.detail.room.att.selectors')">
                      Asistencia personal
          </md-button>
           <md-button class="md-raised"
-                     ng-click="goToAttUnique($event)">
+                     ng-click="goToTakeAttendance('attendance.detail.room.att.unique')">
                      Lector de codigo
          </md-button>
         </div>
       </div>
     </md-toolbar>
 
-    <!-- <div ui-view></div> -->
     <ui-view layout="column" layout-fill>
     </ui-view>
   </div>
@@ -31,7 +30,7 @@
               class="md-sidenav-left md-whiteframe-z2"
               md-component-id="left"
               md-is-locked-open="$mdMedia('gt-md')">
-    <md-toolbar>
+    <md-toolbar class="md-table-toolbar md-default">
       <div class="md-toolbar-tools">
         <h2>
           Eventos

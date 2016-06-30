@@ -25,13 +25,6 @@
     // helper routes
     $scope.goToParticipant = HelperDetailRoute.goToParticipant;
     $scope.goToRoom = HelperDetailRoute.goToRoom;
-    $scope.goToAtt = function() {
-      if ($scope.event) {
-          HelperDetailRoute.goToAtt($scope.event);
-      } else {
-        alert('seleccione un evento');
-      }
-    };
 
     // helper room
     $scope.createRoom = HelperRoom.createRoom;
@@ -67,7 +60,6 @@
     //   // $scope.loadEvents(room_id);
     // }
 
-
     // pagination
     $scope.count = 500;
     $scope.query = {
@@ -86,9 +78,7 @@
 
     $scope.init = function() {
       console.log('init');
-      //$scope.validateRoomItem({});
       $scope.loadRooms(room_id);
-      $scope.loadEvents(room_id);
       $scope.getParticipants();
     }
     $scope.init();

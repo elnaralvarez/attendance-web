@@ -15,9 +15,9 @@
       </md-button>
     </div>
 </div>
-<md-table-pagination md-limit="query.limit" md-limit-options="[5, 10, 15]" md-page="query.page" md-total="{{count}}" md-on-paginate="getParticipants" md-page-select></md-table-pagination>
-<div ng-if="participants.length == 0">
-  <h1>Todos los participantes ya fueron registrados</h1>
+<md-table-pagination md-limit="query.limit" md-limit-options="[15, 20, 25]" md-page="query.page" md-total="{{count}}" md-on-paginate="getParticipants" md-page-select></md-table-pagination>
+<div ng-if="participants.length == 0" class="wargos-text-align">
+    <b>No existe <i>participantes</i> requistrados</b>
 </div>
 <div layout="row" layout-wrap>
   <div flex="33"
@@ -45,5 +45,4 @@
        </md-button>
     </md-list-item>
   </div>
-
 </div>

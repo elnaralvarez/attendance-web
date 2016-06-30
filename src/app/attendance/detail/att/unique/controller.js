@@ -3,7 +3,7 @@
 
   angular
     .module('wargos')
-    .controller('AttendanceAttTalkUniqueController', controller);
+    .controller('AttendanceAttUniqueController', controller);
 
   /** @ngInject */
   function controller(
@@ -12,7 +12,7 @@
     $state,
     States,
     Participants,
-    Talks,
+    s,
     AttendanceAtts,
     Auth,
     LocalError

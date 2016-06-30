@@ -10,24 +10,40 @@
     $state,
     Global,
     Store,
+    HelperEvent,
     Auth) {
+    HelperEvent.init($scope);
 
-    if (!$scope.room) {
-      throw new Error('it is not selected a room');
-    }
-    var current_id = $scope.room._id;
-    console.log(current_id);
+    var area_id = $state.params.area_id;
+    var room_id = $state.params.room_id;
+    $scope.event = null;
+    $scope.events = [];
 
-    $scope.goToAttUnique = function() {
-      $state.go('attendance.detail.room.att.unique');
-    }
+    // helper events
+    $scope.selectEvent = HelperEvent.selectEvent;
 
-    $scope.goToAttOnlyone = function() {
-      $state.go('attendance.detail.room.att.onlyone');
-    }
+    $scope.setEvent = function(current_event) {
+      $scope.event = current_event;
+    };
 
-    $scope.goToAttSelectors = function() {
-      $state.go('attendance.detail.room.att.selectors');
+    $scope.loadMoreEvents = function() {
+      HelperEvent.loadMoreEvents(room_id);
+    };
+
+    $scope.createEvent = function() {
+      HelperEvent.createEvent(room_id);
+    };
+
+    HelperEvent.loadEvents(room_id);
+
+    $scope.goToTakeAttendance = function(route) {
+      if ($scope.event) {
+        $state.go(route, {
+          event_id: $scope.event._id
+        });
+      } else {
+        alert('seleccione un evento');
+      }
     }
   };
 

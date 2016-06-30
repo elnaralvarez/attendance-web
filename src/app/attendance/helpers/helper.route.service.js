@@ -22,11 +22,6 @@
           event_id: event._id
         });
       },
-      goToAtt: function(event) {
-        $state.go('attendance.detail.room.att', {
-          event_id: event._id
-        });
-      },
 
       //TODO verify
       // goToUpdate: function() {

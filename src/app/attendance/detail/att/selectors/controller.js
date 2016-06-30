@@ -3,7 +3,7 @@
 
   angular
     .module('wargos')
-    .controller('AttendanceAttTalkSelectorsController', controller);
+    .controller('AttendanceAttSelectorsController', controller);
 
   /** @ngInject */
   function controller(

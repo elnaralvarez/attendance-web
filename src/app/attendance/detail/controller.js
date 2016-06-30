@@ -12,20 +12,15 @@
     Area,
     LocalError,
     HelperRoom,
-    HelperEvent,
     HelperDetailRoute
   ) {
     var area_id = $state.params.area_id;
     var room_id = null;
 
-    HelperEvent.init($scope);
-    $scope.room = null;
-    $scope.event = null;
-
     // $scope.groups = HelperRoom.group;
+    $scope.room = null;
     $scope.rooms = [];
     $scope.participants = [];
-    $scope.events = [];
     $scope.area = {};
 
     $scope.setRoom = function(room) {
@@ -49,22 +44,8 @@
     $scope.loadImage = UploadImages.loadImage;
     $scope.loadImageGroup = UploadImages.loadImageGroup;
 
-    // helper events
-    $scope.loadEvents = HelperEvent.loadEvents;
-    $scope.selectEvent = HelperEvent.selectEvent;
-
     // helper routes
-    // $scope.goToEvent = HelperDetailRoute.goToEvent;
-    // $scope.goToUpdate = HelperDetailRoute.goToUpdate;
     $scope.goToImport = HelperDetailRoute.goToImport;
-
-    $scope.loadMoreEvents = function() {
-      HelperEvent.loadMoreEvents(room_id);
-    };
-
-    $scope.createEvent = function() {
-      HelperEvent.createEvent(room_id);
-    };
 
     $scope.goToAreaHome = function() {
       $state.go('attendance.detail.room', {
