@@ -24,8 +24,13 @@
           ci: 'lorem ipsum',
           address: 'lorem ipsum',
           email: 'example@wargos.com',
-          rooms:[scope.room._id]
+          rooms: [scope.room._id]
         };
+        // if (scope.room._id === scope.area._id) {
+          data.rooms = [scope.room._id];
+        // } else {
+        //   data.rooms = [scope.area._id, scope.room._id];
+        // }
         Participant.save(data, function(response) {
           scope.participants.unshift(response);
         }, LocalError.request);

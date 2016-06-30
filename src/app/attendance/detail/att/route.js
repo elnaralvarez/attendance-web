@@ -15,17 +15,17 @@
       controller: 'AttendanceAttController'
     });
     $stateProvider.state('attendance.detail.room.att.selectors', {
-      url: '/selectors/:room_id',
+      url: '/selectors',
       templateUrl: path + '/selectors/index.html',
       controller: 'AttendanceAttTalkSelectorsController'
     });
     $stateProvider.state('attendance.detail.room.att.unique', {
-      url: '/unique/:room_id',
+      url: '/unique',
       templateUrl: path + '/unique/index.html',
       controller: 'AttendanceAttTalkUniqueController'
     });
     $stateProvider.state('attendance.detail.room.att.onlyone', {
-      url: '/onlyone/:room_id',
+      url: '/onlyone',
       templateUrl: path + '/onlyone/index.html',
       controller: 'AttendanceAttTalkOnlyoneController'
     });
