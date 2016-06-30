@@ -9,6 +9,11 @@
   function routeConfig($stateProvider) {
     var base_url = 'app/attendance/detail';
 
+    $stateProvider.state('attendance.detail.people', {
+      url: '/people',
+      templateUrl: base_url + '/people/index.html',
+      controller: 'AttendanceDetailPeopleController'
+    });
     $stateProvider.state('attendance.detail.studio', {
       url: '/studio',
       templateUrl: base_url + '/studio/index.html',

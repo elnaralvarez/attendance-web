@@ -29,12 +29,12 @@
       },
 
       //TODO verify
-      goToUpdate: function() {
-        $state.go('attendance.detail.update');
-      },
-      goToImport: function() {
-        $state.go('attendance.detail.import');
-      }
+      // goToUpdate: function() {
+      //   $state.go('attendance.detail.update');
+      // },
+      // goToImport: function() {
+      //   $state.go('attendance.detail.import');
+      // }
     };
   }
 })();

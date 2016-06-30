@@ -6,6 +6,12 @@
       Area {{area.name}} - {{room.name}}
     </h2>
     <span flex></span>
+    <md-button class="md-icon-button" aria-label="Edit" ui-sref="attendance.detail.people">
+      <ng-md-icon icon="people"></ng-md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="Edit" ng-click="goToImport()">
+      <ng-md-icon icon="done_all"></ng-md-icon>
+    </md-button>
     <md-button class="md-icon-button" aria-label="Edit" ng-click="goToUpdate()">
       <ng-md-icon icon="edit"></ng-md-icon>
     </md-button>

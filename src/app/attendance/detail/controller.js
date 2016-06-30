@@ -53,8 +53,10 @@
     $scope.loadEvents = HelperEvent.loadEvents;
     $scope.selectEvent = HelperEvent.selectEvent;
 
-    // helper route
-    $scope.goToEvent = HelperDetailRoute.goToEvent;
+    // helper routes
+    // $scope.goToEvent = HelperDetailRoute.goToEvent;
+    // $scope.goToUpdate = HelperDetailRoute.goToUpdate;
+    $scope.goToImport = HelperDetailRoute.goToImport;
 
     $scope.loadMoreEvents = function() {
       HelperEvent.loadMoreEvents(room_id);
@@ -67,8 +69,10 @@
     $scope.goToAreaHome = function() {
       $state.go('attendance.detail.room', {
         area_id: $state.params.area_id,
-        room_id: $state.params.area_id
+        room_id: $state.params.room_id
       });
+      // TODO update just it's an update
+      HelperRoom.loadRoomById($state.params.room_id);
     }
 
     Area.get({

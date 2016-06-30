@@ -11,7 +11,8 @@
     $state,
     HelperRoom,
     HelperDetailRoute,
-    HelperParticipant
+    HelperParticipant,
+    Participant
   ) {
     HelperRoom.init($scope);
     HelperParticipant.init($scope);
@@ -21,9 +22,7 @@
 
     $scope.loadRoomByURLParam(room_id);
 
-    // helper
-    // $scope.goToUpdate = HelperDetailRoute.goToUpdate;
-    // $scope.goToImport = HelperDetailRoute.goToImport;
+    // helper routes
     $scope.goToParticipant = HelperDetailRoute.goToParticipant;
     $scope.goToRoom = HelperDetailRoute.goToRoom;
     $scope.goToAtt = function() {
@@ -68,14 +67,30 @@
     //   // $scope.loadEvents(room_id);
     // }
 
+
+    // pagination
+    $scope.count = 500;
+    $scope.query = {
+      rooms: room_id,
+      limit: 15,
+      page: 1
+    };
+
+    function success(participants) {
+      $scope.participants = participants;
+    };
+
+    $scope.getParticipants = function() {
+      $scope.promise = Participant.pagination($scope.query, success).$promise;
+    };
+
     $scope.init = function() {
       console.log('init');
       //$scope.validateRoomItem({});
       $scope.loadRooms(room_id);
       $scope.loadEvents(room_id);
-      $scope.loadParticipants(room_id);
+      $scope.getParticipants();
     }
     $scope.init();
-
   }
 })();
