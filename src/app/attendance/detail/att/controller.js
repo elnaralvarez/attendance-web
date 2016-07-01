@@ -33,8 +33,11 @@
 
     HelperEvent.loadEvents(room_id);
 
-    $scope.selectEvent= function(event) {
-      $scope.event = event;
+    $scope.selectEvent = function(event) {
+      // $scope.event = event;
+      $state.go('attendance.detail.room.att.onlyone', {
+        event_id: event._id
+      });
     }
 
     $scope.goToTakeAttendance = function(route) {

@@ -28,16 +28,11 @@
     $scope.atts = [];
     $scope.participants = [];
 
-    //
-    // Event.get({
-    //   _id: event_id
-    // }, function(response) {
-    //   $scope.current_event = response;
-    // });
-
-
-
     $scope.changeStatus = function(participant, index) {
+      if (!event_id) {
+        alert('Seleccione un evento');
+        return;
+      };
       if (!participant._id) {
         throw new Error('participant in undefined');
       };
@@ -53,9 +48,7 @@
         state: $scope.currentState._id
       }, function(response) {
         participant.isloading = false;
-        // participant.done = true;
         participant.att = response;
-        //$scope.removeParticipantById(response);
       });
     }
 
@@ -115,12 +108,6 @@
     //   $scope.participants = participants;
     // }
 
-    Event.get({
-      _id: event_id
-    }, function(response) {
-      $scope.setEvent(response);
-    }, LocalError.request);
-
     // pagination
     $scope.count = 500;
     $scope.query = {
@@ -148,12 +135,21 @@
     };
 
     State.query({
-      area: $state.params.area_id
+      area: area_id
     }, function(response) {
       $scope.states = response;
       $scope.changeAttendanceState(response[0]);
     });
 
-    $scope.loadAttendanceEvents();
+    if (event_id) {
+      $scope.loadAttendanceEvents();
+      Event.get({
+        _id: event_id
+      }, function(response) {
+        $scope.setEvent(response);
+      }, LocalError.request);
+    } else {
+      $scope.getParticipants();
+    }
   };
 })();

@@ -26,7 +26,7 @@
     $scope.count = 500;
     $scope.query = {
       area: area_id,
-      limit: 20,
+      limit: 30,
       page: 1
     };
 

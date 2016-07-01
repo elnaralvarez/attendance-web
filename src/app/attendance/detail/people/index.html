@@ -3,7 +3,7 @@
     <span>Participantes</span>
   </div>
 </md-toolbar>
-<md-table-pagination md-limit="query.limit" md-limit-options="[10, 20, 30]" md-page="query.page" md-total="{{count}}" md-on-paginate="getParticipants" md-page-select></md-table-pagination>
+<md-table-pagination md-limit="query.limit" md-limit-options="[25, 30, 35]" md-page="query.page" md-total="{{count}}" md-on-paginate="getParticipants" md-page-select></md-table-pagination>
 <div ng-if="participants.length == 0" class="wargos-text-align">
   <b>No existe <i>participantes</i> requistrados</b>
 </div>

@@ -44,6 +44,7 @@
         $state.go('attendance.area.detail', {
           area_id: response._id
         });
+        $scope.loadToolbarAreas();
       }, LocalError.request);
     };
 
@@ -52,6 +53,7 @@
       item.$update(function(response) {
         Toast.show('Se actualizo correctamente');
         $state.go('attendance.area.list');
+        $scope.loadToolbarAreas();
       }, LocalError.request);
     };
   }

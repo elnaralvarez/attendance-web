@@ -34,12 +34,15 @@
     };
 
     Toast.show('Cargando...');
-    Area.query({
-      counter: Global.counter._id,
-      enabled: true
-    }, function(response) {
-      $scope.areas = response;
-    }, LocalError.request);
+    $scope.loadToolbarAreas = function() {
+      Area.query({
+        counter: Global.counter._id,
+        enabled: true
+      }, function(response) {
+        $scope.areas = response;
+      }, LocalError.request);
+    }
+    $scope.loadToolbarAreas();
 
     $scope.options = [
       {
