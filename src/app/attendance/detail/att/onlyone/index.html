@@ -36,12 +36,17 @@
                       style="fill: black">
           </ng-md-icon>
        </md-button>
-       <md-button ng-if="participant.done"
+       <!-- <md-button aria-label="add att"
+                  class="md-raised md-primary"
+                  ui-sref="attendance.detail.room.att">
+         <ng-md-icon icon="done_all"></ng-md-icon>
+         Asistencia
+       </md-button> -->
+       <md-button ng-if="participant.att"
                   aria-label="done"
-                  class="md-fab md-raised md-mini">
-          <ng-md-icon icon="done_all"
-                      style="fill: black">
-          </ng-md-icon>
+                  class="md-raised">
+          <ng-md-icon icon="done_all"></ng-md-icon>
+          {{getState(participant.att.state)}}
        </md-button>
     </md-list-item>
   </div>

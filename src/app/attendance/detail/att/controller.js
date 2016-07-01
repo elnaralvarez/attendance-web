@@ -19,9 +19,6 @@
     $scope.event = null;
     $scope.events = [];
 
-    // helper events
-    $scope.selectEvent = HelperEvent.selectEvent;
-
     $scope.setEvent = function(current_event) {
       $scope.event = current_event;
     };
@@ -35,6 +32,10 @@
     };
 
     HelperEvent.loadEvents(room_id);
+
+    $scope.selectEvent= function(event) {
+      $scope.event = event;
+    }
 
     $scope.goToTakeAttendance = function(route) {
       if ($scope.event) {

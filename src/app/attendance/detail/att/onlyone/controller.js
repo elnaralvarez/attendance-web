@@ -25,14 +25,9 @@
 
     $scope.currentState = null;
     $scope.states = [];
+    $scope.atts = [];
     $scope.participants = [];
 
-    State.query({
-      area: $state.params.area_id
-    }, function(response) {
-      $scope.states = response;
-      $scope.changeAttendanceState(response[0]);
-    });
     //
     // Event.get({
     //   _id: event_id
@@ -42,28 +37,63 @@
 
 
 
-    // $scope.changeStatus = function(participant, index) {
-    //   if (!participant._id) {
-    //     throw new Error('participant in undefined');
-    //   };
-    //   if (!$scope.currentState) {
-    //     throw new Error('state in undefined');
-    //   };
-    //   var itemParams = {
-    //     // area_id: $state.params.area_id,
-    //     event: event_id,
-    //     participant: participant._id,
-    //     state: $scope.currentState._id,
-    //
-    //   };
-    //   itemParams.room = room_id == '' ? null : room_id;
-    //   participant.isloading = true;
-    //   AttendanceAtts.save(itemParams, function(response) {
-    //     participant.isloading = false;
-    //     participant.done = true;
-    //     //$scope.removeParticipantById(response);
-    //   });
-    // }
+    $scope.changeStatus = function(participant, index) {
+      if (!participant._id) {
+        throw new Error('participant in undefined');
+      };
+      if (!$scope.currentState) {
+        throw new Error('state in undefined');
+      };
+      participant.isloading = true;
+      AttendanceAtts.save({
+        event_id: event_id,
+        room_id: room_id
+      }, {
+        uid: participant.uid,
+        state: $scope.currentState._id
+      }, function(response) {
+        participant.isloading = false;
+        // participant.done = true;
+        participant.att = response;
+        //$scope.removeParticipantById(response);
+      });
+    }
+
+    $scope.getState = function(stateId) {
+      var userState = null;
+      $scope.states.forEach(function(state) {
+        if (state._id == stateId) {
+          userState = state.title;
+        }
+      });
+      if (!userState) {
+        throw new Error('theis no state to this participants');
+      }
+      return userState;
+    }
+
+    $scope.loadAttendanceEvents = function() {
+      AttendanceAtts.query({
+          event: event_id
+        }, function(response) {
+          $scope.atts = response;
+          $scope.getParticipants();
+      });
+    };
+
+    $scope.updateParticipants = function(participants) {
+      for (var i = 0; i < participants.length; i++) {
+        $scope.loadParticipantAttendance(participants[i]);
+      };
+    };
+
+    $scope.loadParticipantAttendance = function(participant) {
+      for (var i = 0; i < $scope.atts.length; i++) {
+        if ($scope.atts[i].participant == participant._id) {
+          participant.att = $scope.atts[i];
+        };
+      };
+    };
 
     // $scope.removeParticipantById = function(att) {
     //   for (var i = 0; i < $scope.participants.length; i++) {
@@ -100,14 +130,13 @@
     };
 
     function success(participants) {
+      $scope.updateParticipants(participants);
       $scope.participants = participants;
     }
 
     $scope.getParticipants = function() {
       $scope.promise = Participant.pagination($scope.query, success).$promise;
     };
-
-    $scope.getParticipants();
     // end pagination
 
     $scope.changeAttendanceState = function(state) {
@@ -116,7 +145,15 @@
       });
       $scope.currentState = state;
       $scope.currentState.status = true;
-    }
-  };
+    };
 
+    State.query({
+      area: $state.params.area_id
+    }, function(response) {
+      $scope.states = response;
+      $scope.changeAttendanceState(response[0]);
+    });
+
+    $scope.loadAttendanceEvents();
+  };
 })();

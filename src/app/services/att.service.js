@@ -10,8 +10,8 @@
 
      return $resource(url + '/:_id', {
        _id: '@_id',
-       counter_id: '@counter_id',
-       area_id: '@area_id',
+       room_id: '@room_id',
+       event_id: '@event_id',
        page: '@page',
        limit: '@limit'
      }, {
@@ -20,8 +20,7 @@
        },
        save: {
          method: 'POST',
-         url: url
-        // url: Global.PATH + '/v1/att/:counter_id/areas/:area_id/atts'
+         url: Global.PATH + '/v1/rooms/:room_id/events/:event_id/atts'
        },
        pagination: {
          method: 'GET',

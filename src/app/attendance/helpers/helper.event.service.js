@@ -58,9 +58,9 @@
         };
         loadEvents(data);
       },
-      selectEvent: function(event) {
-        scope.event = event;
-      }
+      // selectEvent: function(event) {
+      //   scope.event = event;
+      // }
     };
   }
 })();
