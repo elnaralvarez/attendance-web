@@ -41,6 +41,7 @@
       };
       participant.isloading = true;
       AttendanceAtts.save({
+        area_id: area_id,
         event_id: event_id,
         room_id: room_id
       }, {

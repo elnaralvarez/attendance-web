@@ -12,6 +12,7 @@
        _id: '@_id',
        room_id: '@room_id',
        event_id: '@event_id',
+       area_id: '@area_id',
        page: '@page',
        limit: '@limit'
      }, {
@@ -20,7 +21,7 @@
        },
        save: {
          method: 'POST',
-         url: Global.PATH + '/v1/rooms/:room_id/events/:event_id/atts'
+         url: Global.PATH + '/v1/areas/:area_id/rooms/:room_id/events/:event_id/atts'
        },
        pagination: {
          method: 'GET',
