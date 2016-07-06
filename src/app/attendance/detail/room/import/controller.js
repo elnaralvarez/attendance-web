@@ -20,34 +20,17 @@
     $scope.item = {
     };
     UploadFiles.init($scope);
-
-
-    // if (!$state.params.area_id) {
-    //   throw new Error('params is empty');
-    // }
-    //
-    // $scope.load = function() {
-    //   Area.get({
-    //     _id: $state.params.area_id
-    //   }, function (response) {
-    //     $scope.item = response;
-    //     UploadImages.add_current_image(response.image);
-    //   });
-    // };
-    //
-    // $scope.load();
+    $scope.participants = [];
     $scope.selected = [];
     $scope.upload = UploadFiles.upload;
 
     $scope.buildParticipantObjects = function(participants) {
       var result = [];
-      // $scope.selected = [];
-
       participants.forEach(function(item) {
         result.push({
           counter_id: Global.counter._id,
           area_id: $state.params.area_id,
-          rooms: [],
+          rooms: [$state.params.room_id],
           uid: item[0].toString(),
           last_name: item[1].toUpperCase(),
           first_name: item[2],

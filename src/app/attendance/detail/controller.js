@@ -45,7 +45,13 @@
     $scope.loadImageGroup = UploadImages.loadImageGroup;
 
     // helper routes
-    $scope.goToImport = HelperDetailRoute.goToImport;
+    $scope.goToImport = function() {
+      if (!$state.params.room_id) {
+        alert('No exite seleccionado una sala');
+        return;
+      }
+      $state.go('attendance.detail.room.import');
+    }
 
     $scope.goToAreaHome = function() {
       $state.go('attendance.detail.room', {

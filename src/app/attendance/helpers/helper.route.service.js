@@ -21,9 +21,6 @@
         $state.go('attendance.detail.eventupdate', {
           event_id: event._id
         });
-      },
-      goToImport: function() {
-        $state.go('attendance.detail.import');
       }
 
       //TODO verify

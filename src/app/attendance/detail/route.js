@@ -14,13 +14,18 @@
       templateUrl: base_url + '/people/index.html',
       controller: 'AttendanceDetailPeopleController'
     });
-    $stateProvider.state('attendance.detail.import', {
-      url: '/import',
-      templateUrl: base_url + '/import/index.html',
-      controller: 'AreaDetailImportController'
+    $stateProvider.state('attendance.detail.room', {
+      url: '/room/:room_id',
+      templateUrl: base_url + '/room/index.html',
+      controller: 'AreaDetailRoomController'
     });
 
     // TODO validate if this routes are still used
+    $stateProvider.state('attendance.detail.room.update', {
+      url: '/update',
+      templateUrl: base_url + '/room/update/index.html',
+      controller: 'AreaDetailRoomUpdateController'
+    });
     $stateProvider.state('attendance.detail.studio', {
       url: '/studio',
       templateUrl: base_url + '/studio/index.html',
@@ -40,16 +45,6 @@
       url: '/event/:event_id',
       templateUrl: base_url + '/events/update/index.html',
       controller: 'AreaDetailEventUpdateController'
-    });
-    $stateProvider.state('attendance.detail.room', {
-      url: '/room/:room_id',
-      templateUrl: base_url + '/room/index.html',
-      controller: 'AreaDetailRoomController'
-    });
-    $stateProvider.state('attendance.detail.room.update', {
-      url: '/update',
-      templateUrl: base_url + '/room/update/index.html',
-      controller: 'AreaDetailRoomUpdateController'
     });
   }
 
