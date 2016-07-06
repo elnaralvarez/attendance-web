@@ -51,23 +51,11 @@
       }, {
         title: 'Areas',
         route: 'attendance.area.list'
-      }, {
-        title: 'Proveedores',
-        route: 'attendance.provider'
-      }
-    ];
-
-    $scope.options = [
-      {
-        title: 'My institucion',
-        route: 'attendance.defaults'
-      }, {
-        title: 'Areas',
-        route: 'attendance.area.list'
-      }, {
-        title: 'Proveedores',
-        route: 'attendance.provider'
-      }
+      },
+      //  {
+      //   title: 'Proveedores',
+      //   route: 'attendance.provider'
+      // }
     ];
 
     $scope.selectOption = function(option) {

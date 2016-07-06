@@ -14,6 +14,13 @@
       templateUrl: base_url + '/people/index.html',
       controller: 'AttendanceDetailPeopleController'
     });
+    $stateProvider.state('attendance.detail.import', {
+      url: '/import',
+      templateUrl: base_url + '/import/index.html',
+      controller: 'AreaDetailImportController'
+    });
+
+    // TODO validate if this routes are still used
     $stateProvider.state('attendance.detail.studio', {
       url: '/studio',
       templateUrl: base_url + '/studio/index.html',
@@ -23,11 +30,6 @@
       url: '/update',
       templateUrl: base_url + '/update/index.html',
       controller: 'AreaDetailUpdateController'
-    });
-    $stateProvider.state('attendance.detail.import', {
-      url: '/import',
-      templateUrl: base_url + '/import/index.html',
-      controller: 'AreaDetailParticipantController'
     });
     $stateProvider.state('attendance.detail.participant', {
       url: '/participant/:participant_id',

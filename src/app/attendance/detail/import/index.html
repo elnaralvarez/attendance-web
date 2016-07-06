@@ -1,44 +1,81 @@
-  <md-toolbar class="md-whiteframe-5dp">
-    <div class="md-toolbar-tools">
-      <h1>Actualizar area</h1>
-    </div>
-  </md-toolbar>
-  <md-content layout-padding class="md-inline-form">
-    <form ng-submit="updateItem(item)">
-      <div layout="column">
-        <md-input-container class="md-block" flex-gt-xs>
-          <label>titulo</label>
-          <input ng-model="item.name"
-                 type="text"
-                 required>
-        </md-input-container>
-
-        <md-input-container class="md-block" flex-gt-xs>
-          <label>Image</label>
-          <input required type="text" name="image" ng-model="item.image">
-          <div ng-messages="containerForm.image.$error">
-            <div ng-message="required">This is required.</div>
-          </div>
-        </md-input-container>
-
-        <div layout="row" layout-align="end">
-          <md-button class="md-raised" ui-sref="attendance.area.list">
-            Cancelar
-          </md-button>
-          <md-button class="md-raised md-primary"
-                     type="submit">Actualizar</md-button>
-        </div>
+<md-toolbar class="md-primary">
+  <h1 class="md-toolbar-tools">
+    Crear desde un archivo excel
+  </h1>
+</md-toolbar>
+<md-content layout-padding>
+  <form name="containerForm" ng-submit="importfromExcel(item)">
+    <md-input-container class="md-block" flex-gt-xs>
+      <label>Nombre del archivo</label>
+      <input required type="text" name="file" ng-model="item.file" />
+      <div ng-messages="containerForm.file.$error" role="alert">
+        <div ng-message="required">This is required.</div>
       </div>
-    </form>
-  </md-content>
-  <md-toolbar class="md-warn">
-    <h1 class="md-toolbar-tools">
-      Eliminar
-    </h1>
-  </md-toolbar>
-  <md-content layout-padding>
+    </md-input-container>
+    <!-- upload photo -->
+    <md-input-container class="md-block" flex-gt-xs>
+    <button class="button" ngf-select="upload($file)">Cargar un archivo excel</button>
+    <!-- <button ngf-select="upload($file)">Cargar una foto</button> -->
+    </md-input-container>
     <div layout="row">
-      <md-button class="md-raised"
-      ng-click="deleteItem(item)">Eliminar</md-button>
+      <md-button type="submit" class="md-raised md-primary">Importar</md-button>
     </div>
-  </md-content>
+  </form>
+</md-content>
+<md-toolbar class="md-table-toolbar md-default">
+  <div class="md-toolbar-tools">
+    <span>Participantes</span>
+  </div>
+</md-toolbar>
+
+<md-toolbar class="md-table-toolbar md-default" ng-show="selected.length">
+  <div class="md-toolbar-tools">
+    <div>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</div>
+    <md-button type="button"
+               class="md-raised md-primary"
+               ng-click="createAlistOfParticipants()">
+               Guardar participantes
+             </md-button>
+   </div>
+</md-toolbar>
+
+<md-table-container>
+  <table md-table md-row-select multiple ng-model="selected">
+    <thead md-head md-order="query.order" md-on-reorder="getDesserts">
+      <tr md-row>
+        <!-- <th md-column md-order-by="calories.value"><span>UID</span></th> -->
+        <th md-column md-order-by="participant.uid"><span>UID</span></th>
+        <th md-column>Apellido</th>
+        <th md-column>Nombre</th>
+        <th md-column>Email</th>
+        <th md-column>Celular</th>
+        <th md-column>Direccion</th>
+      </tr>
+    </thead>
+    <tbody md-body>
+      <tr md-row md-select="participant" md-select-id="uid" md-auto-select ng-repeat="participant in participants">
+        <td md-cell>
+          {{participant.uid}}
+        </td>
+        <td md-cell>
+          {{participant.last_name}}
+        </td>
+        <td md-cell>
+          {{participant.first_name}}
+        </td>
+        <td md-cell>
+          {{participant.email}}
+        </td>
+        <td md-cell>
+          {{participant.cel}}
+        </td>
+        <td md-cell>
+          {{participant.address}}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</md-table-container>
+<div layout="row">
+  <md-button class="md-raised" ui-sref="attendance.detail.room">Cancelar</md-button>
+</div>

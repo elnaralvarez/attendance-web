@@ -22,14 +22,14 @@
           event_id: event._id
         });
       },
+      goToImport: function() {
+        $state.go('attendance.detail.import');
+      }
 
       //TODO verify
       // goToUpdate: function() {
       //   $state.go('attendance.detail.update');
       // },
-      // goToImport: function() {
-      //   $state.go('attendance.detail.import');
-      // }
     };
   }
 })();
