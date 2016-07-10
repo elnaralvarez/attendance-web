@@ -12,26 +12,18 @@
     Participant,
     Store
   ) {
-    var area_id = $state.params.area_id;
     var room_id = $state.params.room_id;
     $scope.participants = [];
 
-    // pagination
-    $scope.query = Store.load('print_config');
-    if (!$scope.query) {
-      $scope.query = {
-        rooms: [room_id],
-        limit: 20,
-        page: 1
-      };
-    }
-    $scope.query.rooms = [room_id];
-    $scope.qr = Store.load('qr_config');
-    if (!$scope.qr) {
-      $scope.qr = {
-        size: 120
-      };
-    }
+    $scope.limit = parseInt(Store.load('print_limit', true)) || 20;
+    $scope.size = parseInt(Store.load('print_size', true)) || 120;
+    console.log($scope.limit);
+    console.log($scope.size);
+
+    $scope.qr_query = {
+      rooms: [room_id],
+      page: 1
+    };
 
     function success(participants) {
       participants.forEach(function(participant) {
@@ -39,44 +31,42 @@
       });
       $scope.participants = participants;
     }
-
+    console.log('restor');
     $scope.loadParticipants = function() {
-      Participant.pagination($scope.query, success);
+      console.log('geenrat');
+      $scope.qr_query.limit = $scope.limit;
+      Participant.pagination($scope.qr_query, success);
     };
 
     $scope.loadParticipants();
     // end pagination
 
     $scope.next = function() {
-      $scope.query.page += 1;
-      $scope.getParticipants();
+      $scope.qr_query.page += 1;
+      $scope.loadParticipants();
     };
 
     $scope.reset = function() {
-      $scope.query = {
-        rooms: [room_id],
-        limit: 20,
-        page: 1
-      };
-      $scope.qr = {
-        size: 120
-      };
-      $scope.getParticipants();
+      $scope.qr_query.page = 1;
+      $scope.loadParticipants();
     };
 
     $scope.previous = function() {
-      $scope.query.page -= 1;
-      $scope.getParticipants();
+      $scope.qr_query.page -= 1;
+      $scope.loadParticipants();
     };
 
-    $scope.save = function() {
-      Store.save('print_config', $scope.query);
-      Store.save('qr_config', $scope.qr);
+    $scope.updateDefaultData = function() {
+      console.log('updating...');
+      Store.save('print_limit', $scope.limit, true);
+      Store.save('print_size', $scope.size, true);
     }
 
     $scope.print = function() {
       // $state.go('print');
-      $scope.print_url = "/#/print";
+      var url = "/#/print/room/{room_id}/page/{page}"
+        .replace('{room_id}', room_id).replace('{page}', $scope.qr_query.page);
+      $scope.print_url = url;
     }
 
     $scope.buildQrText = function(participant) {
@@ -88,6 +78,5 @@
       }
       return participant.uid;
     }
-
   }
 })();

@@ -21,7 +21,7 @@
     });
 
     $stateProvider.state('print', {
-      url: '/print',
+      url: '/print/room/:room_id/page/:page',
       templateUrl: base_url + '/print/index.html',
       controller: 'PrintController',
       resolve: {

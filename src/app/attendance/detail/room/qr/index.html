@@ -7,11 +7,13 @@
     <div layout="row">
       <input type="number"
              class="wargos-qr-input"
-             ng-model="qr.size"
+             ng-change="updateDefaultData()"
+             ng-model="size"
              placeholder="200"/>
       <input type="number"
              class="wargos-qr-input"
-             ng-model="query.limit"
+             ng-change="updateDefaultData()"
+             ng-model="limit"
              placeholder="15"/>
       <md-button class="md-raised"
                  ng-click="previous()">
@@ -19,15 +21,11 @@
       </md-button>
       <md-button class="md-raised"
                  ng-click="reset()">
-                 {{query.page}}
+                 {{qr_query.page}}
       </md-button>
       <md-button class="md-raised"
                 ng-click="next()">
                 <ng-md-icon icon="chevron_right"></ng-md-icon>
-      </md-button>
-      <md-button class="md-raised"
-                 ng-click="save()">
-                 Guardar & Cargar
       </md-button>
       <a class="md-button md-raised"
           target="_blank"
@@ -44,7 +42,7 @@
 <div layout="row" layout-wrap>
   <div layout-padding ng-repeat="participant in participants">
     <qrcode version="3"
-            size="{{qr.size}}"
+            size="{{size}}"
             error-correction-level="M"
             data="{{participant.qr}}"
             href="{{participant.qr}}">

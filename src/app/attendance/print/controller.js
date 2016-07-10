@@ -13,8 +13,10 @@
     Store
   ) {
     // pagination
-    $scope.query = Store.load('print_config');
-    $scope.qr = Store.load('qr_config');
+    var room_id = $state.params.room_id;
+    var page = $state.params.page;
+    $scope.limit = parseInt(Store.load('print_limit', true)) || 20;
+    $scope.size = parseInt(Store.load('print_size', true)) || 120;
 
     function success(participants) {
       participants.forEach(function(participant) {
@@ -24,7 +26,11 @@
     }
 
     $scope.getParticipants = function() {
-      Participant.pagination($scope.query, success);
+      Participant.pagination({
+        page: page,
+        limit: $scope.limit,
+        rooms: [room_id]
+      }, success);
     };
 
     $scope.getParticipants();
