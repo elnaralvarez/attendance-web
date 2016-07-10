@@ -18,7 +18,7 @@
        },
        save: {
          method: 'POST',
-         url: Global.PATH + '/v1/att/:counter_id/areas'
+         url: Global.PATH + '/v2/areas'
        },
        pagination: {
          method: 'GET',

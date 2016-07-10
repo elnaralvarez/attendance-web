@@ -16,7 +16,7 @@
   ) {
     Toast.show('Cargando...');
     Area.query({
-      counter: Global.counter._id,
+      users: Global.user._id,
       enabled: true
     }, function(response) {
       $scope.items = response;

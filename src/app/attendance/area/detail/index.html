@@ -41,6 +41,68 @@
 
 
   </md-content>
+
+  <md-toolbar class="md-primary">
+  <h1 class="md-toolbar-tools">
+    Administradores
+  </h1>
+</md-toolbar>
+<md-content layout-padding>
+  <div class="md-actions" layout="column">
+    <md-toolbar class="md-primary">
+      <div layout="row" class="md-toolbar-tools">
+        <div flex>
+          Email
+        </div>
+        <div flex>
+          Nombre
+        </div>
+        <div flex>
+          Celular
+        </div>
+        <div flex>
+        </div>
+      </div>
+    </md-toolbar>
+    <div ng-repeat="admin in administrators" layout="row" class="administrators">
+      <div flex>
+        {{admin.email}}
+      </div>
+      <div flex>
+        {{admin.name}}
+      </div>
+      <div flex>
+        {{admin.cel}}
+      </div>
+      <div flex>
+        <md-button type="submit"
+                   class="md-raised"
+                   ng-click="removeAdministrator(admin, $index)">
+                   Eliminar
+                 </md-button>
+      </div>
+    </div>
+    <div layout="column">
+      <md-toolbar class="md-primary">
+        <h1 class="md-toolbar-tools">
+          Agregar nuevo
+        </h1>
+      </md-toolbar>
+      <md-input-container class="md-block" flex-gt-xs>
+        <label>Email</label>
+        <input required type="text" ng-model="userEmail" />
+      </md-input-container>
+      <div>
+        <md-button type="submit"
+                   class="md-raised md-primary"
+                   ng-click="addAdministrator(userEmail)">
+                   Agregar nuevo administrador
+                 </md-button>
+      </div>
+    </div>
+  </div>
+</md-content>
+
   <md-toolbar class="md-warn">
     <h1 class="md-toolbar-tools">
       Eliminar

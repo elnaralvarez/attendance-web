@@ -12,7 +12,10 @@
     Session,
     Users,
     LocalError,
-    Sess
+    Sess,
+    Counter,
+    Store,
+    Global
   ) {
 
     $scope.register = function(item) {
@@ -22,10 +25,19 @@
           email: item.email,
           password: item.password
         };
-        Session.login(sessionCredentiales, function(response) {
-          Sess.login(response, function() {
+        Session.login(sessionCredentiales, function(user) {
+          Sess.login(user, function() {
             console.info('starts session');
-            $state.go('attendance.tomato.list');
+            console.log(user);
+            Counter.get({
+              _id: user.counter
+            }, function(response) {
+              Store.save('counter', response);
+              Global.counter = response;
+              if (user.role === 'admin') {
+                $state.go('attendance');
+              }
+            }, LocalError.request);
           });
         });
       }, LocalError.request);

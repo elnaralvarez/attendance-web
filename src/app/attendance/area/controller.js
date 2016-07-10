@@ -34,10 +34,10 @@
         area_id: item._id
       });
     };
-
+    console.log(Global.user);
     $scope.create_area = function() {
       Area.save({
-        counter_id: Global.counter._id,
+        users: [Global.user._id],
         name: 'lorem ipsum sit',
         enabled: true
       }, function(response) {

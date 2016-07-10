@@ -36,7 +36,7 @@
     Toast.show('Cargando...');
     $scope.loadToolbarAreas = function() {
       Area.query({
-        counter: Global.counter._id,
+        users: Global.user._id,
         enabled: true
       }, function(response) {
         $scope.areas = response;

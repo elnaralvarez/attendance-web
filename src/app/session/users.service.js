@@ -7,15 +7,16 @@
 
   function service($resource, Global) {
     var url = Global.PATH + '/p1/users';
-     return $resource(url, {
-       id: '@id'
+     return $resource(url + '/:_id', {
+       _id: '@_id'
      }, {
        update: {
-         url: url + '/id/:id',
          method: 'PUT'
        },
        findByEmail: {
-         method: 'GET'
+         method: 'GET',
+         // TODO made an specific method
+         isArray: true
        }
      });
   }
