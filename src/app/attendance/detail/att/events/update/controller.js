@@ -3,18 +3,20 @@
 
   angular
     .module('wargos')
-    .controller('AreaDetailEventUpdateController', controller);
+    .controller('AreaDetailAttEventsUpdateController', controller);
 
   /** @ngInject */
   function controller(
     $scope,
     $state,
     Event,
-    LocalError
+    LocalError,
+    HelperEvent
   ) {
+    var room_id = $state.params.room_id;
+    var event_id = $state.params.event_id;
     $scope.item = {};
 
-    var event_id = $state.params.event_id;
     if (event_id) {
       var itemParams = {
         _id: event_id
@@ -31,13 +33,15 @@
         _id: event_id
       };
       item.$remove(itemParams, function(response) {
-        $scope.goToAreaHome();
+        HelperEvent.loadEvents(room_id);
+        $scope.goToBack();
       }, LocalError.request);
     }
 
     $scope.update = function(item) {
       item.$update(function(response) {
-        $scope.goToAreaHome();
+        HelperEvent.loadEvents(room_id);
+        $scope.goToBack();
       }, LocalError.request);
     }
   }

@@ -29,13 +29,13 @@
         _id: room_id
       };
       item.$remove(itemParams, function(response) {
-        $scope.goToAreaHome();
+        $scope.goToBack();
       }, LocalError.request);
     }
 
     $scope.update = function(item) {
       item.$update(function(response) {
-        $scope.goToAreaHome();
+        $scope.goToBack();
       }, LocalError.request);
     }
   }

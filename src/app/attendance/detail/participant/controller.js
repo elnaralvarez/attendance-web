@@ -11,7 +11,8 @@
     $state,
     Participant,
     LocalError,
-    UploadImages
+    UploadImages,
+    $window
   ) {
     UploadImages.init($scope);
     $scope.upload = UploadImages.upload;
@@ -32,7 +33,7 @@
         _id: participant_id
       };
       item.$remove(itemParams, function(response) {
-        $scope.goToAreaHome();
+        $scope.goToBack();
       }, LocalError.request);
     }
 
@@ -41,7 +42,7 @@
         _id: participant_id
       };
       item.$update(itemParams, function(response) {
-        $scope.goToAreaHome();
+        $scope.goToBack();
       }, LocalError.request);
     }
   }

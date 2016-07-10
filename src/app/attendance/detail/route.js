@@ -41,11 +41,6 @@
       templateUrl: base_url + '/participant/index.html',
       controller: 'AreaDetailParticipantController'
     });
-    $stateProvider.state('attendance.detail.eventupdate', {
-      url: '/event/:event_id',
-      templateUrl: base_url + '/events/update/index.html',
-      controller: 'AreaDetailEventUpdateController'
-    });
   }
 
 })();

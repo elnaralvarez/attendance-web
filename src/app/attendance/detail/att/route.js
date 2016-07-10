@@ -29,6 +29,11 @@
       templateUrl: path + '/onlyone/index.html',
       controller: 'AttendanceAttOnlyoneController'
     });
+    $stateProvider.state('attendance.detail.room.att.eventupdate', {
+      url: '/event/:event_id',
+      templateUrl: path + '/events/update/index.html',
+      controller: 'AreaDetailAttEventsUpdateController'
+    });
   }
 
 })();

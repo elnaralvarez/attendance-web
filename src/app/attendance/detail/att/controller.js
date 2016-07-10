@@ -40,6 +40,12 @@
       });
     }
 
+    $scope.goToEvent = function(event) {
+      $state.go('attendance.detail.room.att.eventupdate', {
+        event_id: event._id
+      });
+    }
+
     $scope.goToTakeAttendance = function(route) {
       if ($scope.event) {
         $state.go(route, {

@@ -16,6 +16,7 @@
              ng-model="limit"
              placeholder="15"/>
       <md-button class="md-raised"
+                 aria-label="previous"
                  ng-click="previous()">
                  <ng-md-icon icon="chevron_left"></ng-md-icon>
       </md-button>
@@ -24,6 +25,7 @@
                  {{qr_query.page}}
       </md-button>
       <md-button class="md-raised"
+                aria-label="next"
                 ng-click="next()">
                 <ng-md-icon icon="chevron_right"></ng-md-icon>
       </md-button>
