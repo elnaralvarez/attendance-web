@@ -1,0 +1,29 @@
+<div>
+<!-- <div layout="row" layout-wrap> -->
+  <div layout-padding ng-repeat="participant in participants">
+    <qrcode version="3"
+            size="{{qr.size}}"
+            error-correction-level="M"
+            data="{{participant.qr}}"
+            href="{{participant.qr}}">
+    </qrcode>
+    <div class="qr-footer">
+      <h5>{{participant.first_name}}</h5>
+      <h5>
+      <!-- <h5 style="padding: 0px; margin:0px; font-size: 8px;"> -->
+        {{participant.last_name}}
+      </h5>
+      <!-- <h6>{{participant.uid}}</h6> -->
+    </div>
+  </div>
+</div>
+<style media="screen">
+/*.wargos-qr-input {
+  width: 100px;
+}
+.qr-footer h5, .qr-footer h4, .qr-footer h6 {
+  text-align: center;
+  padding: 0mm;
+  margin: 0mm;
+}*/
+</style>

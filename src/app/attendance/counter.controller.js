@@ -45,10 +45,11 @@
     $scope.loadToolbarAreas();
 
     $scope.options = [
+      // {
+      //   title: 'My institucion',
+      //   route: 'attendance.defaults'
+      // },
       {
-        title: 'My institucion',
-        route: 'attendance.defaults'
-      }, {
         title: 'Areas',
         route: 'attendance.area.list'
       },

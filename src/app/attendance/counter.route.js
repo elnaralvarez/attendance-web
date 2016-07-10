@@ -14,9 +14,20 @@
       templateUrl: base_url + '/index.html',
       controller: 'StoreController',
       resolve: {
-         simpleObj: function(Global) {
-            Global.start();
-         }
+       simpleObj: function(Global) {
+         Global.start();
+       }
+      }
+    });
+
+    $stateProvider.state('print', {
+      url: '/print',
+      templateUrl: base_url + '/print/index.html',
+      controller: 'PrintController',
+      resolve: {
+        simpleObj: function(Global) {
+          Global.start();
+        }
       }
     });
 

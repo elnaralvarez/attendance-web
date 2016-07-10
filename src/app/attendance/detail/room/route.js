@@ -14,6 +14,11 @@
       templateUrl: base_url + '/import/index.html',
       controller: 'AreaDetailImportController'
     });
+    $stateProvider.state('attendance.detail.room.qr', {
+      url: '/qr',
+      templateUrl: base_url + '/qr/index.html',
+      controller: 'AreaDetailQrController'
+    });
   }
 
 })();

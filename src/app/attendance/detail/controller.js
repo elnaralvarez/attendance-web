@@ -45,12 +45,21 @@
     $scope.loadImageGroup = UploadImages.loadImageGroup;
 
     // helper routes
-    $scope.goToImport = function() {
+    $scope.goToImportww = function() {
       if (!$state.params.room_id) {
         alert('No exite seleccionado una sala');
         return;
       }
       $state.go('attendance.detail.room.import');
+    }
+
+    // helper routes
+    $scope.goToImport = function() {
+      if (!$state.params.room_id) {
+        alert('No exite seleccionado una sala');
+        return;
+      }
+      $state.go('attendance.detail.room.qr');
     }
 
     $scope.goToAreaHome = function() {
