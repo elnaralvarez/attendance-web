@@ -14,7 +14,7 @@
       },
       createParticipant: function() {
         var data = {
-          counter_id: Global.counter._id,
+          // counter_id: Global.counter._id,
           area_id: scope.area._id,
           uid: UUID.next(),
           first_name: 'lorem ipsum',

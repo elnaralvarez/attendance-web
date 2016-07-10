@@ -19,7 +19,8 @@
        },
        save: {
          method: 'POST',
-         url: Global.PATH + '/v1/att/:counter_id/areas/:area_id/participants'
+        //  url: Global.PATH + '/v1/att/:counter_id/areas/:area_id/participants'
+         url: Global.PATH + '/v2/areas/:area_id/participants'
        },
        pagination: {
          method: 'GET',

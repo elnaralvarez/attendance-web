@@ -28,7 +28,7 @@
       var result = [];
       participants.forEach(function(item) {
         result.push({
-          counter_id: Global.counter._id,
+          // counter_id: Global.counter._id,
           area_id: $state.params.area_id,
           rooms: [$state.params.room_id],
           uid: item[0].toString(),
