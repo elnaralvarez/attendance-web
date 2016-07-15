@@ -23,7 +23,7 @@
 
     $scope.participants = [];
 
-    $scope.count = 500;
+    $scope.count = 1000;
     $scope.query = {
       area: area_id,
       limit: 30,
