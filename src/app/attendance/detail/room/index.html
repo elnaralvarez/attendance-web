@@ -42,16 +42,18 @@
         flex-sm="50"
         flex-xs="100"
         ng-repeat="participant in participants">
-      <md-list-item ng-click="loadParticipantById(participant, $index)">
+      <md-list-item ng-click="goToParticipant(participant, $index)">
+      <!-- <md-list-item ng-click="loadParticipantById(participant, $index)"> -->
         <img alt="{{participant.first_name}}"
              ng-src="{{loadImage(participant.img)}}"
              class="md-avatar" />
         <p>{{participant.first_name}} {{participant.last_name}}</p>
-        <ng-md-icon icon="edit"
+        <!-- <ng-md-icon icon="edit"
                     ng-click="goToParticipant(participant, $index, $event)"
                     aria-label="Send Email"
-                    class="md-secondary md-hue-3" ></md-icon>
-         <md-button ng-if="participant.isloading"
+                    class="md-secondary md-hue-3" ></md-icon> -->
+        <!-- //TODO remove it -->
+         <!-- <md-button ng-if="participant.isloading"
                     aria-label="isloading"
                     class="md-fab md-raised md-mini">
             <ng-md-icon icon="done"
@@ -64,7 +66,7 @@
             <ng-md-icon icon="done_all"
                         style="fill: black">
             </ng-md-icon>
-         </md-button>
+         </md-button> -->
       </md-list-item>
     </div>
   </div>

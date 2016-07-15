@@ -46,7 +46,7 @@
     $scope.loadImageGroup = UploadImages.loadImageGroup;
 
     // helper routes
-    $scope.goToImport = function() {
+    $scope.goToImportScreen = function() {
       if (!$state.params.room_id) {
         alert('No exite seleccionado una sala');
         return;
@@ -56,6 +56,14 @@
 
     // helper routes
     $scope.goToQrScreen = function() {
+      if (!$state.params.room_id) {
+        alert('No exite seleccionado una sala');
+        return;
+      }
+      $state.go('attendance.detail.room.qr');
+    }
+
+    $scope.goToExportScreen = function() {
       if (!$state.params.room_id) {
         alert('No exite seleccionado una sala');
         return;

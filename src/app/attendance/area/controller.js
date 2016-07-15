@@ -26,6 +26,7 @@
       item.$delete(function(response) {
         Toast.show('Se actualizo correctamente');
         $state.go('attendance.area.list');
+        $scope.loadToolbarAreas();
       }, LocalError.request);
     };
 
@@ -34,11 +35,11 @@
         area_id: item._id
       });
     };
-    console.log(Global.user);
+
     $scope.create_area = function() {
       Area.save({
         users: [Global.user._id],
-        name: 'lorem ipsum sit',
+        name: 'AREA',
         enabled: true
       }, function(response) {
         $state.go('attendance.area.detail', {
