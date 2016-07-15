@@ -23,32 +23,24 @@
       page: 1
     };
 
-    $scope.total = $scope.query.limit * 2;
-    $scope.searchkey = null;
+    $scope.selected = [];
 
-    function getDesserts(query) {
-      var query_item = {
-        counter: Global.counter._id,
-        page: query.page,
-        name: $scope.searchkey
-      };
-      Area.pagination(query_item, function(response) {
-        if (response.length == $scope.query.limit &&
-          $scope.total <= $scope.query.page * $scope.query.limit) {
-          $scope.total += $scope.query.limit;
-        }
-        $scope.items = [];
-        response.forEach(function(item) {
-          $scope.items.push(item);
-        });
-      });
-    }
-
-    $scope.onPaginate = function (page, limit) {
-      getDesserts(angular.extend({}, $scope.query, {page: page, limit: limit}));
+    $scope.count = 1000;
+    $scope.query = {
+      users: Global.user._id,
+      limit: 15,
+      page: 1
     };
 
-    getDesserts($scope.query);
+    function success(items) {
+      $scope.items = items;
+    };
+
+    $scope.getItems = function() {
+      Area.pagination($scope.query, success).$promise;
+    };
+
+    $scope.getItems();
 
     $scope.updateItemLocal = function(item) {
       item.$update(function(response) {

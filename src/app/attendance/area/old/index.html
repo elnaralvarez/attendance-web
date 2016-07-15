@@ -1,15 +1,20 @@
+<md-toolbar class="md-table-toolbar md-default">
+  <div class="md-toolbar-tools">
+    <span>Historicos</span>
+  </div>
+</md-toolbar>
+
+<md-table-pagination md-limit="query.limit"
+                    md-limit-options="[5, 10, 15]"
+                    md-page="query.page"
+                    md-total="{{count}}"
+                    md-on-paginate="getItems"
+                    md-page-select></md-table-pagination>
 <md-content>
   <md-list>
-    <md-subheader class="md-no-sticky">Lista</md-subheader>
-    <md-table-pagination md-limit="query.limit"
-                         md-page="query.page"
-                         md-total="{{total}}"
-                         md-on-paginate="onPaginate" md-page-select>
-                       </md-table-pagination>
     <md-list-item class="md-2-line"
                   ng-repeat="item in items"
                   ng-click="selectItem(item)">
-       <!-- <ng-md-icon icon="done" style="fill: black"></ng-md-icon> -->
        <div class="md-list-item-text">
          <h3>{{item.name}}</h3>
          <p>Lorem ipsum sit amed</p>

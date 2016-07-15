@@ -23,7 +23,7 @@
        pagination: {
          method: 'GET',
          isArray: true,
-         url: url + '/page/:page'
+         url: url + '/page/:page/limit/:limit'
        }
      });
   }
