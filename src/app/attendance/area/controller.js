@@ -40,6 +40,7 @@
       Area.save({
         users: [Global.user._id],
         name: 'AREA',
+        user_id: Global.user._id,
         enabled: true
       }, function(response) {
         $state.go('attendance.area.detail', {

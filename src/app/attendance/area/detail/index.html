@@ -64,6 +64,9 @@
         </div>
       </div>
     </md-toolbar>
+    <div ng-if="administrators.length == 0" class="wargos-text-align">
+        <b>No existe <i>administradores</i> requistrados</b>
+    </div>
     <div ng-repeat="admin in administrators" layout="row" class="administrators">
       <div flex>
         {{admin.email}}

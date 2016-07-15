@@ -48,15 +48,23 @@
           return;
         }
         var user = users[0];
-        $scope.item.users.push(user._id);
-        $scope.item.$update(function(response) {
-          $scope.administrators.push(user);
-        }, LocalError.request);
+        var isRegistry = addAdministratorToCurrentArea(user);
+        if (!isRegistry) {
+          $scope.item.$update(function(response) {
+            $scope.administrators.push(user);
+          }, LocalError.request);
+        }
       }, LocalError.request);
     }
 
     $scope.removeAdministrator = function(user, index) {
-      $scope.item.users.splice(index, 1);
+      var user_ids = [];
+      $scope.item.users.forEach(function(user_id) {
+        if (user._id != user_id) {
+          user_ids.push(user_id);
+        }
+      });
+      $scope.item.users = user_ids;
       $scope.item.$update(function(response) {
         $scope.administrators.splice(index, 1);
       }, LocalError.request);
@@ -65,12 +73,30 @@
     $scope.loadListOfAdministrators = function() {
       $scope.administrators = [];
       $scope.item.users.forEach(function(user_id) {
+        if ($scope.item.user_id == user_id) {
+          return;
+        }
         Users.get({
             _id: user_id
           }, function(response) {
           $scope.administrators.push(response);
         });
       });
+    }
+
+    var addAdministratorToCurrentArea = function(user) {
+        var isRegistry = false;
+        $scope.item.users.forEach(function(user_id) {
+          if (user._id == user_id) {
+            isRegistry = true;
+          }
+        });
+        if (!isRegistry) {
+            $scope.item.users.push(user._id);
+        } else {
+          Toast.show('El usuario ya fue registrado');
+        }
+        return isRegistry;
     }
 
     function remove(arr, what) {
