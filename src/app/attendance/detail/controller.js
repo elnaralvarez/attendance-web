@@ -68,7 +68,7 @@
         alert('No exite seleccionado una sala');
         return;
       }
-      $state.go('attendance.detail.room.qr');
+      $state.go('attendance.detail.room.export');
     }
 
     // $scope.goToAreaHome = function() {
