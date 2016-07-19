@@ -19,6 +19,7 @@
     // };
 
     return {
+      FILE_PATH: FILE_PATH,
       init: function(scope) {
         local_scope = scope;
       },
