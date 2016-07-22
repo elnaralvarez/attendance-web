@@ -18,6 +18,38 @@
     </div>
   </form>
 </md-content>
+
+<!-- PARTICIPANTS  -->
+<md-subheader class="md-no-sticky">Personas</md-subheader>
+<md-table-pagination md-limit="query.limit" md-limit-options="[10, 15, 20]" md-page="query.page" md-total="{{count}}" md-on-paginate="getParticipants" md-page-select></md-table-pagination>
+<div ng-if="participants.length == 0" class="wargos-text-align">
+    <b>No existe <i>participantes</i> requistrados</b>
+</div>
+<div layout="row" layout-wrap>
+  <div flex="33"
+      flex-sm="50"
+      flex-xs="100"
+      ng-repeat="participant in participants">
+    <md-list-item>
+    <!-- <md-list-item ng-click="loadParticipantById(participant, $index)"> -->
+      <img alt="{{participant.first_name}}"
+           ng-src="{{loadImage(participant.img)}}"
+           class="md-avatar" />
+      <p>{{participant.first_name}} {{participant.last_name}}</p>
+        <div ng-if="validate_if_user_is_added(participant)">
+          <ng-md-icon icon="exposure_neg_1"
+                      ng-click="remove_participant_to_room(participant, $index)"
+                      aria-label="neg"></md-icon>
+        </div>
+        <div ng-if="!validate_if_user_is_added(participant)">
+          <ng-md-icon icon="exposure_plus_1"
+                      ng-click="add_participant_to_room(participant, $index)"
+                      aria-label="posi"></md-icon>
+        </div>
+    </md-list-item>
+  </div>
+</div>
+
 <md-toolbar class="md-warn">
   <h1 class="md-toolbar-tools">
     Eliminar

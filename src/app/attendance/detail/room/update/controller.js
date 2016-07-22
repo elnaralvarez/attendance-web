@@ -10,11 +10,15 @@
     $scope,
     $state,
     Room,
-    LocalError
+    Toast,
+    LocalError,
+    Participant
   ) {
     $scope.item = {};
-
     var room_id = $state.params.room_id;
+    var area_id = $state.params.area_id;
+    $scope.new_participants = [];
+
     if (room_id) {
       var itemParams = {
         _id: room_id
@@ -37,6 +41,76 @@
       item.$update(function(response) {
         $scope.goToBack();
       }, LocalError.request);
+    };
+
+    $scope.validate_if_user_is_added = function(participant) {
+      var is_new = false;
+      participant.rooms.forEach(function(item) {
+        if (room_id == item) {
+          is_new = true;
+        }
+      });
+      return is_new;
     }
+
+    $scope.remove_participant_to_room = function(participant) {
+      var rooms = [];
+      participant.rooms.forEach(function(item) {
+        if (room_id != item) {
+          rooms.push(item);
+        }
+      });
+      participant.rooms = rooms;
+      participant.$update(function(response) {
+        console.log(response);
+        Toast.show('El participante fue actualizado');
+      });
+    };
+
+    $scope.validate_if_user_is_not_added = function(participant) {
+        var is_new = true;
+        participant.rooms.forEach(function(item) {
+          if (room_id == item) {
+            is_new = false;
+          }
+        });
+        return is_new;
+    }
+
+    $scope.add_participant_to_room = function(participant) {
+      var is_new = true;
+      participant.rooms.forEach(function(item) {
+        if (room_id == item) {
+          is_new = false;
+        }
+      });
+      if (is_new) {
+        participant.rooms.push(room_id);
+        participant.$update(function(response) {
+          Toast.show('El participante fue actualizado');
+        });
+      } else {
+        Toast.show('El participante ya pertenece a este grupo');
+      }
+    };
+
+    // pagination
+    $scope.count = 1000;
+    $scope.query = {
+      // rooms: room_id,
+      area: area_id,
+      limit: 15,
+      page: 1
+    };
+
+    function success(participants) {
+      $scope.participants = participants;
+    };
+
+    $scope.getParticipants = function() {
+      Participant.pagination($scope.query, success);
+    };
+
+    $scope.getParticipants();
   }
 })();
