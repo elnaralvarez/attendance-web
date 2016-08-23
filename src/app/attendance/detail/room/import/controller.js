@@ -32,12 +32,13 @@
           area_id: $state.params.area_id,
           rooms: [$state.params.room_id],
           uid: item[0].toString(),
-          last_name: item[1].toUpperCase(),
+          // last_name: item[1].toUpperCase(),
+          last_name: item[1],
           first_name: item[2],
-          email: item[3] || 'lorem@wargos.com',
-          cel: item[4] || '+00000000_non',
-          ci: '701569_non',
-          address: item[5] || 'lorem ipsum',
+          email: item[3] || 'none',
+          cel: item[4] || 'none',
+          ci: 'none',
+          address: item[5] || 'none',
           image: null
         });
       });

@@ -44,9 +44,9 @@
        </md-button> -->
        <md-button ng-if="participant.att"
                   aria-label="done"
-                  class="md-raised">
+                  class="md-fab md-raised md-mini" style="color: {{getState(participant.att.state).color}}">
           <ng-md-icon icon="done_all"></ng-md-icon>
-          {{getState(participant.att.state)}}
+
        </md-button>
     </md-list-item>
   </div>

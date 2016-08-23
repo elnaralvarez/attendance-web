@@ -57,7 +57,7 @@
       var userState = null;
       $scope.states.forEach(function(state) {
         if (state._id == stateId) {
-          userState = state.title;
+          userState = state;
         }
       });
       if (!userState) {
