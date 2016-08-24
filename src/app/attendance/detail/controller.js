@@ -41,6 +41,8 @@
       }
     };
 
+    $scope.goToRoom = HelperDetailRoute.goToRoom;
+
     // images
     $scope.loadImage = UploadImages.loadImage;
     $scope.loadImageGroup = UploadImages.loadImageGroup;
