@@ -1,0 +1,149 @@
+
+
+<!-- <md-subheader class="md-primary">
+  <span ng-click="reset()">
+    | HOME
+  </span>
+  <span ng-repeat="group in groups" ng-click="reset(group)">
+    | {{group.name}}
+  </span>
+</md-subheader> -->
+
+<ui-view layout="column" layout-fill>
+  <md-content layout-padding>
+    <div layout="row" layout-align="end">
+      <md-button aria-label="add att"
+                 class="md-raised md-primary"
+                 ui-sref="attendance.detail.room.att.onlyone">
+        <ng-md-icon icon="done_all"></ng-md-icon>
+        Asistencia
+      </md-button>
+      <md-button aria-label="create"
+                 class="md-raised md-primary"
+                 ng-click="createParticipant($event)">
+        <ng-md-icon icon="person_add"></ng-md-icon>
+        Participante
+      </md-button>
+      <md-button aria-label="create"
+                 class="md-raised md-primary"
+                 ng-click="createRoom($event)">
+        <ng-md-icon icon="group_add"></ng-md-icon>
+        Aula
+      </md-button>
+    </div>
+  </md-content>
+
+  <!-- PARTICIPANTS  -->
+  <!-- <md-subheader class="md-no-sticky">PARTICIPANTES</md-subheader> -->
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="md-toolbar-tools">
+      <span>
+        Participantes
+      </span>
+      <span flex></span>
+      <!-- <md-button class="md-icon-button"
+                  aria-label="Edit" ui-sref="attendance.detail.people">
+        <ng-md-icon icon="people"></ng-md-icon>
+      </md-button>
+      <md-button class="md-icon-button" aria-label="import" ng-click="goToImportScreen()">
+        <ng-md-icon icon="attachment"></ng-md-icon>
+      </md-button>
+      <md-button class="md-icon-button" aria-label="qr" ng-click="goToQrScreen()">
+         <ng-md-icon icon="fingerprint"></ng-md-icon>
+       </md-button> -->
+       <!-- <md-button class="md-icon-button" aria-label="export" ng-click="goToExportScreen()">
+         <ng-md-icon icon="import_export"></ng-md-icon>
+       </md-button> -->
+
+      <!-- <md-button class="md-icon-button" aria-label="export" ng-click="goToExportScreen()">
+        <ng-md-icon icon="import_export"></ng-md-icon>
+      </md-button> -->
+      <md-input-container>
+        <label>Grupos</label>
+        <md-select ng-model="select.group" ng-change="selectGroup()">
+
+          <md-optgroup label="grupos">
+            <md-option ng-value="group._id" ng-repeat="group in groups">{{group.name}}</md-option>
+          </md-optgroup>
+        </md-select>
+      </md-input-container>
+      <md-button class="md-icon-button" aria-label="groups" ng-click="goToGroups()">
+        <ng-md-icon icon="group_add"></ng-md-icon>
+
+      </md-button>
+      <md-button class="md-icon-button" aria-label="More">
+        <ng-md-icon icon="more_vert"></ng-md-icon>
+
+      </md-button>
+      <!-- <md-button aria-label="create"
+
+                 ng-click="createParticipant($event)">
+        <ng-md-icon icon="group_add"></ng-md-icon>
+        Grupos
+      </md-button> -->
+    </div>
+  </md-toolbar>
+
+
+
+  <md-table-pagination md-limit="query.limit" md-limit-options="[10, 15, 20]" md-page="query.page" md-total="{{count}}" md-on-paginate="getParticipants" md-page-select></md-table-pagination>
+  <div ng-if="participants.length == 0" class="wargos-text-align">
+      <b>No existe <i>participantes</i> requistrados</b>
+  </div>
+  <div layout="row" layout-wrap>
+    <div flex="33"
+        flex-sm="50"
+        flex-xs="100"
+        ng-repeat="participant in participants">
+      <md-list-item ng-click="goToParticipant(participant, $index)">
+      <!-- <md-list-item ng-click="loadParticipantById(participant, $index)"> -->
+        <img alt="{{participant.first_name}}"
+             ng-src="{{loadImage(participant.img)}}"
+             class="md-avatar" />
+        <p>{{participant.first_name}} {{participant.last_name}}</p>
+        <!-- <ng-md-icon icon="edit"
+                    ng-click="goToParticipant(participant, $index, $event)"
+                    aria-label="Send Email"
+                    class="md-secondary md-hue-3" ></md-icon> -->
+        <!-- //TODO remove it -->
+         <!-- <md-button ng-if="participant.isloading"
+                    aria-label="isloading"
+                    class="md-fab md-raised md-mini">
+            <ng-md-icon icon="done"
+                        style="fill: black">
+            </ng-md-icon>
+         </md-button>
+         <md-button ng-if="participant.done"
+                    aria-label="done"
+                    class="md-fab md-raised md-mini">
+            <ng-md-icon icon="done_all"
+                        style="fill: black">
+            </ng-md-icon>
+         </md-button> -->
+      </md-list-item>
+    </div>
+  </div>
+
+  <!-- ROOM -->
+  <md-subheader class="md-no-sticky">Aulas</md-subheader>
+  <div ng-if="rooms.length == 0" class="wargos-text-align">
+      <b>No existe <i>aulas</i> requistrados</b>
+  </div>
+  <div layout="row" layout-wrap>
+    <div flex="33"
+        flex-sm="50"
+        flex-xs="100"
+        ng-repeat="room in rooms">
+      <md-list-item ng-click="selectRoom(room, $index)">
+        <img alt="{{room.name}}"
+             ng-src="{{loadImageGroup(person.img)}}"
+             class="md-avatar" />
+        <p>{{room.name}}</p>
+        <!-- <ng-md-icon icon="edit"
+                    ng-click="goToRoom(room, $index, $event)"
+                    aria-label="Send Email"
+                    class="md-secondary md-hue-3" ></md-icon> -->
+      </md-list-item>
+    </div>
+  </div>
+</ui-view>
