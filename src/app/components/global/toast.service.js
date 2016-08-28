@@ -14,7 +14,8 @@
       $mdToast.show(
         $mdToast.simple(msg)
           .content(msg)
-          .position('bottom left')
+          .position('top right')
+          // .position('bottom left')
           .hideDelay(3000)
       );
     };

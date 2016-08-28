@@ -62,6 +62,17 @@
       $scope.groups = response;
     }, LocalError.request);
 
+    $scope.discartGroup = function() {
+      delete $scope.query.groups;
+      $scope.getParticipants();
+    }
+
+    $scope.selectGroup = function() {
+      var group_id = $scope.select.group;
+      $scope.query.groups = group_id;
+      $scope.getParticipants();
+
+    };
     $scope.goToGroups = function() {
       $state.go('attendance.detail.room.groups', {
         area_id: area_id,
@@ -69,9 +80,14 @@
       });
     };
 
-    $scope.selectGroup = function() {
-      console.log($scope.select);
+    // options
+    $scope.goToOptions = function() {
+      $state.go('attendance.detail.room.options', {
+        area_id: area_id,
+        room_id: room_id
+      });
     };
+
 
     // pagination
     $scope.count = 1000;

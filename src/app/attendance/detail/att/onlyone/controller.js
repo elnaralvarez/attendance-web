@@ -16,6 +16,7 @@
     State,
     Auth,
     AttendanceAtts,
+    Toast,
     LocalError
   ) {
     console.log('init onlyone');
@@ -30,7 +31,7 @@
 
     $scope.changeStatus = function(participant, index) {
       if (!event_id) {
-        alert('Seleccione un evento');
+        Toast.show('Seleccione un evento');
         return;
       };
       if (!participant._id) {
@@ -88,26 +89,6 @@
         };
       };
     };
-
-    // $scope.removeParticipantById = function(att) {
-    //   for (var i = 0; i < $scope.participants.length; i++) {
-    //     if ($scope.participants[i].id == att.participantId) {
-    //       $scope.participants.splice(i, 1);
-    //       return;
-    //     }
-    //   }
-    // }
-    //
-
-    // $scope.cleanParticipants = function() {
-    //   var participants = [];
-    //   for (var i = 0; i < $scope.participants.length; i++) {
-    //     if (!$scope.participants[i].done) {
-    //       participants.push($scope.participants[i]);
-    //     }
-    //   }
-    //   $scope.participants = participants;
-    // }
 
     // pagination
     $scope.count = 1000;
