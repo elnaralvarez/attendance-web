@@ -29,16 +29,7 @@
       group: null
     };
 
-    // $scope.validate_if_user_is_added = function(participant) {
-    //   var is_new = false;
-    //   participant.rooms.forEach(function(item) {
-    //     if (room_id == item) {
-    //       is_new = true;
-    //     }
-    //   });
-    //   return is_new;
-    // }
-
+    // groups
     $scope.existId = function(list, id) {
       if (!list instanceof Array) {
           throw new Error('list is not array');
@@ -52,14 +43,24 @@
       return result;
     }
 
-    // groups
+    $scope.isMember = function(group, id) {
+      if (group == id) {
+        return true;
+      }
+      return false;
+    }
+
     $scope.addParticipantToGroup = function(participant, $index) {
         var group_id = $scope.select.group;
         if (group_id) {
-          if ($scope.existId(participant.groups, group_id)) {
-            $scope.remove_participant_from_group(participant, group_id);
+          if ($scope.isMember(participant.group, group_id)) {
+            // $scope.remove_participant_from_group(participant, group_id);
+            participant.group = null;
+            participant.$update(function(response) {
+              Toast.show('El participante fue actualizado');
+            });
           } else {
-            participant.groups.push(group_id);
+            participant.group = group_id;
             participant.$update(function() {
               Toast.show('Se actualizo correctamente el participant');
             });
@@ -70,12 +71,12 @@
     };
 
     $scope.remove_participant_from_group = function(participant, group_id) {
-      var groups = [];
-      participant.groups.forEach(function(item) {
-        if (group_id != item) {
-          groups.push(item);
-        }
-      });
+      // var groups = [];
+      // participant.groups.forEach(function(item) {
+      //   if (group_id != item) {
+      //     groups.push(item);
+      //   }
+      // });
       participant.groups = groups;
       participant.$update(function(response) {
         Toast.show('El participante fue actualizado');

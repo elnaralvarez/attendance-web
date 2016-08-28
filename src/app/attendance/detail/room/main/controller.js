@@ -39,11 +39,10 @@
     $scope.loadParticipants = HelperParticipant.loadParticipants;
 
     $scope.selectRoom = function(room) {
-      $state.go('attendance.detail.room', {
+      $state.go('attendance.detail.room.main', {
         area_id: area_id,
         room_id: room._id
       });
-      // HelperRoom.setGroupItem(room);
     };
 
     $scope.loadParticipantById = function(participant) {
@@ -63,13 +62,13 @@
     }, LocalError.request);
 
     $scope.discartGroup = function() {
-      delete $scope.query.groups;
+      delete $scope.query.group;
       $scope.getParticipants();
     }
 
     $scope.selectGroup = function() {
       var group_id = $scope.select.group;
-      $scope.query.groups = group_id;
+      $scope.query.group = group_id;
       $scope.getParticipants();
 
     };

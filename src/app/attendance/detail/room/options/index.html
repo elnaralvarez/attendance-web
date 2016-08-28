@@ -27,7 +27,7 @@
            ng-src="{{loadImage(person.img)}}"
            class="md-avatar" />
       <p>{{participant.last_name}} {{participant.first_name}}</p>
-      <div ng-if="existId(participant.groups, select.group)">
+      <div ng-if="isMember(participant.group, select.group)">
         <!-- ng-click="remove_participant_from_group(participant, $index)" -->
       <!-- <div> -->
         <ng-md-icon icon="exposure_neg_1"
@@ -35,7 +35,7 @@
       </div>
       <!-- <div ng-if="!validate_if_user_is_added(participant)"> -->
       <!-- ng-click="add_participant_to_room(participant, $index)" -->
-      <div ng-if="!existId(participant.groups, select.group)">
+      <div ng-if="!isMember(participant.group, select.group)">
       <!-- <div> -->
         <ng-md-icon icon="exposure_plus_1"
                     aria-label="posi"></md-icon>
