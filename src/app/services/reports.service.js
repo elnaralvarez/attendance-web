@@ -21,6 +21,16 @@
        att_report: {
          method: 'GET'
        },
+       arrive: {
+         method: 'GET',
+         url: url + '/events/:event_id/arrive/page/:page/limit/:limit',
+         isArray: true
+       },
+       att_groups_report: {
+         method: 'GET',
+         url: url + '/rooms/:room_id/events/:event_id/groups',
+         isArray: true
+       },
        pagination: {
          method: 'GET',
          isArray: true,

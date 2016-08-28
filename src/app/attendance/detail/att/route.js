@@ -24,6 +24,11 @@
       templateUrl: path + '/pieful/index.html',
       controller: 'AttendanceAttPiefulController'
     });
+    $stateProvider.state('attendance.detail.room.att.arrive', {
+      url: '/arrive/:event_id',
+      templateUrl: path + '/arrive/index.html',
+      controller: 'AttendanceAttArriveController'
+    });
     $stateProvider.state('attendance.detail.room.att.unique', {
       url: '/unique/:event_id',
       templateUrl: path + '/unique/index.html',
