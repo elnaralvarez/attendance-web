@@ -1,0 +1,58 @@
+<md-dialog aria-label="Update user" style="width: 500px;">
+  <form ng-cloak name="loginForm" ng-submit="update(item)">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Update user</h2>
+      </div>
+    </md-toolbar>
+    <md-dialog-content layout-padding>
+        <md-input-container class="md-block" flex-gt-xs>
+          <label>Email</label>
+          <input required type="email" name="clientEmail" ng-model="item.email" />
+          <div ng-messages="loginForm.clientEmail.$error" role="alert">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-xs>
+          <label>Name</label>
+          <input required ng-model="item.name">
+          <div ng-messages="loginForm.name.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-xs>
+          <label>Password antiguo</label>
+          <input required ng-model="item.password" type="password">
+          <div ng-messages="loginForm.password.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-xs>
+          <label>Password nuevo</label>
+          <input required ng-model="item.new_password" type="password">
+          <div ng-messages="loginForm.new_password.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+          <label>Confirmar password nuevo</label>
+          <md-input-container class="md-block" flex-gt-xs>
+          <input required ng-model="item.confirm_password" type="password">
+          <div ng-messages="loginForm.confirm_password.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-xs>
+          <label>Numero de celular</label>
+          <input required ng-model="item.cel">
+          <div ng-messages="loginForm.clientName.$error">
+            <div ng-message="required">This is required.</div>
+          </div>
+        </md-input-container>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button type="submit">
+        Actualizar
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

@@ -18,7 +18,8 @@
     Area,
     Global,
     LocalError,
-    moment
+    moment,
+    $mdDialog
   ) {
     $scope.loading = true;
 
@@ -114,6 +115,23 @@
     $scope.getDate = function (newDate) {
       var day = newDate || new Date();
       return moment(day).format('YYYY-MM-DD HH:mm:ss');
+    };
+
+    // update user
+    $scope.showDialog = function(ev) {
+      $mdDialog.show({
+        controller: UpdateUserController,
+        templateUrl: 'app/session/update/update.tmpl.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: true,
+        // fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+      })
+      .then(function(answer) {
+        $scope.status = 'You said the information was "' + answer + '".';
+      }, function() {
+        $scope.status = 'You cancelled the dialog.';
+      });
     };
   }
 

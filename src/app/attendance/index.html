@@ -8,8 +8,8 @@
     <div layout="column" class="md-toolbar-tools-bottom inset">
       <user-avatar></user-avatar>
       <span></span>
-      <div>{{user.name}}</div>
-      <div>{{user.email}}</div>
+      <div ng-click="showDialog($event)">{{user.name}}</div>
+      <div ng-click="showDialog($event)">{{user.email}}</div>
       <div ng-click="logout()">salir session</div>
     </div>
   </md-toolbar>
