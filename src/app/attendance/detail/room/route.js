@@ -9,6 +9,11 @@
   function routeConfig($stateProvider) {
     var base_url = 'app/attendance/detail/room';
 
+    $stateProvider.state('attendance.detail.room.main', {
+      url: '/main',
+      templateUrl: base_url + '/main/index.html',
+      controller: 'AreaDetailRoomMainController'
+    });
     $stateProvider.state('attendance.detail.room.import', {
       url: '/import',
       templateUrl: base_url + '/import/index.html',
@@ -23,6 +28,16 @@
       url: '/qr',
       templateUrl: base_url + '/qr/index.html',
       controller: 'AreaDetailQrController'
+    });
+    $stateProvider.state('attendance.detail.room.groups', {
+      url: '/groups',
+      templateUrl: base_url + '/groups/index.html',
+      controller: 'AreaDetailGroupsController'
+    });
+    $stateProvider.state('attendance.detail.room.options', {
+      url: '/options',
+      templateUrl: base_url + '/options/index.html',
+      controller: 'AreaDetailRoomOptionsController'
     });
   }
 

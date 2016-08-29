@@ -1,0 +1,30 @@
+<md-toolbar class="md-table-toolbar md-default">
+  <div class="md-toolbar-tools md-default">
+    <h2 ui-sref="event.att.list">
+      Primero en llegar
+    </h2>
+  </div>
+</md-toolbar>
+
+<md-table-pagination md-limit="query.limit" md-limit-options="[15, 20, 25]" md-page="query.page" md-total="{{count}}" md-on-paginate="getParticipants" md-page-select></md-table-pagination>
+<div ng-if="participants.length == 0" class="wargos-text-align">
+    <b>No existe <i>participantes</i> requistrados</b>
+</div>
+<div layout="row" layout-wrap>
+  <div flex="100"
+      flex-sm="100"
+      flex-xs="100"
+      ng-repeat="participant in participants">
+    <md-list-item ng-click="changeStatus(participant, $index)">
+      <img alt="{{participant.first_name}}"
+           ng-src="{{loadImage(person.img)}}"
+           class="md-avatar" />
+      <p>{{participant.last_name}} {{participant.first_name}}</p>
+       <md-button ng-if="participant.att"
+                  aria-label="done"
+                  class="md-fab md-raised md-mini" style="color: {{getState(participant.att.state).color}}">
+          <ng-md-icon icon="done_all"></ng-md-icon>
+       </md-button>
+    </md-list-item>
+  </div>
+</div>

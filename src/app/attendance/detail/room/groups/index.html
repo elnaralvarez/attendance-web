@@ -1,0 +1,56 @@
+<md-toolbar class="md-table-toolbar md-default">
+  <div class="md-toolbar-tools">
+    <span>
+      Grupos
+    </span>
+    <span flex></span>
+    <md-button class="md-icon-button" aria-label="More">
+      <ng-md-icon icon="more_vert"></ng-md-icon>
+    </md-button>
+  </div>
+</md-toolbar>
+
+<md-table-container>
+  <table md-table ng-model="selected">
+    <thead md-head>
+      <tr md-row>
+        <th md-column>Nombre del grupo</th>
+      </tr>
+    </thead>
+    <tbody md-body>
+      <tr md-row md-select="group"
+          ng-repeat="group in groups">
+        <td md-cell>
+          {{group.name}}
+        </td>
+        <td md-cell>
+          <md-button class="md-raised"
+                     ng-click="removeGroup(group, $index)">Eliminar</md-button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</md-table-container>
+
+<md-toolbar class="md-whiteframe-5dp">
+  <div class="md-toolbar-tools">
+    <h1>Crear grupos</h1>
+  </div>
+</md-toolbar>
+<md-content layout-padding class="md-inline-form">
+    <form ng-submit="createGroup(item)">
+      <div layout="column">
+        <md-input-container class="md-block" flex-gt-xs>
+          <label>Nombre</label>
+          <input ng-model="item.name"
+                 type="text"
+                 required>
+        </md-input-container>
+
+        <div layout="row" layout-align="end">
+          <md-button class="md-raised md-primary"
+                     type="submit">Crear</md-button>
+        </div>
+      </div>
+    </form>
+</md-content>
