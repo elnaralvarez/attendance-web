@@ -31,6 +31,11 @@
          url: url + '/rooms/:room_id/events/:event_id/groups',
          isArray: true
        },
+       att_groups_report2: {
+         method: 'GET',
+         url: url + '/rooms/:room_id/events/:event_id/groups2',
+         isArray: true
+       },
        pagination: {
          method: 'GET',
          isArray: true,

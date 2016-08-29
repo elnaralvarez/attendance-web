@@ -29,6 +29,11 @@
       templateUrl: path + '/arrive/index.html',
       controller: 'AttendanceAttArriveController'
     });
+    $stateProvider.state('attendance.detail.room.att.donut', {
+      url: '/donut/:event_id',
+      templateUrl: path + '/donut/index.html',
+      controller: 'AttendanceAttDonutController'
+    });
     $stateProvider.state('attendance.detail.room.att.unique', {
       url: '/unique/:event_id',
       templateUrl: path + '/unique/index.html',
