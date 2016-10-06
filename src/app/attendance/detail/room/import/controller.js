@@ -15,14 +15,30 @@
     LocalError,
     Toast,
     Files,
+    Group,
     UploadFiles
   ) {
     $scope.item = {
     };
     UploadFiles.init($scope);
+    var area_id = $state.params.area_id;
+    var room_id = $state.params.room_id;
+    $scope.groups = [];
     $scope.participants = [];
     $scope.selected = [];
     $scope.upload = UploadFiles.upload;
+
+
+
+    $scope.getGroup = function(name) {
+      var result = null;
+      $scope.groups.forEach(function(item) {
+        if (item.name == name) {
+          result = item;
+        }
+      });
+      return result;
+    };
 
     $scope.buildParticipantObjects = function(participants) {
       var result = [];
@@ -39,7 +55,8 @@
           cel: item[4] || 'none',
           ci: 'none',
           address: item[5] || 'none',
-          image: null
+          image: null,
+          groupName: item[6]
         });
       });
       return result;
@@ -59,17 +76,35 @@
     }
     UploadFiles.setImportCallback($scope.importfromExcel);
 
-    $scope.createAlistOfParticipants = function() {
+    $scope.validateGroups = function() {
+      var result = true;
       $scope.selected.forEach(function(item) {
-        $scope.create(item);
+        if (item.groupName) {
+          var group = $scope.getGroup(item.groupName);
+          if (group) {
+            item.group = group._id;
+          } else {
+            Toast.show('No existe un grupo con el nombre "' + item.groupName + '"');
+            result = false;
+          }
+        }
       });
-    }
+      return result;
+    };
+
+    $scope.createAlistOfParticipants = function() {
+      if ($scope.validateGroups()) {
+        $scope.selected.forEach(function(item) {
+          $scope.create(item);
+        });
+      }
+    };
 
     $scope.create = function(item) {
       Participant.save(item, function(response) {
         $scope.removeFromList(response);
       }, LocalError.request);
-    }
+    };
 
     $scope.removeFromList = function(item) {
       var participants = $scope.participants;
@@ -84,6 +119,13 @@
           $scope.selected.splice(i, 1);
         }
       }
-    }
+    };
+
+    Group.query({
+      area: area_id,
+      room: room_id,
+    }, function(response) {
+      $scope.groups = response;
+    }, LocalError.request);
   }
 })();
