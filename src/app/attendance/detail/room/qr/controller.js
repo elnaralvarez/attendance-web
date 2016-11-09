@@ -16,7 +16,7 @@
     $scope.participants = [];
 
     $scope.limit = parseInt(Store.load('print_limit', true)) || 20;
-    $scope.size = parseInt(Store.load('print_size', true)) || 120;
+    $scope.size = parseInt(Store.load('print_size', true)) || 100;
     console.log($scope.limit);
     console.log($scope.size);
 
