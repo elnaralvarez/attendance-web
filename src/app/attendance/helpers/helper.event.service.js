@@ -30,15 +30,15 @@
       },
       createEvent: function(room_id) {
         var data = {
-          area_id: scope.area._id,
           start_date: getDateFormated(),
           end_date: getDateFormated(),
           title: getDateFormated(),
-          enabled: true,
-          room: room_id,
-          counter_id: Global.counter._id
+          enabled: true
         }
-        Event.save(data, function(response) {
+        Event.save({
+          area_id: scope.area._id,
+          room_id: room_id
+        }, data, function(response) {
           scope.events.unshift(response);
         }, LocalError.request);
       },
@@ -57,10 +57,7 @@
           room: room_id
         };
         loadEvents(data);
-      },
-      // selectEvent: function(event) {
-      //   scope.event = event;
-      // }
+      }
     };
   }
 })();

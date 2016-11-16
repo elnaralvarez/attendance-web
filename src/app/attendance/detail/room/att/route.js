@@ -7,7 +7,7 @@
 
   /** @ngInject */
   function routeConfig($stateProvider, $urlRouterProvider) {
-    var path = 'app/attendance/detail/att';
+    var path = 'app/attendance/detail/room/att';
 
     $stateProvider.state('attendance.detail.room.att', {
       url: '/att',

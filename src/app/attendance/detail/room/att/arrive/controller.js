@@ -31,12 +31,6 @@
       area: area_id
     }, function(response) {
       $scope.states = response;
-        // Reports.att_groups_report({
-        //   room_id: room_id,
-        //   event_id: event_id
-        // }, function(response) {
-        //   $scope.draw(response);
-        // });
         $scope.getParticipants();
     });
 
@@ -44,7 +38,6 @@
     // pagination
     $scope.count = 1000;
     $scope.query = {
-      // room_id: room_id,
       event_id: event_id,
       limit: 15,
       page: 1
