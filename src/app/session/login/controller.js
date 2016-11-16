@@ -27,7 +27,7 @@
           if (user.role === 'admin') {
             $state.go('attendance');
           } else {
-            throw new Error('not role arrigned');
+            throw new Error('not role asigned');
           }
         });
       }, LocalError.request);

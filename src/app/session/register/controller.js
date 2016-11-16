@@ -13,7 +13,6 @@
     Users,
     LocalError,
     Sess,
-    Counter,
     Store,
     Global
   ) {
@@ -28,16 +27,11 @@
         Session.login(sessionCredentiales, function(user) {
           Sess.login(user, function() {
             console.info('starts session');
-            console.log(user);
-            Counter.get({
-              _id: user.counter
-            }, function(response) {
-              Store.save('counter', response);
-              Global.counter = response;
-              if (user.role === 'admin') {
-                $state.go('attendance');
-              }
-            }, LocalError.request);
+            if (user.role === 'admin') {
+              $state.go('attendance');
+            } else {
+              throw new Error('not role asigned');
+            }
           });
         });
       }, LocalError.request);

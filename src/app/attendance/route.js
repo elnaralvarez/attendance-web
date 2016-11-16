@@ -37,11 +37,6 @@
       }
     });
 
-    $stateProvider.state('attendance.defaults', {
-      url: '/defaults',
-      templateUrl: base_url + '/defaults/index.html',
-      controller: 'DefaultsController'
-    });
     $stateProvider.state('attendance.provider', {
       url: '/provider',
       templateUrl: base_url + '/provider/index.html',

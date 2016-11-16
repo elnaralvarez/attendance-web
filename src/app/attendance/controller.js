@@ -45,20 +45,10 @@
     }
     $scope.loadToolbarAreas();
 
-    $scope.options = [
-      // {
-      //   title: 'My institucion',
-      //   route: 'attendance.defaults'
-      // },
-      {
-        title: 'Areas',
-        route: 'attendance.area.list'
-      },
-      //  {
-      //   title: 'Proveedores',
-      //   route: 'attendance.provider'
-      // }
-    ];
+    $scope.options = [{
+      title: 'Areas',
+      route: 'attendance.area.list'
+    }];
 
     $scope.selectOption = function(option) {
       if(!option) {
@@ -72,8 +62,7 @@
       $state.go('attendance.detail.room.main', {
         area_id: area._id,
         room_id: area.room
-      });
-      // }, {reload: true});
+      }); // }, {reload: true});
     };
 
     $scope.toggleSidenav = function(menuId) {

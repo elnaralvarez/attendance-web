@@ -10,7 +10,6 @@
 
      return $resource(url + '/:_id', {
        _id: '@_id',
-       counter_id: '@counter_id',
        area_id: '@area_id',
        page: '@page',
        limit: '@limit'
