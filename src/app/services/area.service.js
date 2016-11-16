@@ -10,7 +10,6 @@
 
      return $resource(url + '/:_id', {
        _id: '@_id',
-       counter_id: '@counter_id',
        page: '@page'
      }, {
        update: {

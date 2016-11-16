@@ -12,16 +12,12 @@
                     md-page-select></md-table-pagination>
 <md-content>
   <md-list>
-    <md-list-item class="md-2-line"
-                  ng-repeat="item in items"
+    <md-list-item ng-repeat="item in items"
                   ng-click="selectItem(item)">
-       <div class="md-list-item-text">
-         <h3>{{item.name}}</h3>
-         <p>Lorem ipsum sit amed</p>
-         <md-switch class="md-secondary"
-                    ng-change="updateItemLocal(item)"
-                    ng-model="item.enabled"></md-switch>
-       </div>
+       <p>{{item.name}}</p>
+       <md-switch class="md-secondary"
+                  ng-change="updateItem(item)"
+                  ng-model="item.enabled"></md-switch>
     </md-list-item>
     <md-divider></md-divider>
   </md-list>

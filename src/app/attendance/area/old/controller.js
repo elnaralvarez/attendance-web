@@ -15,19 +15,10 @@
     LocalError
   ) {
     $scope.items = [];
-
-    Toast.show('Cargando...');
-
-    $scope.query = {
-      limit: 20,
-      page: 1
-    };
-
-    $scope.selected = [];
-
     $scope.count = 1000;
     $scope.query = {
       users: Global.user._id,
+      enabled: false,
       limit: 15,
       page: 1
     };
@@ -41,11 +32,5 @@
     };
 
     $scope.getItems();
-
-    $scope.updateItemLocal = function(item) {
-      item.$update(function(response) {
-        Toast.show('Se actualizo correctamente');
-      }, LocalError.request);
-    };
   }
 })();
