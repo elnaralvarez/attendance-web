@@ -10,8 +10,7 @@
 
      return $resource(url + '/:_id', {
        _id: '@_id',
-       area_id: '@area_id',
-       page: '@page'
+       area_id: '@area_id'
      }, {
        update: {
          method: 'PUT'
