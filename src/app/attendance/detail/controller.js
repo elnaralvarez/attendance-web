@@ -73,15 +73,6 @@
       $state.go('attendance.detail.room.export');
     }
 
-    // $scope.goToAreaHome = function() {
-    //   $state.go('attendance.detail.room', {
-    //     area_id: $state.params.area_id,
-    //     room_id: $state.params.room_id
-    //   });
-    //   // TODO update just it's an update
-    //   HelperRoom.loadRoomById($state.params.room_id);
-    // }
-
     $scope.goToBack = function() {
       $window.history.back();
     }

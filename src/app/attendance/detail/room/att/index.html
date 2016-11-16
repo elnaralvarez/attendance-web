@@ -1,0 +1,85 @@
+<div layout="row">
+  <div layout="column" layout-fill>
+    <md-toolbar class="md-table-toolbar md-default">
+      <div class="md-toolbar-tools md-default">
+        <h2 ui-sref="event.att.list">
+          Asistencia
+        </h2>
+        <span flex></span>
+        <div layout="row">
+          <md-button class="md-raised"
+                     ng-click="goToTakeAttendance('attendance.detail.room.att.onlyone')">
+                     Asistencia
+         </md-button>
+          <md-button class="md-raised"
+                     ng-click="goToTakeAttendance('attendance.detail.room.att.pieful')">
+                     Reporte de grupos
+         </md-button>
+          <md-button class="md-raised"
+                     ng-click="goToTakeAttendance('attendance.detail.room.att.arrive')">
+                     primero en llegar
+         </md-button>
+          <md-button class="md-raised"
+                     ng-click="goToTakeAttendance('attendance.detail.room.att.donut')">
+                     Tiempo real
+         </md-button>
+          <!-- <md-button class="md-raised"
+                     ng-click="goToTakeAttendance('attendance.detail.room.att.selectors')">
+                     Asistencia personal
+         </md-button>
+          <md-button class="md-raised"
+                     ng-click="goToTakeAttendance('attendance.detail.room.att.unique')">
+                     Lector de codigo
+         </md-button> -->
+        </div>
+      </div>
+    </md-toolbar>
+
+    <ui-view layout="column" layout-fill>
+    </ui-view>
+  </div>
+  <md-sidenav layout="column"
+              class="md-sidenav-left md-whiteframe-z2"
+              md-component-id="left"
+              md-is-locked-open="$mdMedia('gt-sm')">
+    <md-toolbar class="md-table-toolbar md-default">
+      <div class="md-toolbar-tools">
+        <h2>
+          Eventos
+        </h2>
+        <span flex></span>
+        <md-button class="md-icon-button" aria-label="Edit" ng-click="createEvent()">
+          <ng-md-icon icon="add"></ng-md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="More">
+          <ng-md-icon icon="more_vert"></ng-md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-subheader class="md-no-sticky">Actual</md-subheader>
+    <div ng-if="event == null" class="wargos-text-align">
+      <b>seleccione el evento actual</b>
+    </div>
+    <div ng-if="event != null" class="wargos-text-align">
+      <p>{{event.title}}</p>
+    </div>
+
+    <!-- EVENTS -->
+    <md-subheader class="md-no-sticky">Antiguos</md-subheader>
+    <div ng-if="events.length == 0" class="wargos-text-align">
+        <b>No existe <i>eventos</i> requistrados</b>
+    </div>
+    <md-list>
+      <md-list-item ng-repeat="event in events" ng-click="selectEvent(event)">
+         <p>{{event.title}}</p>
+         <ng-md-icon icon="edit"
+                     ng-click="goToEvent(event, $index, $event)"
+                     aria-label="Send Email"
+                     class="md-secondary md-hue-3" ></md-icon>
+      </md-list-item>
+    </md-list>
+    <div ng-if="events.length > 0" class="wargos-text-align">
+        <b ng-click="loadMoreEvents()">Cargar Mas</b>
+    </div>
+  </md-sidenav>
+</div>

@@ -9,9 +9,7 @@
     var url = Global.PATH + '/v1/areas';
 
      return $resource(url + '/:_id', {
-       _id: '@_id',
-       counter_id: '@counter_id',
-       page: '@page'
+       _id: '@_id'
      }, {
        update: {
          method: 'PUT'

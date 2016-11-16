@@ -21,8 +21,6 @@
     };
 
     $scope.deleteItem = function(item) {
-      console.log(item);
-      Toast.show('Cargando...');
       item.$delete(function(response) {
         Toast.show('Se actualizo correctamente');
         $state.go('attendance.area.list');
@@ -51,10 +49,8 @@
     };
 
     $scope.updateItem = function(item) {
-      Toast.show('Cargando...');
       item.$update(function(response) {
         Toast.show('Se actualizo correctamente');
-        $state.go('attendance.area.list');
         $scope.loadToolbarAreas();
       }, LocalError.request);
     };

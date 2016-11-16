@@ -17,8 +17,7 @@
         var data = {
           name: 'AULA',
           parent: scope.room._id,
-          area_id: scope.area._id,
-          counter_id: Global.counter._id
+          area_id: scope.area._id
         }
         Room.save(data, function(response) {
           scope.rooms.unshift(response);

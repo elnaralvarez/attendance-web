@@ -9,18 +9,17 @@
       // SERVICE PATH
       // Example 'http://localhost'
       var PATH = 'http://localhost:5040';
+      // var PATH = 'http://192.168.56.101:5040';
 
       var start = function() {
-        console.info('Starts the application');
+        console.info('Starts the application!!');
         _service.user = Store.load('user');
-        _service.counter = Store.load('counter');
         console.log(this);
       };
 
       var _service = {
         PATH: PATH,
         user: null,
-        counter: null,
         socket: false,
         start: start
       };

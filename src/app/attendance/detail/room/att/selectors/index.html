@@ -1,0 +1,52 @@
+<div layout layout-sm="column">
+  <md-input-container flex>
+    <label>Nombre</label>
+    <input ng-model="search.first_name">
+  </md-input-container>
+  <md-input-container flex>
+    <label>Apellido</label>
+    <input ng-model="search.last_name">
+  </md-input-container>
+</div>
+<!-- <div ui-view>
+</div> -->
+<div>
+  <md-content class="md-padding" layout="column">
+    <md-subheader class="md-no-sticky">Participantes</md-subheader>
+    <md-list layout="row" layout-wrap>
+      <md-list-item flex="33"
+                    flex-sm="50"
+                    flex-xs="100"
+      class="md-4-line contact-item" ng-repeat="participant in participants | filter:search:strict">
+        <img ng-src="{{loadImage(participant.image)}}" class="md-avatar" alt="{{participant.first_name}}" />
+        <div class="md-list-item-text compact">
+          <h3>{{participant.first_name}} {{participant.last_name}}</h3>
+          <p>
+            {{participant.email}}
+          </p>
+          <h2>
+            <md-button ng-if="participant.att"
+                       class="md-raised"
+                       aria-label="get status"
+                       ng-class="{'1':'md-primary', '2': '', '3': 'md-warn'}[participant.att.stateId]">
+                       {{getState(participant.att.stateId)}}
+            </md-button>
+            <md-button class="md-fab md-mini"
+                       ng-class="{'1':'md-primary', '2':'', '3':'md-warn'}[state.id]"
+                       ng-click="changeStatus(participant, state)"
+                       aria-label="state"
+                       ng-repeat="state in states">
+                       <ng-md-icon icon="{{{'1':'thumb_up', '2': 'thumbs_up_down', '3': 'thumb_down'}[state.id]}}" style="fill: black"></ng-md-icon>
+            </md-button>
+          </h2>
+        </div>
+      </md-list-item>
+    </md-list>
+  </md-content>
+</div>
+<style media="screen">
+.participantsChips .contact-item {
+  float: left;
+  width: 31%;
+}
+</style>

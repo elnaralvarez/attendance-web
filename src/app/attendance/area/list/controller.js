@@ -14,7 +14,6 @@
     Global,
     LocalError
   ) {
-    Toast.show('Cargando...');
     Area.query({
       users: Global.user._id,
       enabled: true
