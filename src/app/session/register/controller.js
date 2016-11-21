@@ -28,7 +28,7 @@
           Sess.login(user, function() {
             console.info('starts session');
             if (user.role === 'admin') {
-              $state.go('attendance');
+              $state.go('attendance.home');
             } else {
               throw new Error('not role asigned');
             }

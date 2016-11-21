@@ -26,6 +26,12 @@
       controller: 'AttendanceAreaController'
     });
 
+    $stateProvider.state('attendance.home', {
+      url: '/home',
+      templateUrl: base_url + '/home/index.html',
+      controller: 'AttendanceHomeController'
+    });
+
     $stateProvider.state('print', {
       url: '/print/room/:room_id/page/:page',
       templateUrl: base_url + '/print/index.html',
