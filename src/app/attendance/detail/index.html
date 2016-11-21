@@ -1,26 +1,21 @@
 <md-toolbar>
-  <div class="md-toolbar-tools">
-    <h2>
-      {{area.name}} - {{room.name}}
-    </h2>
+  <div class="md-toolbar-tools wargos-main-header">
+    <md-button ng-click="toggleSidenav('left')" hide-gt-md aria-label="Menu">
+      <ng-md-icon icon="menu"></ng-md-icon>
+    </md-button>
+    <img src="assets/images/attendance-logo.png" alt="logo" />
+    <!-- <h3> Attendance </h3> -->
     <span flex></span>
     <md-button class="md-icon-button"
                 aria-label="Edit" ui-sref="attendance.detail.people">
       <ng-md-icon icon="people"></ng-md-icon>
     </md-button>
-    <md-button class="md-icon-button" aria-label="import" ng-click="goToImportScreen()">
-      <ng-md-icon icon="attachment"></ng-md-icon>
-    </md-button>
-    <md-button class="md-icon-button" aria-label="qr" ng-click="goToQrScreen()">
-      <ng-md-icon icon="fingerprint"></ng-md-icon>
-    </md-button>
-    <md-button class="md-icon-button" aria-label="export" ng-click="goToExportScreen()">
-      <ng-md-icon icon="import_export"></ng-md-icon>
-    </md-button>
-    <md-button class="md-icon-button" aria-label="More" ng-click="goToRoom(room)">
+    <md-button class="md-icon-button" aria-label="More">
       <ng-md-icon icon="more_vert"></ng-md-icon>
     </md-button>
   </div>
 </md-toolbar>
-<ui-view layout="column" layout-fill>
-</ui-view>
+<md-content>
+  <ui-view layout="column" layout-fill>
+  </ui-view>
+</md-content>

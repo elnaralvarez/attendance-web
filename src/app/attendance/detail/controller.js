@@ -12,7 +12,6 @@
     Area,
     LocalError,
     HelperRoom,
-    HelperDetailRoute,
     $window
   ) {
     var area_id = $state.params.area_id;
@@ -41,37 +40,9 @@
       }
     };
 
-    $scope.goToRoom = HelperDetailRoute.goToRoom;
-
     // images
     $scope.loadImage = UploadImages.loadImage;
     $scope.loadImageGroup = UploadImages.loadImageGroup;
-
-    // helper routes
-    $scope.goToImportScreen = function() {
-      if (!$state.params.room_id) {
-        alert('No exite seleccionado una sala');
-        return;
-      }
-      $state.go('attendance.detail.room.import');
-    }
-
-    // helper routes
-    $scope.goToQrScreen = function() {
-      if (!$state.params.room_id) {
-        alert('No exite seleccionado una sala');
-        return;
-      }
-      $state.go('attendance.detail.room.qr');
-    }
-
-    $scope.goToExportScreen = function() {
-      if (!$state.params.room_id) {
-        alert('No exite seleccionado una sala');
-        return;
-      }
-      $state.go('attendance.detail.room.export');
-    }
 
     $scope.goToBack = function() {
       $window.history.back();

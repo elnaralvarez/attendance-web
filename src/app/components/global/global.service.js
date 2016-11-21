@@ -7,9 +7,7 @@
 
   function service(Store) {
       // SERVICE PATH
-      // Example 'http://localhost'
       var PATH = 'http://localhost:5040';
-      // var PATH = 'http://192.168.56.101:5040';
 
       var start = function() {
         console.info('Starts the application!!');
