@@ -1,5 +1,14 @@
 # attendance-web
 
+## Install
+```
+bower install
+npm install
+
+# development mode
+gulp serve
+```
+
 # Use gulp tasks
 - gulp or gulp build to build an optimized version of your application in /dist
 - gulp serve to launch a browser sync server on your source files
