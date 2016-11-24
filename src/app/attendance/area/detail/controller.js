@@ -84,6 +84,14 @@
       });
     }
 
+    $scope.updateArea = function(item) {
+      item.$update(function(response) {
+        Toast.show('Se actualizo correctamente');
+        $state.go('attendance.area.list');
+        $scope.loadToolbarAreas();
+      }, LocalError.request);
+    };
+
     var addAdministratorToCurrentArea = function(user) {
         var isRegistry = false;
         $scope.item.users.forEach(function(user_id) {
