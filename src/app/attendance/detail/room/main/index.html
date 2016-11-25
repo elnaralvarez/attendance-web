@@ -30,7 +30,7 @@
       <span flex></span>
       <md-input-container>
         <label>Grupos</label>
-        <md-select ng-model="select.group" ng-change="selectGroup()">
+        <md-select ng-model="select.group" ng-change="selectGroup()" class="group-select-width-limit">
           <md-optgroup label="grupos">
             <md-option ng-value="group._id" ng-repeat="group in groups">{{group.name}}</md-option>
           </md-optgroup>

@@ -27,7 +27,10 @@
     $scope.select = {
       group: null
     };
-
+    $scope.search = {
+      alive: false,
+      last_name: ''
+    };
     $scope.chips = {
       removable: false
     };
@@ -106,6 +109,12 @@
         }
     };
 
+    $scope.cancel_search = function() {
+      delete $scope.query.last_name;
+      $scope.search.alive = false;
+      $scope.getParticipants();
+    }
+
     $scope.remove_participant_from_group = function(participant, group_id) {
       participant.groups = groups;
       participant.$update(function(response) {
@@ -134,6 +143,11 @@
 
     $scope.getParticipants = function() {
       $scope.promise = Participant.pagination($scope.query, success).$promise;
+    };
+
+    $scope.search_participant_by_name = function(last_name) {
+      $scope.query.last_name = last_name;
+      $scope.getParticipants();
     };
 
     $scope.getParticipants();

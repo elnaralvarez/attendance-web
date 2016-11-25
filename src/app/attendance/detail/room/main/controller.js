@@ -72,7 +72,7 @@
       $scope.getParticipants();
 
     };
-  
+
     // options
     $scope.goToOptions = function() {
       $state.go('attendance.detail.room.options', {
@@ -86,7 +86,7 @@
     $scope.count = 1000;
     $scope.query = {
       rooms: room_id,
-      limit: 15,
+      limit: 21,
       page: 1
     };
 

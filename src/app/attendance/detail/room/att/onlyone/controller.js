@@ -94,7 +94,7 @@
     $scope.count = 1000;
     $scope.query = {
       rooms: [room_id],
-      limit: 15,
+      limit: 20,
       page: 1
     };
 

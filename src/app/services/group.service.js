@@ -12,6 +12,11 @@
        _id: '@_id',
        area_id: '@area_id'
      }, {
+       query: {
+         method: 'GET',
+         url: Global.PATH + '/v2/groups',
+         isArray: true
+       },
        update: {
          method: 'PUT'
        },
