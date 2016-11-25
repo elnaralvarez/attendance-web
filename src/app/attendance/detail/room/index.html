@@ -5,13 +5,16 @@
     </h2>
     <span flex></span>
 
-    <md-button class="md-icon-button" aria-label="import" ng-click="goToImportScreen()">
+    <md-button class="md-icon-button" aria-label="group_add" ui-sref="attendance.detail.room.groups">
+      <ng-md-icon icon="group_add"></ng-md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="import" ui-sref="attendance.detail.room.import">
       <ng-md-icon icon="attachment"></ng-md-icon>
     </md-button>
-    <md-button class="md-icon-button" aria-label="qr" ng-click="goToQrScreen()">
+    <md-button class="md-icon-button" aria-label="qr" ui-sref="attendance.detail.room.qr">
       <ng-md-icon icon="fingerprint"></ng-md-icon>
     </md-button>
-    <md-button class="md-icon-button" aria-label="export" ng-click="goToExportScreen()">
+    <md-button class="md-icon-button" aria-label="export" ui-sref="attendance.detail.room.export">
       <ng-md-icon icon="import_export"></ng-md-icon>
     </md-button>
     <md-button class="md-icon-button" aria-label="More" ng-click="goToRoom(room)">

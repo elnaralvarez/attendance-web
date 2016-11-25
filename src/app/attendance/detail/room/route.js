@@ -34,11 +34,6 @@
       templateUrl: base_url + '/groups/index.html',
       controller: 'AreaDetailGroupsController'
     });
-    $stateProvider.state('attendance.detail.room.options', {
-      url: '/options',
-      templateUrl: base_url + '/options/index.html',
-      controller: 'AreaDetailRoomOptionsController'
-    });
   }
 
 })();

@@ -72,13 +72,7 @@
       $scope.getParticipants();
 
     };
-    $scope.goToGroups = function() {
-      $state.go('attendance.detail.room.groups', {
-        area_id: area_id,
-        room_id: room_id
-      });
-    };
-
+  
     // options
     $scope.goToOptions = function() {
       $state.go('attendance.detail.room.options', {

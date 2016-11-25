@@ -4,53 +4,79 @@
       Grupos
     </span>
     <span flex></span>
-    <md-button class="md-icon-button" aria-label="More">
-      <ng-md-icon icon="more_vert"></ng-md-icon>
-    </md-button>
+    <md-switch class="md-secondary"
+               ng-change="removableChange()"
+               ng-model="item.enabled"></md-switch>
   </div>
 </md-toolbar>
 
-<md-table-container>
-  <table md-table ng-model="selected">
-    <thead md-head>
-      <tr md-row>
-        <th md-column>Nombre del grupo</th>
-      </tr>
-    </thead>
-    <tbody md-body>
-      <tr md-row md-select="group"
-          ng-repeat="group in groups">
-        <td md-cell>
-          {{group.name}}
-        </td>
-        <td md-cell>
-          <md-button class="md-raised"
-                     ng-click="removeGroup(group, $index)">Eliminar</md-button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</md-table-container>
+<md-content layout-padding>
+  <md-chips ng-model="groups" name="group" readonly="false"
+                md-removable="chips.removable"
+                md-require-match="true"
+                placeholder="Nombre de un nuevo grupo"
+                secondary-placeholder="+Grupo"
+                md-on-remove="removeGroup($chip, $index)"
+                md-transform-chip="createGroup($chip)"
+                md-max-chips="50">
+    <md-chip-template>
+      <strong>{{$chip.name}}</strong>
+    </md-chip-template>
+  </md-chips>
+</md-content>
 
-<md-toolbar class="md-whiteframe-5dp">
+<md-toolbar class="md-table-toolbar md-default">
   <div class="md-toolbar-tools">
-    <h1>Crear grupos</h1>
+    <span ng-click="discartGroup()">
+      Participantes
+    </span>
+    <span flex></span>
+    <md-input-container>
+      <label>Grupos</label>
+      <md-select ng-model="select.group" ng-change="selectGroup()">
+        <md-optgroup label="grupos">
+          <md-option ng-value="group._id" ng-repeat="group in groups">{{group.name}}</md-option>
+        </md-optgroup>
+      </md-select>
+    </md-input-container>
   </div>
 </md-toolbar>
-<md-content layout-padding class="md-inline-form">
-    <form ng-submit="createGroup(item)">
-      <div layout="column">
-        <md-input-container class="md-block" flex-gt-xs>
-          <label>Nombre</label>
-          <input ng-model="item.name"
-                 type="text"
-                 required>
-        </md-input-container>
-
-        <div layout="row" layout-align="end">
-          <md-button class="md-raised md-primary"
-                     type="submit">Crear</md-button>
+<md-table-pagination md-limit="query.limit"
+                     md-limit-options="[25, 30, 35]"
+                     md-page="query.page"
+                     md-total="{{count}}"
+                     md-on-paginate="getParticipants"
+                     md-page-select></md-table-pagination>
+<div ng-if="participants.length == 0" class="wargos-text-align">
+  <b>No existe <i>participantes</i> requistrados</b>
+</div>
+<div layout="row" layout-wrap>
+  <div flex="33"
+       flex-sm="50"
+       flex-xs="100"
+      ng-repeat="participant in participants">
+    <md-list-item ng-click="addParticipantToGroup(participant, $index)"
+                  ng-class="{selectedItem: select.group != null && isMember(participant.group, select.group)}">
+      <img alt="{{participant.first_name}}"
+           ng-src="{{loadImage(person.img)}}"
+           class="md-avatar" />
+      <p>{{participant.last_name}} {{participant.first_name}}</p>
+      <div ng-if="select.group != null">
+        <!-- <div ng-if="isMember(participant.group, select.group)">
+          <ng-md-icon icon="exposure_neg_1"
+                      aria-label="neg"></md-icon>
+        </div> -->
+        <div ng-if="!isMember(participant.group, select.group)">
+          <ng-md-icon icon="exposure_plus_1"
+                      aria-label="posi"></md-icon>
         </div>
       </div>
-    </form>
-</md-content>
+    </md-list-item>
+  </div>
+</div>
+<style media="screen">
+.selectedItem {
+  /*background: rgba(232, 232, 232, 0.99);*/
+  background: rgba(218, 217, 217, 0.99);
+}
+</style>

@@ -15,7 +15,7 @@
       },
       createRoom: function() {
         var data = {
-          name: 'AULA',
+          name: 'SALA',
           parent: scope.room._id,
           area_id: scope.area._id
         }

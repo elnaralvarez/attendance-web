@@ -7,33 +7,9 @@
 
   /** @ngInject */
   function controller($scope, $state, HelperDetailRoute) {
+    var area_id = $state.params.area_id;
+    var room_id = $state.params.room_id;
 
     $scope.goToRoom = HelperDetailRoute.goToRoom;
-
-    // helper routes
-    $scope.goToImportScreen = function() {
-      if (!$state.params.room_id) {
-        alert('No exite seleccionado una sala');
-        return;
-      }
-      $state.go('attendance.detail.room.import');
-    }
-
-    // helper routes
-    $scope.goToQrScreen = function() {
-      if (!$state.params.room_id) {
-        alert('No exite seleccionado una sala');
-        return;
-      }
-      $state.go('attendance.detail.room.qr');
-    }
-
-    $scope.goToExportScreen = function() {
-      if (!$state.params.room_id) {
-        alert('No exite seleccionado una sala');
-        return;
-      }
-      $state.go('attendance.detail.room.export');
-    }
   }
 })();
