@@ -15,6 +15,7 @@
     Group,
     Store,
     Event,
+    Room,
     Participant,
     State
   ) {
@@ -132,7 +133,7 @@
     // pagination
     $scope.count = 1000;
     $scope.query = {
-      area: area_id,
+      area_id: area_id,
       limit: 30,
       page: 1
     };
@@ -142,7 +143,7 @@
     }
 
     $scope.getParticipants = function() {
-      $scope.promise = Participant.pagination($scope.query, success).$promise;
+      $scope.promise = Room.participants($scope.query, success).$promise;
     };
 
     $scope.search_participant_by_name = function(last_name) {
