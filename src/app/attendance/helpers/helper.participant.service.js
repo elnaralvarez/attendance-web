@@ -13,9 +13,11 @@
         scope = local_scope;
       },
       createParticipant: function() {
+        var uuid = UUID.randomString(20);
+        console.log(uuid);
         var data = {
           area_id: scope.area._id,
-          uid: UUID.generate(),
+          uid: uuid,
           first_name: 'lorem ipsum',
           last_name: 'lorem ipsum',
           image: null,

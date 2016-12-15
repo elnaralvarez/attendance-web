@@ -15,7 +15,10 @@
         return code;
       },
       generate: function() {
-        return Math.random().toString(20).slice(2);
+        return Math.random().toString(40).slice(2);
+      },
+      randomString: function(length) {
+          return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
       }
     };
   }
