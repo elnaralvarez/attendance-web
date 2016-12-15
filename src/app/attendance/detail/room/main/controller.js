@@ -23,6 +23,9 @@
     var room_id = $state.params.room_id;
 
     $scope.loadRoomByURLParam(room_id);
+    $scope.search = {
+      alive: false
+    };
 
     // helper routes
     $scope.goToParticipant = HelperDetailRoute.goToParticipant;
@@ -62,6 +65,7 @@
     }, LocalError.request);
 
     $scope.discartGroup = function() {
+      $scope.select.group = null;
       delete $scope.query.group;
       $scope.getParticipants();
     }
@@ -70,7 +74,6 @@
       var group_id = $scope.select.group;
       $scope.query.group = group_id;
       $scope.getParticipants();
-
     };
 
     // options
@@ -85,6 +88,7 @@
     // pagination
     $scope.count = 1000;
     $scope.query = {
+      area_id: area_id,
       rooms: room_id,
       limit: 21,
       page: 1
@@ -95,7 +99,20 @@
     };
 
     $scope.getParticipants = function() {
-      $scope.promise = Participant.pagination($scope.query, success).$promise;
+      $scope.promise = Participant.search($scope.query, success).$promise;
+    };
+
+    $scope.cancel_search = function() {
+      delete $scope.query.last_name;
+      delete $scope.query.first_name;
+      $scope.search.alive = false;
+      $scope.getParticipants();
+    }
+
+    $scope.search_participant = function(last_name, first_name) {
+      $scope.query.last_name = last_name  == '' ? null : last_name;
+      $scope.query.first_name = first_name  == '' ? null : first_name;
+      $scope.getParticipants();
     };
 
     $scope.init = function() {

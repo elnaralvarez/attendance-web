@@ -22,11 +22,34 @@
     </div>
   </md-content>
 
-  <md-toolbar class="md-table-toolbar md-default">
+  <md-toolbar class="md-table-toolbar md-default room-groups">
     <div class="md-toolbar-tools">
-      <span ng-click="discartGroup()">
-        Participantes
-      </span>
+      <div ng-if="!search.alive">
+        <span ng-click="discartGroup()" ng-if="!search.alive">
+          Participantes
+        </span>
+        <md-button class="md-icon-button" aria-label="search" ng-click="search.alive = true">
+          <ng-md-icon icon="search"></ng-md-icon>
+        </md-button>
+      </div>
+      <div ng-if="search.alive" class="search">
+        <md-button class="md-icon-button" aria-label="search" ng-click="cancel_search()">
+          <ng-md-icon icon="keyboard_backspace"></ng-md-icon>
+        </md-button>
+        <md-input-container>
+          <label>Apellido</label>
+          <input ng-model="query.last_name">
+        </md-input-container>
+        <md-input-container>
+          <label>Nombre</label>
+          <input ng-model="query.first_name">
+        </md-input-container>
+        <md-button class="md-icon-button"
+                   aria-label="search"
+                   ng-click="search_participant(query.last_name, query.first_name)">
+          <ng-md-icon icon="search"></ng-md-icon>
+        </md-button>
+      </div>
       <span flex></span>
       <md-input-container>
         <label>Grupos</label>

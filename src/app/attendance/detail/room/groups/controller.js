@@ -29,8 +29,7 @@
       group: null
     };
     $scope.search = {
-      alive: false,
-      last_name: ''
+      alive: false
     };
     $scope.chips = {
       removable: false
@@ -110,11 +109,6 @@
         }
     };
 
-    $scope.cancel_search = function() {
-      delete $scope.query.last_name;
-      $scope.search.alive = false;
-      $scope.getParticipants();
-    }
 
     $scope.remove_participant_from_group = function(participant, group_id) {
       participant.groups = groups;
@@ -138,6 +132,13 @@
       page: 1
     };
 
+    $scope.cancel_search = function() {
+      delete $scope.query.last_name;
+      delete $scope.query.first_name;
+      $scope.search.alive = false;
+      $scope.getParticipants();
+    }
+
     function success(participants) {
       $scope.participants = participants;
     }
@@ -146,8 +147,9 @@
       $scope.promise = Participant.search($scope.query, success).$promise;
     };
 
-    $scope.search_participant_by_name = function(last_name) {
-      $scope.query.last_name = last_name;
+    $scope.search_participant = function(last_name, first_name) {
+      $scope.query.last_name = last_name  == '' ? null : last_name;
+      $scope.query.first_name = first_name  == '' ? null : first_name;
       $scope.getParticipants();
     };
 
