@@ -18,10 +18,14 @@
     Area,
     Global,
     LocalError,
+    UploadImages,
     moment,
     $mdDialog
   ) {
     $scope.loading = true;
+
+    // images
+    $scope.loadImageGroup = UploadImages.loadImageGroup;
 
     Auth.subcrive(function(user) {
       $scope.user = user;

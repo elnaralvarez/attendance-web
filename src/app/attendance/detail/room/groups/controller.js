@@ -143,7 +143,7 @@
     }
 
     $scope.getParticipants = function() {
-      $scope.promise = Room.participants($scope.query, success).$promise;
+      $scope.promise = Participant.search($scope.query, success).$promise;
     };
 
     $scope.search_participant_by_name = function(last_name) {

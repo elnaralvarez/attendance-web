@@ -20,7 +20,7 @@
         <b>No existe <i>areas</i> requistrados</b>
     </div>
     <md-list-item ng-repeat="area in areas" ng-click="selectArea(area)">
-       <ng-md-icon icon="done" style="fill: black"></ng-md-icon>
+      <img ng-src="{{loadImageGroup(area.image)}}" class="md-avatar" />
        <p>{{area.name}}</p>
     </md-list-item>
     <!-- SETTINGS -->

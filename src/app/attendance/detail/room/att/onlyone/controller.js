@@ -76,6 +76,12 @@
       });
     };
 
+    $scope.remove_attendance_events = function(participant) {
+      participant.att.$remove(function(response) {
+          participant.att = null;
+      });
+    };
+
     $scope.updateParticipants = function(participants) {
       for (var i = 0; i < participants.length; i++) {
         $scope.loadParticipantAttendance(participants[i]);

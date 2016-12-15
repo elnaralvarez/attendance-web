@@ -42,7 +42,6 @@
 
     // images
     $scope.loadImage = UploadImages.loadImage;
-    $scope.loadImageGroup = UploadImages.loadImageGroup;
 
     $scope.goToBack = function() {
       $window.history.back();

@@ -26,7 +26,7 @@
       ng-repeat="participant in participants">
     <md-list-item ng-click="changeStatus(participant, $index)">
       <img alt="{{participant.first_name}}"
-           ng-src="{{loadImage(person.img)}}"
+           ng-src="{{loadImage(participant.image)}}"
            class="md-avatar" />
       <p>{{participant.last_name}} {{participant.first_name}}</p>
        <md-button ng-if="participant.isloading"
@@ -46,7 +46,12 @@
                   aria-label="done"
                   class="md-fab md-raised md-mini" style="color: {{getState(participant.att.state).color}}">
           <ng-md-icon icon="done_all"></ng-md-icon>
-
+       </md-button>
+       <md-button ng-if="participant.att"
+                  aria-label="Delete"
+                  ng-click="remove_attendance_events(participant)"
+                  class="md-fab md-raised md-mini">
+          <ng-md-icon icon="delete"></ng-md-icon>
        </md-button>
     </md-list-item>
   </div>

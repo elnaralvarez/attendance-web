@@ -5,6 +5,7 @@
     </span>
     <span flex></span>
     <md-switch class="md-secondary"
+               aria-label="Enabled"
                ng-change="removableChange()"
                ng-model="item.enabled"></md-switch>
   </div>
@@ -75,14 +76,10 @@
     <md-list-item ng-click="addParticipantToGroup(participant, $index)"
                   ng-class="{selectedItem: select.group != null && isMember(participant.group, select.group)}">
       <img alt="{{participant.first_name}}"
-           ng-src="{{loadImage(person.img)}}"
+           ng-src="{{loadImage(participant.image)}}"
            class="md-avatar" />
       <p>{{participant.last_name}} {{participant.first_name}}</p>
       <div ng-if="select.group != null">
-        <!-- <div ng-if="isMember(participant.group, select.group)">
-          <ng-md-icon icon="exposure_neg_1"
-                      aria-label="neg"></md-icon>
-        </div> -->
         <div ng-if="!isMember(participant.group, select.group)">
           <ng-md-icon icon="exposure_plus_1"
                       aria-label="posi"></md-icon>
@@ -93,7 +90,6 @@
 </div>
 <style media="screen">
 .selectedItem {
-  /*background: rgba(232, 232, 232, 0.99);*/
   background: rgba(218, 217, 217, 0.99);
 }
 </style>

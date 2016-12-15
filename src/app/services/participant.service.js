@@ -23,6 +23,11 @@
          method: 'GET',
          isArray: true,
          url: url + '/page/:page/limit/:limit'
+       },
+       search: {
+         method: 'GET',
+         isArray: true,
+         url: Global.PATH + '/v2/areas/:area_id/participants/page/:page/limit/:limit'
        }
      });
   }

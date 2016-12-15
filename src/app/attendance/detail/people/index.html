@@ -14,7 +14,7 @@
       ng-repeat="participant in participants">
     <md-list-item ng-click="changeStatus(participant, $index)">
       <img alt="{{participant.first_name}}"
-           ng-src="{{loadImage(person.img)}}"
+           ng-src="{{loadImage(participant.image)}}"
            class="md-avatar" />
       <p>{{participant.first_name}} {{participant.last_name}}</p>
        <md-button ng-if="participant.isloading"
