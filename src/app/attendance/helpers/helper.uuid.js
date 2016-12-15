@@ -13,6 +13,9 @@
             return v.toString(16);
         });
         return code;
+      },
+      generate: function() {
+        return Math.random().toString(20).slice(2);
       }
     };
   }
