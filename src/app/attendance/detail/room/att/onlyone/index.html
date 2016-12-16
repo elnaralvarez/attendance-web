@@ -9,12 +9,53 @@
       </md-button>
     </div>
     <div flex="20">
-      <md-button class="md-raised"
+      <md-button class="md-raised md-primary"
                  aria-label="cleanList">
         {{currentState.title}}
       </md-button>
     </div>
 </div>
+
+<md-toolbar class="md-table-toolbar md-default room-groups">
+  <div class="md-toolbar-tools">
+    <div ng-if="!search.alive">
+      <span ng-click="discartGroup()" ng-if="!search.alive">
+        Participantes
+      </span>
+      <md-button class="md-icon-button" aria-label="search" ng-click="search.alive = true">
+        <ng-md-icon icon="search"></ng-md-icon>
+      </md-button>
+    </div>
+    <div ng-if="search.alive" class="search">
+      <md-button class="md-icon-button" aria-label="search" ng-click="cancel_search()">
+        <ng-md-icon icon="keyboard_backspace"></ng-md-icon>
+      </md-button>
+      <md-input-container>
+        <label>Apellido</label>
+        <input ng-model="query.last_name">
+      </md-input-container>
+      <md-input-container>
+        <label>Nombre</label>
+        <input ng-model="query.first_name">
+      </md-input-container>
+      <md-button class="md-icon-button"
+                 aria-label="search"
+                 ng-click="search_participant(query.last_name, query.first_name)">
+        <ng-md-icon icon="search"></ng-md-icon>
+      </md-button>
+    </div>
+    <span flex></span>
+    <md-input-container>
+      <label>Grupos</label>
+      <md-select ng-model="select.group" ng-change="selectGroup()" class="group-select-width-limit">
+        <md-optgroup label="grupos">
+          <md-option ng-value="group._id" ng-repeat="group in groups">{{group.name}}</md-option>
+        </md-optgroup>
+      </md-select>
+    </md-input-container>
+  </div>
+</md-toolbar>
+
 <md-table-pagination md-limit="query.limit" md-limit-options="[15, 20, 25]" md-page="query.page" md-total="{{count}}" md-on-paginate="getParticipants" md-page-select></md-table-pagination>
 <div ng-if="participants.length == 0" class="wargos-text-align">
     <b>No existe <i>participantes</i> requistrados</b>

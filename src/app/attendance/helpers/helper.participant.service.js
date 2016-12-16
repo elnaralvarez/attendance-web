@@ -14,7 +14,6 @@
       },
       createParticipant: function() {
         var uuid = UUID.randomString(20);
-        console.log(uuid);
         var data = {
           area_id: scope.area._id,
           uid: uuid,

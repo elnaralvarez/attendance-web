@@ -25,6 +25,11 @@
          method: 'GET',
          isArray: true,
          url: url + '/page/:page/limit/:limit'
+       },
+       query_order_by: {
+         method: 'GET',
+         isArray: true,
+         url: Global.PATH + '/v3/areas/:area_id/states'
        }
      });
   }
