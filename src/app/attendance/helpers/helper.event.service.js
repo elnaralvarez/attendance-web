@@ -30,8 +30,8 @@
       },
       createEvent: function(room_id) {
         var data = {
-          start_date: getDateFormated(),
-          end_date: getDateFormated(),
+          start: getDateFormated(),
+          end: getDateFormated(),
           title: getDateFormated(),
           enabled: true
         }

@@ -22,6 +22,8 @@
         _id: event_id
       };
       Event.get(itemParams, function(response) {
+        response.start = new Date(response.start);
+        response.end = new Date(response.end);
         $scope.item = response;
       });
     } else {
@@ -40,7 +42,10 @@
 
     $scope.update = function(item) {
       item.$update(function(response) {
+        response.start = new Date(response.start);
+        response.end = new Date(response.end);
         HelperEvent.loadEvents(room_id);
+        $scope.item = response;
         $scope.goToBack();
       }, LocalError.request);
     }
