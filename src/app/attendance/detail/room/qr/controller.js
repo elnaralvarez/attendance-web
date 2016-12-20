@@ -31,9 +31,8 @@
       });
       $scope.participants = participants;
     }
-    console.log('restor');
+
     $scope.loadParticipants = function() {
-      console.log('geenrat');
       $scope.qr_query.limit = $scope.limit;
       Participant.pagination($scope.qr_query, success);
     };

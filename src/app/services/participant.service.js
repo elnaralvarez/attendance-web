@@ -19,6 +19,10 @@
          method: 'POST',
          url: Global.PATH + '/v2/areas/:area_id/participants'
        },
+       save_import: {
+         method: 'POST',
+         url: Global.PATH + '/v3/areas/:area_id/participants'
+       },
        pagination: {
          method: 'GET',
          isArray: true,

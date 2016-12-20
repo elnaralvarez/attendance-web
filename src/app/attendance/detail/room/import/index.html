@@ -31,12 +31,25 @@
 <md-toolbar class="md-table-toolbar md-default" ng-show="selected.length">
   <div class="md-toolbar-tools">
     <div>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</div>
+    <md-button aria-label="create"
+               class="md-raised"
+               ng-click="remove_participants('done')">
+      <ng-md-icon icon="done"></ng-md-icon>
+      Eliminar correctos
+    </md-button>
+    <md-button aria-label="create"
+               class="md-raised"
+               ng-click="remove_participants('fail')">
+      <ng-md-icon icon="delete"></ng-md-icon>
+      Eliminar fallidos
+    </md-button>
     <md-button type="button"
                class="md-raised md-primary"
                ng-click="createAlistOfParticipants()">
-               Guardar participantes
-             </md-button>
-   </div>
+      <ng-md-icon icon="save"></ng-md-icon>
+      Guardar
+    </md-button>
+    </div>
 </md-toolbar>
 
 <md-table-container>
@@ -45,11 +58,13 @@
       <tr md-row>
         <!-- <th md-column md-order-by="calories.value"><span>UID</span></th> -->
         <th md-column md-order-by="participant.uid"><span>UID</span></th>
-        <th md-column>Apellido</th>
-        <th md-column>Nombre</th>
+        <th md-column>Apellidos Nombre</th>
         <th md-column>Email</th>
         <th md-column>Celular</th>
+        <!-- <th md-column>CI</th> -->
         <th md-column>Direccion</th>
+        <th md-column>Grupo</th>
+        <th md-column>States</th>
       </tr>
     </thead>
     <tbody md-body>
@@ -58,10 +73,7 @@
           {{participant.uid}}
         </td>
         <td md-cell>
-          {{participant.last_name}}
-        </td>
-        <td md-cell>
-          {{participant.first_name}}
+          {{participant.last_name}} {{participant.first_name}}
         </td>
         <td md-cell>
           {{participant.email}}
@@ -69,8 +81,17 @@
         <td md-cell>
           {{participant.cel}}
         </td>
+        <!-- <td md-cell>
+          {{participant.ci}}
+        </td> -->
         <td md-cell>
           {{participant.address}}
+        </td>
+        <td md-cell>
+        "{{participant.group_helper.name}}"
+        </td>
+        <td md-cell>
+          {{participant.status.message}}
         </td>
       </tr>
     </tbody>

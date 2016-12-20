@@ -19,26 +19,14 @@
     UploadFiles
   ) {
     $scope.item = {
+      // file: '65317b9b6b6ba7233e43237c18e67e5a.xlsx'
     };
     UploadFiles.init($scope);
     var area_id = $state.params.area_id;
     var room_id = $state.params.room_id;
-    $scope.groups = [];
     $scope.participants = [];
     $scope.selected = [];
     $scope.upload = UploadFiles.upload;
-
-
-
-    $scope.getGroup = function(name) {
-      var result = null;
-      $scope.groups.forEach(function(item) {
-        if (item.name == name) {
-          result = item;
-        }
-      });
-      return result;
-    };
 
     $scope.buildParticipantObjects = function(participants) {
       var result = [];
@@ -53,10 +41,18 @@
           first_name: item[2],
           email: item[3] || 'none',
           cel: item[4] || 'none',
-          ci: 'none',
-          address: item[5] || 'none',
+          ci: item[5] || 'none',
+          address: item[6] || 'none',
           image: null,
-          groupName: item[6]
+          group_helper: {
+            area: $state.params.area_id,
+            room: $state.params.room_id,
+            name: item[7] ? item[7].trim() : ''
+          },
+          status:  {
+            key: 'in-progress',
+            message: 'En proceso!'
+          }
         });
       });
       return result;
@@ -76,56 +72,71 @@
     }
     UploadFiles.setImportCallback($scope.importfromExcel);
 
-    $scope.validateGroups = function() {
-      var result = true;
-      $scope.selected.forEach(function(item) {
-        if (item.groupName) {
-          var group = $scope.getGroup(item.groupName);
-          if (group) {
-            item.group = group._id;
-          } else {
-            Toast.show('No existe un grupo con el nombre "' + item.groupName + '"');
-            result = false;
-          }
-        }
-      });
-      return result;
+    $scope.createAlistOfParticipants = function() {
+      // $scope.selected.forEach(function(item) {
+      //   var items = $scope.selected;
+      // });
+      $scope.create_recursive($scope.selected, 0);
     };
 
-    $scope.createAlistOfParticipants = function() {
-      if ($scope.validateGroups()) {
-        $scope.selected.forEach(function(item) {
-          $scope.create(item);
-        });
+    $scope.create_recursive = function(items, index) {
+      if (index >= items.length) {
+        return;
       }
+      Participant.save_import(items[index], function(response) {
+        items[index].status = {
+          key: 'done',
+          message: 'Guardado!'
+        };
+        $scope.create_recursive(items, ++index);
+      }, function(err) {
+        items[index].status = {
+          key: 'fail',
+          message: err.data.message
+        };
+        $scope.create_recursive(items, ++index);
+        LocalError.request(err);
+      });
     };
 
     $scope.create = function(item) {
-      Participant.save(item, function(response) {
-        $scope.removeFromList(response);
-      }, LocalError.request);
+      Participant.save_import(item, function(response) {
+        item.status = {
+          key: 'done',
+          message: 'Guardado!'
+        };
+      }, function(err) {
+        item.status = {
+          key: 'fail',
+          message: err.data.message
+        };
+        LocalError.request(err);
+      });
     };
 
-    $scope.removeFromList = function(item) {
-      var participants = $scope.participants;
-      for (var i = 0; i < participants.length; i++) {
-        if (item.uid == participants[i].uid) {
-          $scope.participants.splice(i, 1);
-        }
-      }
+    $scope.remove_participants = function(state) {
+      $scope.remove_participants_unselected(state);
       var selected = $scope.selected;
+      var result = [];
       for (var i = 0; i < selected.length; i++) {
-        if (item.uid == selected[i].uid) {
-          $scope.selected.splice(i, 1);
+        if (state != selected[i].status.key) {
+          result.push(selected[i]);
         }
       }
-    };
+      $scope.selected = result;
+      selected = null;
+    }
 
-    Group.query({
-      area: area_id,
-      room: room_id,
-    }, function(response) {
-      $scope.groups = response;
-    }, LocalError.request);
+    $scope.remove_participants_unselected = function(state) {
+      var selected = $scope.participants;
+      var result = [];
+      for (var i = 0; i < selected.length; i++) {
+        if (state != selected[i].status.key) {
+          result.push(selected[i]);
+        }
+      }
+      $scope.participants = result;
+      selected = null;
+    }
   }
 })();
