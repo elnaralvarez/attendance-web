@@ -24,6 +24,7 @@
     UploadFiles.init($scope);
     var area_id = $state.params.area_id;
     var room_id = $state.params.room_id;
+    $scope.url = Global.PATH + '/public/assets/participants.xlsx';
     $scope.participants = [];
     $scope.selected = [];
     $scope.upload = UploadFiles.upload;

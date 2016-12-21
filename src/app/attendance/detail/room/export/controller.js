@@ -26,13 +26,13 @@
     $scope.reports = [];
 
     $scope.generateReport = function() {
-        Reports.att_report({
-          _id: room_id
-        }, function(response) {
-          response.url = UploadFiles.FILE_PATH + '/' + response.name;
-          $scope.reports.push(response);
-        }, LocalError.request);
-      }
+      Reports.att_report({
+        _id: room_id
+      }, function(response) {
+        response.url = UploadFiles.FILE_PATH + '/' + response.name;
+        $scope.reports.push(response);
+      }, LocalError.request);
+    }
 
 
     // $scope.participants = [];
