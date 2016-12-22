@@ -85,18 +85,26 @@
 
 <div layout="row" layout-wrap>
   <div layout-padding ng-repeat="participant in participants">
-    <qrcode version="2"
+    <!-- <qrcode version="2"
             size="{{size}}"
             error-correction-level="M"
             data="{{participant.qr}}"
-            href="{{participant.qr}}">
-    </qrcode>
+            href="#!/attendance/{{area_id}}/participant/{{participant._id}}">
+    </qrcode> -->
+    <a href="#!/attendance/{{area_id}}/participant/{{participant._id}}">
+      <qr type-number="2"
+          correction-level="'M'"
+          size="size"
+          input-mode="'ALPHA_NUM'"
+          text="participant.uid" image="true">
+      </qr>
+    </a>
     <div class="qr-footer">
       <h5>{{participant.first_name}}</h5>
       <h5 style="padding: 0px; margin:0px; font-size: 8px;">
         {{participant.last_name}}
       </h5>
-      <!-- <h6>{{participant.uid}}</h6> -->
+      <h6>{{participant.uid}}</h6>
     </div>
   </div>
 </div>

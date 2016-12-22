@@ -1,7 +1,11 @@
 <div>
-  <div ng-repeat="participant in participants" style="float:left;margin:10px;">
-    <qrcode version="2" size="{{size}}" error-correction-level="M" data="{{participant.uid}}">
-    </qrcode>
+  <div ng-repeat="participant in participants" style="float:left;padding:10px;">
+    <qr type-number="2"
+        correction-level="'M'"
+        size="size"
+        input-mode="'ALPHA_NUM'"
+        text="participant.uid" image="true">
+    </qr>
     <div style="text-align: center;">
       <h5 style="padding: 0px; margin:0px; font-size: 10px;">
         {{participant.first_name}}

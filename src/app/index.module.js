@@ -11,9 +11,9 @@
       'ngResource',
       'ui.router',
       'ngFileUpload',
-      'monospaced.qrcode',
       'ngMaterial',
       'ngMdIcons',
-      'md.data.table'
+      'md.data.table',
+      'ja.qr'
     ]);
 })();

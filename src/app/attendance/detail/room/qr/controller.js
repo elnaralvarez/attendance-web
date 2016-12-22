@@ -15,6 +15,7 @@
     LocalError
   ) {
     var area_id = $state.params.area_id;
+    $scope.area_id = $state.params.area_id;
     var room_id = $state.params.room_id;
     $scope.participants = [];
     $scope.search = {
@@ -70,13 +71,13 @@
     $scope.print = function() {
       var url = null;
       if ($scope.query.group) {
-        url = "/#/print/areas/{area_id}/rooms/{room_id}/groups/{group_id}/page/{page}"
+        url = "/#!/print/areas/{area_id}/rooms/{room_id}/groups/{group_id}/page/{page}"
         .replace('{area_id}', area_id)
         .replace('{room_id}', room_id)
         .replace('{group_id}', $scope.query.group)
         .replace('{page}', $scope.query.page);
       } else {
-        url = "/#/print/areas/{area_id}/rooms/{room_id}/page/{page}"
+        url = "/#!/print/areas/{area_id}/rooms/{room_id}/page/{page}"
         .replace('{area_id}', area_id)
         .replace('{room_id}', room_id)
         .replace('{page}', $scope.query.page);
