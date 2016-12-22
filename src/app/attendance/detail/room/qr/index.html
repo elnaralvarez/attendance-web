@@ -4,6 +4,10 @@
       Identificadores
     </h2>
     <span flex></span>
+    <!-- <md-button class="md-raised"
+               ui-sref="attendance.detail.room.template">
+               Template
+    </md-button> -->
     <div layout="row">
       <input type="number"
              class="wargos-qr-input"
@@ -15,9 +19,8 @@
              ng-change="updateDefaultData()"
              ng-model="limit"
              placeholder="15"/>
-      </md-button>
       <md-button class="md-raised"
-                 ng-click="loadParticipants()">
+                 ng-click="getParticipants()">
                  Buscar
       </md-button>
       <a class="md-button md-raised"
@@ -70,7 +73,7 @@
     <md-button class="md-icon-button"
               aria-label="next"
               ng-click="next()">
-     <ng-md-icon icon="chevron_right"></ng-md-icon>
+      <ng-md-icon icon="chevron_right"></ng-md-icon>
     </md-button>
     <md-input-container>
       <label>Grupos</label>

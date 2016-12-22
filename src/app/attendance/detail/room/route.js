@@ -29,6 +29,11 @@
       templateUrl: base_url + '/qr/index.html',
       controller: 'AreaDetailQrController'
     });
+    $stateProvider.state('attendance.detail.room.template', {
+      url: '/template',
+      templateUrl: base_url + '/template/index.html',
+      controller: 'AreaDetailTemplateController'
+    });
     $stateProvider.state('attendance.detail.room.groups', {
       url: '/groups',
       templateUrl: base_url + '/groups/index.html',

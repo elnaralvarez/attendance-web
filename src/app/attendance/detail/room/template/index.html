@@ -1,0 +1,55 @@
+<md-toolbar>
+  <div class="md-toolbar-tools">
+    <md-button class="md-icon-button" aria-label="search" ui-sref="attendance.detail.room.qr">
+      <ng-md-icon icon="keyboard_backspace"></ng-md-icon>
+    </md-button>
+    <h2>
+      Identificadores
+    </h2>
+    <span flex></span>
+    <div layout="row">
+      <input type="number"
+             class="wargos-qr-input"
+             ng-change="updateDefaultData()"
+             ng-model="size"
+             placeholder="200"/>
+    </div>
+    <md-button class="md-raised"
+               ng-click="attendance.detail.room.template">
+               Display
+    </md-button>
+  </div>
+</md-toolbar>
+
+<textarea ng-model="template" rows="8" cols="80"></textarea>
+
+<!-- <div layout="row" ng-bind-html="template"> -->
+<div layout="row" ng-bind-html="template | unsafe">
+
+</div>
+
+<div layout="row" layout-wrap>
+  <div layout-padding ng-repeat="participant in participants">
+    <!-- <qrcode version="2"
+            size="{{size}}"
+            error-correction-level="M"
+            data="{{participant.qr}}"
+            href="#!/attendance/{{area_id}}/participant/{{participant._id}}">
+    </qrcode> -->
+    <a href="#!/attendance/{{area_id}}/participant/{{participant._id}}">
+      <qr type-number="2"
+          correction-level="'M'"
+          size="size"
+          input-mode="'ALPHA_NUM'"
+          text="participant.uid" image="true">
+      </qr>
+    </a>
+    <div class="qr-footer">
+      <h5>{{participant.first_name}}</h5>
+      <h5 style="padding: 0px; margin:0px; font-size: 8px;">
+        {{participant.last_name}}
+      </h5>
+      <h6>{{participant.uid}}</h6>
+    </div>
+  </div>
+</div>

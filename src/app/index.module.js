@@ -15,5 +15,7 @@
       'ngMdIcons',
       'md.data.table',
       'ja.qr'
-    ]);
+    ])
+    .filter('unsafe', function($sce) { return $sce.trustAsHtml; });
+ ;
 })();
