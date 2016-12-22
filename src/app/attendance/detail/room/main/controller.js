@@ -84,7 +84,6 @@
       });
     };
 
-
     // pagination
     $scope.count = 1000;
     $scope.query = {

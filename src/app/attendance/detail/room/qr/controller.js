@@ -10,18 +10,25 @@
     $scope,
     $state,
     Participant,
-    Store
+    Store,
+    Group,
+    LocalError
   ) {
+    var area_id = $state.params.area_id;
     var room_id = $state.params.room_id;
     $scope.participants = [];
+    $scope.search = {
+      alive: false
+    };
 
     $scope.limit = parseInt(Store.load('print_limit', true)) || 20;
     $scope.size = parseInt(Store.load('print_size', true)) || 100;
-    console.log($scope.limit);
-    console.log($scope.size);
+    Store.save('print_limit', $scope.limit, true);
+    Store.save('print_size', $scope.size, true);
 
-    $scope.qr_query = {
-      rooms: [room_id],
+    $scope.query = {
+      area_id: area_id,
+      rooms: room_id,
       page: 1
     };
 
@@ -32,39 +39,48 @@
       $scope.participants = participants;
     }
 
-    $scope.loadParticipants = function() {
-      $scope.qr_query.limit = $scope.limit;
-      Participant.pagination($scope.qr_query, success);
+    $scope.getParticipants = function() {
+      $scope.query.limit = $scope.limit;
+      Participant.search($scope.query, success);
     };
 
-    $scope.loadParticipants();
+    $scope.getParticipants();
     // end pagination
 
     $scope.next = function() {
-      $scope.qr_query.page += 1;
-      $scope.loadParticipants();
+      $scope.query.page += 1;
+      $scope.getParticipants();
     };
 
     $scope.reset = function() {
-      $scope.qr_query.page = 1;
-      $scope.loadParticipants();
+      $scope.query.page = 1;
+      $scope.getParticipants();
     };
 
     $scope.previous = function() {
-      $scope.qr_query.page -= 1;
-      $scope.loadParticipants();
+      $scope.query.page -= 1;
+      $scope.getParticipants();
     };
 
     $scope.updateDefaultData = function() {
-      console.log('updating...');
       Store.save('print_limit', $scope.limit, true);
       Store.save('print_size', $scope.size, true);
     }
 
     $scope.print = function() {
-      // $state.go('print');
-      var url = "/#/print/room/{room_id}/page/{page}"
-        .replace('{room_id}', room_id).replace('{page}', $scope.qr_query.page);
+      var url = null;
+      if ($scope.query.group) {
+        url = "/#/print/areas/{area_id}/rooms/{room_id}/groups/{group_id}/page/{page}"
+        .replace('{area_id}', area_id)
+        .replace('{room_id}', room_id)
+        .replace('{group_id}', $scope.query.group)
+        .replace('{page}', $scope.query.page);
+      } else {
+        url = "/#/print/areas/{area_id}/rooms/{room_id}/page/{page}"
+        .replace('{area_id}', area_id)
+        .replace('{room_id}', room_id)
+        .replace('{page}', $scope.query.page);
+      }
       $scope.print_url = url;
     }
 
@@ -77,5 +93,43 @@
       }
       return participant.uid;
     }
+
+    // filter
+    $scope.cancel_search = function() {
+      delete $scope.query.last_name;
+      delete $scope.query.first_name;
+      $scope.search.alive = false;
+      $scope.getParticipants();
+    }
+
+    $scope.search_participant = function(last_name, first_name) {
+      $scope.query.last_name = last_name  == '' ? null : last_name;
+      $scope.query.first_name = first_name  == '' ? null : first_name;
+      $scope.getParticipants();
+    };
+
+    $scope.discartGroup = function() {
+      $scope.select.group = null;
+      delete $scope.query.group;
+      $scope.getParticipants();
+    }
+
+    $scope.selectGroup = function() {
+      var group_id = $scope.select.group;
+      $scope.query.group = group_id;
+      $scope.getParticipants();
+    };
+
+    // groups
+    $scope.select = {
+      group: null
+    };
+
+    Group.query({
+      area: area_id,
+      room: room_id,
+    }, function(response) {
+      $scope.groups = response;
+    }, LocalError.request);
   }
 })();

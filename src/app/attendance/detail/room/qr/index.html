@@ -15,19 +15,6 @@
              ng-change="updateDefaultData()"
              ng-model="limit"
              placeholder="15"/>
-      <md-button class="md-raised"
-                 aria-label="previous"
-                 ng-click="previous()">
-                 <ng-md-icon icon="chevron_left"></ng-md-icon>
-      </md-button>
-      <md-button class="md-raised"
-                 ng-click="reset()">
-                 {{qr_query.page}}
-      </md-button>
-      <md-button class="md-raised"
-                aria-label="next"
-                ng-click="next()">
-                <ng-md-icon icon="chevron_right"></ng-md-icon>
       </md-button>
       <md-button class="md-raised"
                  ng-click="loadParticipants()">
@@ -37,14 +24,65 @@
           target="_blank"
           ng-href="{{print_url}}"
           ng-mousedown="print()">Imprimir</a>
-      <!-- <md-button class="md-raised"
-                 target="_blank"
-                 ng-click="print()">
-                 Imprimir
-     </md-button> -->
     </div>
   </div>
 </md-toolbar>
+
+<md-toolbar class="md-table-toolbar md-default room-groups">
+  <div class="md-toolbar-tools">
+    <div ng-if="!search.alive">
+      <span ng-click="discartGroup()" ng-if="!search.alive">
+        Participantes
+      </span>
+      <md-button class="md-icon-button" aria-label="search" ng-click="search.alive = true">
+        <ng-md-icon icon="search"></ng-md-icon>
+      </md-button>
+    </div>
+    <div ng-if="search.alive" class="search">
+      <md-button class="md-icon-button" aria-label="search" ng-click="cancel_search()">
+        <ng-md-icon icon="keyboard_backspace"></ng-md-icon>
+      </md-button>
+      <md-input-container>
+        <label>Apellido</label>
+        <input ng-model="query.last_name">
+      </md-input-container>
+      <md-input-container>
+        <label>Nombre</label>
+        <input ng-model="query.first_name">
+      </md-input-container>
+      <md-button class="md-icon-button"
+                 aria-label="search"
+                 ng-click="search_participant(query.last_name, query.first_name)">
+        <ng-md-icon icon="search"></ng-md-icon>
+      </md-button>
+    </div>
+    <span flex></span>
+    <md-button class="md-icon-button"
+               aria-label="previous"
+               ng-click="previous()">
+      <ng-md-icon icon="chevron_left"></ng-md-icon>
+    </md-button>
+    <md-button class="md-icon-button"
+               aria-label="reset"
+               ng-click="reset()">
+               {{query.page}}
+    </md-button>
+    <md-button class="md-icon-button"
+              aria-label="next"
+              ng-click="next()">
+     <ng-md-icon icon="chevron_right"></ng-md-icon>
+    </md-button>
+    <md-input-container>
+      <label>Grupos</label>
+      <md-select ng-model="select.group" ng-change="selectGroup()" class="group-select-width-limit">
+        <md-optgroup label="grupos">
+          <md-option ng-value="group._id" ng-repeat="group in groups">{{group.name}}</md-option>
+        </md-optgroup>
+      </md-select>
+    </md-input-container>
+  </div>
+</md-toolbar>
+
 <div layout="row" layout-wrap>
   <div layout-padding ng-repeat="participant in participants">
     <qrcode version="2"

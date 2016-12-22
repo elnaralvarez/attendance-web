@@ -1,24 +1,17 @@
-<div layout="row" layout-wrap>
-  <div layout-padding ng-repeat="participant in participants">
-    <qrcode version="2"
-            size="{{size}}"
-            error-correction-level="M"
-            data="{{participant.qr}}"
-            href="{{participant.qr}}">
+<div>
+  <div ng-repeat="participant in participants" style="float:left;margin:10px;">
+    <qrcode version="2" size="{{size}}" error-correction-level="M" data="{{participant.uid}}">
     </qrcode>
-    <div class="qr-footer">
+    <div style="text-align: center;">
       <h5 style="padding: 0px; margin:0px; font-size: 10px;">
         {{participant.first_name}}
       </h5>
       <h5 style="padding: 0px; margin:0px; font-size: 8px;">
         {{participant.last_name}}
       </h5>
-      <!-- <h6>{{participant.uid}}</h6> -->
+      <h5 style="padding: 0px; margin:0px; font-size: 8px;">
+        {{participant.uid}}
+      </h5>
     </div>
   </div>
 </div>
-<style media="screen">
-.qr-footer h5, .qr-footer h4, .qr-footer h6 {
-  text-align: center;
-}
-</style>

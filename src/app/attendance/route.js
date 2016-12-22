@@ -32,8 +32,18 @@
       controller: 'AttendanceHomeController'
     });
 
-    $stateProvider.state('print', {
-      url: '/print/room/:room_id/page/:page',
+    $stateProvider.state('printparticipants', {
+      url: '/print/areas/:area_id/rooms/:room_id/page/:page',
+      templateUrl: base_url + '/print/index.html',
+      controller: 'PrintController',
+      resolve: {
+        simpleObj: function(Global) {
+          Global.start();
+        }
+      }
+    });
+    $stateProvider.state('printgroups', {
+      url: '/print/areas/:area_id/rooms/:room_id/groups/:group_id/page/:page',
       templateUrl: base_url + '/print/index.html',
       controller: 'PrintController',
       resolve: {
