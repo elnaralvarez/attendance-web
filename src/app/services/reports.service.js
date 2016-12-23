@@ -18,7 +18,12 @@
          method: 'PUT'
        },
        att_report: {
-         method: 'GET'
+         method: 'GET',
+         url: Global.PATH + '/v2/reports/rooms/:room_id/att'
+       },
+       att_report_by_group: {
+         method: 'GET',
+         url: Global.PATH + '/v2/reports/rooms/:room_id/groups/:group_id/att'
        },
        arrive: {
          method: 'GET',

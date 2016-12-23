@@ -16,24 +16,59 @@
     Toast,
     Files,
     Reports,
+    Group,
     UploadFiles
   ) {
     var room_id = $state.params.room_id;
-    // $scope.item = {
-    // };
-    // UploadFiles.init($scope);
-
+    var area_id = $state.params.area_id;
     $scope.reports = [];
 
     $scope.generateReport = function() {
-      Reports.att_report({
-        _id: room_id
-      }, function(response) {
-        response.url = UploadFiles.FILE_PATH + '/' + response.name;
-        $scope.reports.push(response);
-      }, LocalError.request);
+      if ($scope.select.group) {
+        Reports.att_report_by_group({
+          room_id: room_id,
+          group_id: $scope.select.group
+        }, function(response) {
+          response.url = UploadFiles.FILE_PATH + '/' + response.name;
+          $scope.reports.push(response);
+        }, LocalError.request);
+      } else {
+        Reports.att_report({
+          room_id: room_id
+        }, function(response) {
+          response.url = UploadFiles.FILE_PATH + '/' + response.name;
+          $scope.reports.push(response);
+        }, LocalError.request);
+      }
     }
 
+    // groups
+    $scope.select = {
+      group: null
+    };
+
+    $scope.discartGroup = function() {
+      $scope.select.group = null;
+      // delete $scope.query.group;
+      // $scope.getParticipants();
+    }
+
+    $scope.selectGroup = function() {
+      // var group_id = $scope.select.group;
+      // $scope.query.group = group_id;
+      // $scope.getParticipants();
+    };
+
+    Group.query({
+      area: area_id,
+      room: room_id,
+    }, function(response) {
+      $scope.groups = response;
+    }, LocalError.request);
+
+    // $scope.item = {
+    // };
+    // UploadFiles.init($scope);
 
     // $scope.participants = [];
     // $scope.selected = [];

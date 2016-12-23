@@ -1,13 +1,21 @@
-<md-toolbar>
+<md-toolbar class="md-table-toolbar md-default room-groups">
   <div class="md-toolbar-tools">
-    <h2 class="md-title">Reportes</h2>
+    <span ng-click="discartGroup()" ng-if="!search.alive">
+      Reportes
+    </span>
     <span flex></span>
-    <div layout="row">
-      <md-button class="md-raised"
-                 ng-click="generateReport()">
-                Generar reporte
-     </md-button>
-    </div>
+    <md-input-container>
+      <label>Grupos</label>
+      <md-select ng-model="select.group" ng-change="selectGroup()" class="group-select-width-limit">
+        <md-optgroup label="grupos">
+          <md-option ng-value="group._id" ng-repeat="group in groups">{{group.name}}</md-option>
+        </md-optgroup>
+      </md-select>
+    </md-input-container>
+    <md-button class="md-raised"
+               ng-click="generateReport()">
+      Generar reporte
+    </md-button>
   </div>
 </md-toolbar>
 
