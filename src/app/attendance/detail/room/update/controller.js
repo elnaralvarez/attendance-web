@@ -62,7 +62,6 @@
       });
       participant.rooms = rooms;
       participant.$update(function(response) {
-        console.log(response);
         Toast.show('El participante fue actualizado');
       });
     };
@@ -77,7 +76,7 @@
         return is_new;
     }
 
-    $scope.add_participant_to_room = function(participant) {
+    $scope.add_participant_to_room = function(participant, $index) {
       var is_new = true;
       participant.rooms.forEach(function(item) {
         if (room_id == item) {
@@ -90,16 +89,18 @@
           Toast.show('El participante fue actualizado');
         });
       } else {
-        Toast.show('El participante ya pertenece a este grupo');
+        $scope.remove_participant_to_room(participant, $index);
       }
     };
 
     // pagination
     $scope.count = 1000;
+    $scope.search = {
+      alive: false
+    };
     $scope.query = {
-      // rooms: room_id,
-      area: area_id,
-      limit: 15,
+      area_id: area_id,
+      limit: 25,
       page: 1
     };
 
@@ -108,9 +109,15 @@
     };
 
     $scope.getParticipants = function() {
-      Participant.pagination($scope.query, success);
+      Participant.search($scope.query, success);
     };
 
     $scope.getParticipants();
+
+    $scope.search_participant = function(last_name, first_name) {
+      $scope.query.last_name = last_name  == '' ? null : last_name;
+      $scope.query.first_name = first_name  == '' ? null : first_name;
+      $scope.getParticipants();
+    };
   }
 })();

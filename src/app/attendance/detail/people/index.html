@@ -1,6 +1,40 @@
-<md-toolbar class="md-table-toolbar md-default">
+<md-toolbar class="md-table-toolbar md-default room-groups">
   <div class="md-toolbar-tools">
-    <span>Participantes</span>
+    <div ng-if="!search.alive">
+      <span ng-click="discartGroup()" ng-if="!search.alive">
+        Participantes
+      </span>
+      <md-button class="md-icon-button" aria-label="search" ng-click="search.alive = true">
+        <ng-md-icon icon="search"></ng-md-icon>
+      </md-button>
+    </div>
+    <div ng-if="search.alive" class="search">
+      <md-button class="md-icon-button" aria-label="search" ng-click="cancel_search()">
+        <ng-md-icon icon="keyboard_backspace"></ng-md-icon>
+      </md-button>
+      <md-input-container>
+        <label>Apellido</label>
+        <input ng-model="query.last_name">
+      </md-input-container>
+      <md-input-container>
+        <label>Nombre</label>
+        <input ng-model="query.first_name">
+      </md-input-container>
+      <md-button class="md-icon-button"
+                 aria-label="search"
+                 ng-click="search_participant(query.last_name, query.first_name)">
+        <ng-md-icon icon="search"></ng-md-icon>
+      </md-button>
+    </div>
+    <span flex></span>
+    <md-input-container>
+      <label>Grupos</label>
+      <md-select ng-model="select.group" ng-change="selectGroup()" class="group-select-width-limit">
+        <md-optgroup label="grupos">
+          <md-option ng-value="group._id" ng-repeat="group in groups">{{group.name}}</md-option>
+        </md-optgroup>
+      </md-select>
+    </md-input-container>
   </div>
 </md-toolbar>
 <md-table-pagination md-limit="query.limit" md-limit-options="[25, 30, 35]" md-page="query.page" md-total="{{count}}" md-on-paginate="getParticipants" md-page-select></md-table-pagination>
@@ -12,7 +46,7 @@
       flex-sm="50"
       flex-xs="100"
       ng-repeat="participant in participants">
-    <md-list-item ng-click="changeStatus(participant, $index)">
+    <md-list-item ui-sref="attendance.detail.participant({participant_id: participant._id})">
       <img alt="{{participant.first_name}}"
            ng-src="{{loadImage(participant.image)}}"
            class="md-avatar" />
@@ -33,5 +67,4 @@
        </md-button>
     </md-list-item>
   </div>
-
 </div>

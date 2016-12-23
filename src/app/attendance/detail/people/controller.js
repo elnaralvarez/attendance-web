@@ -15,17 +15,21 @@
     Participant,
     State,
     Auth,
+    Group,
     AttendanceAtts,
     LocalError
   ) {
-    console.log('init people');
     var area_id = $state.params.area_id;
-
+    var room_id = $state.params.room_id;
     $scope.participants = [];
 
     $scope.count = 1000;
+    $scope.search = {
+      alive: false
+    };
     $scope.query = {
-      area: area_id,
+      area_id: area_id,
+      rooms: room_id,
       limit: 30,
       page: 1
     };
@@ -35,10 +39,40 @@
     }
 
     $scope.getParticipants = function() {
-      $scope.promise = Participant.pagination($scope.query, success).$promise;
+      $scope.promise = Participant.search($scope.query, success).$promise;
     };
 
     $scope.getParticipants();
+
+    // groups
+    $scope.select = {
+      group: null
+    };
+
+    Group.query({
+      area: area_id,
+      room: room_id,
+    }, function(response) {
+      $scope.groups = response;
+    }, LocalError.request);
+
+    $scope.discartGroup = function() {
+      $scope.select.group = null;
+      delete $scope.query.group;
+      $scope.getParticipants();
+    }
+
+    $scope.selectGroup = function() {
+      var group_id = $scope.select.group;
+      $scope.query.group = group_id;
+      $scope.getParticipants();
+    };
+
+    $scope.search_participant = function(last_name, first_name) {
+      $scope.query.last_name = last_name  == '' ? null : last_name;
+      $scope.query.first_name = first_name  == '' ? null : first_name;
+      $scope.getParticipants();
+    };
   };
 
 })();
