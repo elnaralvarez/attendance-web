@@ -32,7 +32,7 @@
        },
        att_groups_report: {
          method: 'GET',
-         url: url + '/rooms/:room_id/events/:event_id/groups',
+         url: url + '/rooms/:room_id/events/:event_id/groups2',
          isArray: true
        },
        att_groups_report2: {

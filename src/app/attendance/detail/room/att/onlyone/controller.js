@@ -52,6 +52,7 @@
       }, function(response) {
         participant.isloading = false;
         participant.att = response;
+        $scope.atts.push(response);
       });
     }
 

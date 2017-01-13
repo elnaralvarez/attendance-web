@@ -168,12 +168,33 @@
           // here is my problem
           // the ng-if don't react when $scope.activated is changed
           if (event_id == message.event) {
-            var group = getGroup(message.current_participant.group);
-            if (!existId(group.current, message.current_participant._id)) {
-              group.current.push(message.current_participant._id);
-              $scope.update_donut(group);
-            } else {
-              console.log('participant registered');
+            message.current_participant.groups.forEach(function(group_id) {
+              var group = getGroup(group_id);
+              if (!group) {
+                return;
+              }
+              if (!existId(group.current, message.current_participant._id)) {
+                group.current.push(message.current_participant._id);
+                $scope.update_donut(group);
+              } else {
+                console.log('participant registered');
+              }
+            });
+
+            var isAloneParticipant = true;
+            message.current_participant.groups.forEach(function(group_id) {
+              if (getGroup(group_id)) {
+                isAloneParticipant = false;
+              }
+            });
+            if (isAloneParticipant) {
+              var group = getGroup(null);
+              if (!existId(group.current, message.current_participant._id)) {
+                group.current.push(message.current_participant._id);
+                $scope.update_donut(group);
+              } else {
+                console.log('participant registered');
+              }
             }
           } else {
             console.log('data from other event');

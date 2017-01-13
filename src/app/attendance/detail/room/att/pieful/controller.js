@@ -42,8 +42,8 @@
           categories.push(group.name);
         }
         var porcentage = 0;
-        if (item.current != 0) {
-            porcentage = (item.current * 100) / item.total;
+        if (item.current.length != 0) {
+            porcentage = (item.current.length * 100) / item.total;
         }
         ontime.push(porcentage);
         faltas.push(100 - porcentage);
