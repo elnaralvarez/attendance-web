@@ -67,6 +67,7 @@
         area_id: area._id,
         room_id: area.room
       }); // }, {reload: true});
+      $mdSidenav('left').close();
     };
 
     $scope.toggleSidenav = function(menuId) {

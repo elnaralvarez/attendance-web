@@ -1,4 +1,4 @@
-<md-toolbar layout="row" ng-if="!user">
+<md-toolbar layout="row" ng-if="!user" class="md-whiteframe-5dp">
   <div class="md-toolbar-tools">
     <a ui-sref="home">
       <h3>
@@ -15,13 +15,13 @@
   </div>
 </md-toolbar>
 
-<md-toolbar layout="row" ng-if="user">
+<md-toolbar layout="row" ng-if="user" class="md-whiteframe-5dp">
   <div class="md-toolbar-tools">
       <md-button ng-click="toggleSidenav('left')"
                  hide-gt-sm class="md-icon-button">
         <ng-md-icon icon="menu"></ng-md-icon>
       </md-button>
-      <a ui-sref="attendance">
+      <a ui-sref="attendance.home">
         <h1>Attendance</h1>
       </a>
     <div layout="row" hide-xs hide-sm>

@@ -1,6 +1,7 @@
 <div layout="column" class="main">
   <!-- <md-toolbar ng-if="!user" class="md-whiteframe-5dp md-theme-indigo"> -->
-  <md-toolbar ng-if="!user" class="md-whiteframe-5dp">
+  <header-navbar options="options"></header-navbar>
+  <!-- <md-toolbar ng-if="!user" class="md-whiteframe-5dp">
     <div class="md-toolbar-tools">
       <a ui-sref="home">
         <h3>
@@ -15,7 +16,7 @@
         </md-button>
       </div>
     </div>
-  </md-toolbar>
+  </md-toolbar> -->
   <!-- be careful: nothing between md-toolbar and md-content -->
   <md-content flex>
     <ui-view>
