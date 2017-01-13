@@ -73,7 +73,7 @@
     $scope.loadListOfAdministrators = function() {
       $scope.administrators = [];
       $scope.item.users.forEach(function(user_id) {
-        if ($scope.item.user_id == user_id) {
+        if ($scope.item.user == user_id) {
           return;
         }
         Users.get({

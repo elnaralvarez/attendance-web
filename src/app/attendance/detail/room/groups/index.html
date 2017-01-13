@@ -80,13 +80,13 @@
        flex-xs="100"
       ng-repeat="participant in participants">
     <md-list-item ng-click="addParticipantToGroup(participant, $index)"
-                  ng-class="{selectedItem: select.group != null && isMember(participant.group, select.group)}">
+                  ng-class="{selectedItem: select.group != null && isMember(participant.groups, select.group)}">
       <img alt="{{participant.first_name}}"
            ng-src="{{loadImage(participant.image)}}"
            class="md-avatar" />
       <p>{{participant.last_name}} {{participant.first_name}}</p>
       <div ng-if="select.group != null">
-        <div ng-if="!isMember(participant.group, select.group)">
+        <div ng-if="!isMember(participant.groups, select.group)">
           <ng-md-icon icon="exposure_plus_1"
                       aria-label="posi"></md-icon>
         </div>

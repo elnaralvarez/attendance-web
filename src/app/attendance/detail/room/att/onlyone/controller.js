@@ -174,13 +174,13 @@
 
     $scope.discartGroup = function() {
       $scope.select.group = null;
-      delete $scope.query.group;
+      delete $scope.query.groups;
       $scope.getParticipants();
     }
 
     $scope.selectGroup = function() {
       var group_id = $scope.select.group;
-      $scope.query.group = group_id;
+      $scope.query.groups = group_id;
       $scope.getParticipants();
     };
   };
