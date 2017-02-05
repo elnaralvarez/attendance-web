@@ -25,7 +25,6 @@
       } catch (e) {
         console.log('Session is no longer alive');
       }
-
     }
   }
 })();

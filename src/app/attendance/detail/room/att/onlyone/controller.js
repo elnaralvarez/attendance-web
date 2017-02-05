@@ -9,6 +9,7 @@
   function controller(
     $scope,
     $state,
+    $mdDialog,
     Global,
     Store,
     Event,
@@ -16,6 +17,7 @@
     State,
     Auth,
     AttendanceAtts,
+    Note,
     Toast,
     Group,
     LocalError
@@ -54,6 +56,48 @@
         participant.att = response;
         $scope.atts.push(response);
       });
+    }
+
+    $scope.add_message = function(participant, index, ev) {
+      if (!event_id) {
+        Toast.show('Seleccione un evento');
+        return;
+      };
+      if (!participant._id) {
+        throw new Error('participant in undefined');
+      };
+      if (!$scope.currentState) {
+        throw new Error('state in undefined');
+      };
+
+      Note.find_message({
+        area_id: area_id,
+        event_id: event_id,
+        room_id: room_id,
+        participant: participant._id
+      }, function(response) {
+          if (response.length > 0) {
+            var note = response[0];
+            $scope.show_note_dialog(ev, note, function(item) {
+              item.$update(function() {
+                Toast.show('El mensage se guardo correctamente');
+              });
+            });
+          } else {
+            $scope.show_note_dialog(ev, {}, function(item) {
+              Note.save({
+                area_id: area_id,
+                event_id: event_id,
+                room_id: room_id
+              }, {
+                text: item.text,
+                participant: participant._id
+              }, function(response) {
+                Toast.show('El mensage se guardo correctamente');
+              }, LocalError.request);
+            });
+          }
+      }, LocalError.request);
     }
 
     $scope.getState = function(stateId) {
@@ -184,5 +228,45 @@
       $scope.query.groups = group_id;
       $scope.getParticipants();
     };
+
+    $scope.openMenu = function($mdOpenMenu, ev) {
+      $mdOpenMenu(ev);
+    };
+
+    $scope.show_note_dialog = function(ev, item, cb) {
+      $mdDialog.show({
+        controller: DialogController,
+        templateUrl: 'app/attendance/messages/index.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose: true,
+        //fullscreen: $scope.customFullscreen // Only for -xs, -sm breakpoints.
+        fullscreen: false, // Only for -xs, -sm breakpoints.
+        locals: {
+           item: item
+        }
+      })
+      .then(function(answer) {
+        cb(answer);
+      }, function() {
+        console.info('You cancelled the dialog.');
+      });
+    };
   };
+
+  function DialogController($scope, $mdDialog, item) {
+    $scope.item = item;
+
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
+
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.answer = function(answer) {
+      $mdDialog.hide(answer);
+    };
+  }
 })();

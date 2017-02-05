@@ -14,23 +14,28 @@
     LocalError,
     Global
   ) {
-
+    $scope.loading = false;
     // $scope.item = {
     //   email: 'wolf@wolf.com',
     //   password: 'wolf'
     // };
 
     $scope.login = function(item) {
+      $scope.loading = true;
       Session.login(item, function(user) {
         Sess.login(user, function() {
           console.info('starts session');
+          $scope.loading = false;
           if (user.role === 'admin') {
             $state.go('attendance.home');
           } else {
             throw new Error('not role asigned');
           }
         });
-      }, LocalError.request);
+      }, function(err) {
+        $scope.loading = false;
+        LocalError.request(err);
+      });
     };
   }
 

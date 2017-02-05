@@ -1,0 +1,35 @@
+<md-dialog aria-label="Message">
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Mensaje</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" aria-label="Close dialog" ng-click="cancel()">
+          <ng-md-icon icon="close"></ng-md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <!-- <h2>Nota:</h2> -->
+        <md-input-container class="md-block">
+          <label>Nota:</label>
+          <textarea ng-model="item.text" md-maxlength="200" rows="3" md-select-on-focus></textarea>
+        </md-input-container>
+        <p>
+          <i>Las notas se encuentran en el detalle del participante</i>
+        </p>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="cancel()">
+        cancelar
+      </md-button>
+      <md-button class="md-raised md-primary" ng-click="answer(item)">
+        Guardar
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
