@@ -13,6 +13,7 @@
     Participant,
     LocalError,
     UploadImages,
+    Toast,
     Room,
     Note
   ) {
@@ -80,6 +81,13 @@
       note.$update(function(response) {
         response.event = event;
         Toast.show('Se guardo correctamente la nota');
+      });
+    }
+
+    $scope.remove_note = function(note, notes, index) {
+      note.$remove(function(response) {
+        notes.splice(index, 1);
+        Toast.show('Se elimino la nota');
       });
     }
   }

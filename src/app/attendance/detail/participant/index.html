@@ -108,7 +108,7 @@
             </md-input-container>
           </md-card-content>
           <md-card-actions layout="row" layout-align="end center">
-            <md-button class="md-icon-button" aria-label="delete">
+            <md-button class="md-icon-button" aria-label="delete" ng-click="remove_note(note, room.notes, $index)">
               <ng-md-icon icon="delete"></ng-md-icon>
             </md-button>
             <md-button class="md-icon-button" aria-label="edit" ng-if="note.update">
