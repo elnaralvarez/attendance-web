@@ -17,7 +17,7 @@
     Room,
     Note
   ) {
-    let area_id = $state.params.area_id;
+    var area_id = $state.params.area_id;
     var participant_id = $state.params.participant_id;
     UploadImages.init($scope);
     $scope.upload = UploadImages.upload;
