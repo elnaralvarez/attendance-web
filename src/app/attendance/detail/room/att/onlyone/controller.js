@@ -70,7 +70,7 @@
         throw new Error('state in undefined');
       };
 
-      Note.find_message({
+      Note.find_note({
         area_id: area_id,
         event_id: event_id,
         room_id: room_id,
@@ -250,6 +250,12 @@
         cb(answer);
       }, function() {
         console.info('You cancelled the dialog.');
+      });
+    };
+
+    $scope.go_to_participant = function(participant) {
+      $state.go('attendance.detail.participant', {
+        participant_id: participant._id
       });
     };
   };

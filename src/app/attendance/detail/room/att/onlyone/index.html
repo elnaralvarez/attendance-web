@@ -107,10 +107,16 @@
                 Mensaje
               </md-button>
             </md-menu-item>
+            <md-menu-item>
+              <md-button ng-click="go_to_participant(participant, $index)">
+                <ng-md-icon icon="account_box"></ng-md-icon>
+                Detalle
+              </md-button>
+            </md-menu-item>
             <md-menu-item ng-if="participant.att">
               <md-button ng-click="remove_attendance_events(participant)">
                 <ng-md-icon icon="delete"></ng-md-icon>
-                Eliminar
+                Eliminar asistencia
               </md-button>
             </md-menu-item>
           </md-menu-content>

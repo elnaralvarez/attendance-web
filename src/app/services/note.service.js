@@ -23,10 +23,15 @@
          method: 'POST',
          url: Global.PATH + '/v3/areas/:area_id/rooms/:room_id/events/:event_id/notes'
        },
-       find_message: {
+       find_note: {
          method: 'GET',
          isArray: true,
          url: Global.PATH + '/v3/areas/:area_id/rooms/:room_id/events/:event_id/notes'
+       },
+       find_room_notes: {
+         method: 'GET',
+         isArray: true,
+         url: Global.PATH + '/v3/participants/:participant_id/rooms/:room_id/notes'
        },
        pagination: {
          method: 'GET',

@@ -66,13 +66,67 @@
     </md-input-container>
     <!-- upload photo -->
     <button class="button" ngf-select="upload($file)">Cargar una foto</button>
-
     <div layout="row">
       <md-button class="md-raised" ng-click="goToBack()">Cancelar</md-button>
       <md-button type="submit" class="md-raised md-primary">Actualizar</md-button>
     </div>
   </form>
 </md-content>
+
+<md-toolbar>
+  <h1 class="md-toolbar-tools">
+    Notas
+  </h1>
+</md-toolbar>
+<md-content>
+  <section ng-repeat="room in rooms">
+      <md-subheader class="md-primary">{{room.name}}</md-subheader>
+      <div layout="row" layout-wrap>
+        <div flex="33"
+             flex-sm="50"
+             flex-xs="100"
+             ng-repeat="note in room.notes">
+          <md-card>
+          <md-card-header>
+            <md-card-avatar>
+              <ng-md-icon icon="message"></ng-md-icon>
+            </md-card-avatar>
+            <md-card-header-text>
+              <span class="md-title">{{note.event.title}}</span>
+              <span class="md-subhead">
+                {{note.event.start | date: 'yyyy-MM-dd HH:mm'}} - {{note.event.end | date: 'yyyy-MM-dd HH:mm'}}
+              </span>
+            </md-card-header-text>
+          </md-card-header>
+          <md-card-content>
+            <p ng-if="!note.update">
+              {{note.text}}
+            </p>
+            <md-input-container class="md-block" ng-if="note.update">
+              <label>Note</label>
+              <textarea ng-model="update.text" md-maxlength="350" rows="3" md-select-on-focus></textarea>
+            </md-input-container>
+          </md-card-content>
+          <md-card-actions layout="row" layout-align="end center">
+            <md-button class="md-icon-button" aria-label="delete">
+              <ng-md-icon icon="delete"></ng-md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="edit" ng-if="note.update">
+              <ng-md-icon icon="close" ng-click="note.update = false; update.text = ''"></ng-md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="edit">
+              <ng-md-icon icon="edit" ng-click="note.update = true; update.text = note.text"></ng-md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="save" ng-click="update_note(note)">
+              <ng-md-icon icon="save"></ng-md-icon>
+            </md-button>
+          </md-card-actions>
+        </md-card>
+        </div>
+      </div>
+    </section>
+</md-content>
+
 <md-toolbar class="md-warn">
   <h1 class="md-toolbar-tools">
     Eliminar
