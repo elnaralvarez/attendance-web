@@ -1,42 +1,88 @@
-<div layout="column" class="main">
-  <!-- <md-toolbar ng-if="!user" class="md-whiteframe-5dp md-theme-indigo"> -->
+<div layout="column" class="att-home">
   <header-navbar options="options"></header-navbar>
-  <!-- <md-toolbar ng-if="!user" class="md-whiteframe-5dp">
-    <div class="md-toolbar-tools">
-      <a ui-sref="home">
-        <h3>
-          Attendance
-        </h3>
-      </a>
-      <span flex></span>
-      <div layout="row">
-        <md-button class="md-raised" ui-sref="home.login">iniciar sesion</md-button>
-        <md-button aria-label="Second Button" ui-sref="home.register">
-          o registrarse
-        </md-button>
-      </div>
-    </div>
-  </md-toolbar> -->
-  <!-- be careful: nothing between md-toolbar and md-content -->
   <md-content flex>
-    <ui-view>
+    <ui-view layout="column" layout-fill>
       <div class="main-image">
-        <div>
+        <div hide show-gt-sm>
           <h1 class="md-display-4">Attendance</h1>
           <h2 class="md-display-2">Una solucion para el control de asistencia...</h2>
         </div>
-        <img src="assets/images/main.jpg" alt="attendance">
+        <div hide show-sm>
+          <h1 class="md-display-3">Attendance</h1>
+          <h2 class="md-display-1">Una solucion para el control de asistencia...</h2>
+        </div>
+        <div hide show-xs>
+          <h1 class="md-display-2">Attendance</h1>
+          <h2>Una solucion para el control de asistencia...</h2>
+        </div>
       </div>
       <div class="content">
-        <h2 class="md-display-2 text-center">ACERCA DE ATTENDANCE</h2>
-        <blockquote>
-          <p>
-            Attendance es una startup que ayuda en el control de asistencia una herramienta web y movil que ayuda en el proceso mas rapido y facil.
-          </p>
-        </blockquote>
+        <h2 class="md-display-1 text-center">ACERCA DE ATTENDANCE</h2>
+          <div layout="row">
+            <div hide show-xs flex="100">
+              <p>
+                Attendance es una startup que ayuda en el control de asistencia una herramienta web y movil que ayuda en el proceso mas rapido y facil.
+              </p>
+            </div>
+            <div hide show-gt-xs flex="20">
+            </div>
+            <div hide show-gt-xs flex="60">
+              <p>
+                Attendance es una startup que ayuda en el control de asistencia una herramienta web y movil que ayuda en el proceso mas rapido y facil.
+              </p>
+            </div>
+          </div>
+          <div hide show-gt-xs flex="20">
+          </div>
       </div>
-      <div class="container" layout="row">
-        <div flex layout-padding>
+      <div class="media-container">
+        <div layout="row" layout-xs="column">
+          <div flex="25"
+               flex-sm="0"
+               flex-xs="100">
+          </div>
+          <div flex="25"
+               flex-sm="50"
+               flex-xs="100">
+            <div class="container" layout="row" id="fb-root">
+              <div class="fb-page"
+                   data-href="https://web.facebook.com/NinjaAttendance"
+                   data-width="380"
+                   data-hide-cover="false"
+                   data-show-facepile="false"
+                   data-show-posts="false"></div>
+            </div>
+          </div>
+          <div flex="25"
+              flex-sm="50"
+              flex-xs="100">
+            <div class="play-link">
+              <a href='https://play.google.com/store/apps/details?id=ninjas.wargos.attendance&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Disponible en Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/es_badge_web_generic.png'/></a>
+            </div>
+          </div>
+          <div flex="25"
+               flex-sm="0"
+               flex-xs="100">
+          </div>
+        </div>
+      </div>
+
+      <div class="app-preview" layout="row" layout-xs="column">
+        <div flex="25"
+             flex-sm="0"
+             flex-xs="100">
+        </div>
+        <div layout-padding
+             flex="25"
+             flex-sm="50"
+             flex-xs="100">
+          <img ng-src="assets/images/mobile-att.jpg" class="md-card-image" alt="Washed Out">
+        </div>
+        <div class="right"
+             layout-padding
+             flex="25"
+             flex-sm="50"
+             flex-xs="100">
           <div>
             <img ng-src="assets/images/04012017230740.png" class="md-card-image" alt="Washed Out">
           </div>
@@ -50,99 +96,75 @@
             <img ng-src="assets/images/04012017232852.png" class="md-card-image" alt="Washed Out">
           </div>
         </div>
-        <div flex>
-          <md-card>
-            <img ng-src="assets/images/mobile-att.png" class="md-card-image" alt="Washed Out">
-            <!-- <md-card-title>
-              <md-card-title-text>
-                <span class="md-headline">Nuestra app esta ahora disponible en Google Play.</span>
-              </md-card-title-text>
-            </md-card-title> -->
-            <md-card-content>
-              <p>
-                Nuestra app esta ahora disponible en Google Play.
-              </p>
-            </md-card-content>
-            <div class="play-link">
-              <a href='https://play.google.com/store/apps/details?id=ninjas.wargos.attendance&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img alt='Disponible en Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/es_badge_web_generic.png'/></a>
-            </div>
-            <md-card-actions layout="column" layout-align="start">
-            </md-card-actions>
-          </md-card>
+        <div flex="25"
+             flex-sm="0"
+             flex-xs="100">
         </div>
-        <!-- <div flex>
-        </div> -->
       </div>
-      <!-- <div class="container" layout="row" layout-padding>
-        <div flex>
-          <img ng-src="assets/images/04012017230740.png" class="md-card-image" alt="Washed Out">
-        </div>
-        <div flex>
-          <img ng-src="assets/images/04012017230755.png" class="md-card-image" alt="Washed Out">
-        </div>
-      </div> -->
     </ui-view>
   </md-content>
 </div>
 
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <style media="screen">
-.main {
+.att-home {
   width: 100%;
-  /*display: inline;*/
 }
 
-.main .main-image {
+.att-home .main-image {
   width: 100%;
+  height: 550px;
   position: relative;
+  background-image: url('assets/images/main.jpg');
+  background-size: cover;
 }
 
-.main .main-image div {
-  width: 100%;
-  margin-top: 130px;
-  position: absolute;
+.att-home .main-image div {
+  margin-top: 120px;
 }
 
-.main .main-image img {
-  width: 100%;
-  height: auto;
-}
-
-.main .main-image h1 {
+.att-home .main-image h1 {
   text-align: center;
   color: white;
   margin-bottom: 0;
 }
 
-.main .main-image h2 {
+.att-home .main-image h2 {
   text-align: center;
   margin-top: 0;
   color: #fff;
 }
 
-.main .content {
+/* main body */
+.att-home .content {
   margin-top: 100px;
 }
 
-.main .content h2 {
+.att-home .content h2, .att-home .content p {
   text-align: center;
 }
 
-.main .content p {
+.att-home .content p {
   color: #777777;
   font-size: 1.3em;
-  margin: 0px 100px;
 }
 
-.main .container {
-  width: 970px;
-  margin: auto;
-}
-
-.main .container .play-link {
+/* app */
+.att-home .play-link {
   width: 100%;
 }
+.att-home .play-link img {
+  width: 380px;
+}
 
-.main .container img {
-  width: 100%;
+.att-home .media-container {
+  display: inline;
 }
 </style>

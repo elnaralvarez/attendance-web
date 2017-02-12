@@ -13,8 +13,39 @@
 </md-toolbar>
 <md-content layout-padding>
   <blockquote>
+    <div layout="row">
+      <div flex>
+      </div>
+      <md-button class="md-raised md-primary" ui-sref="attendance.area.list">
+        Administrar areas
+      </md-button>
+      <div flex>
+      </div>
+    </div>
+  </blockquote>
+  <blockquote>
     <h1>Funcionalidad</h1>
-
+    <h3>V1.0.2</h3>
+    <ul>
+      <li>Added search filter on people and room manager</li>
+      <li>Added Toast service and delete notes functionality</li>
+      <li>Adding notes to attendance</li>
+      <li>Updated home page</li>
+      <li>BUG: Att home header is not displaying when it has an alive session</li>
+      <li>BUG: qr is not generation because its not alpha numeric keys</li>
+    </ul>
+    <h3>V1.0.1</h3>
+    <ul>
+      <li>Added search filter on people and room manager</li>
+      <li>Generated reports by groups</li>
+      <li>Generated reports by groups</li>
+      <li>Added skeleton about QR generator template</li>
+      <li>Updated QR generator library</li>
+      <li>Removed counter references</li>
+      <li>BUG: remove UUID generator, Implement an small one less than 25 alpha-numeric</li>
+      <li>BUG: when user is updationg an area and save it. it does not redirect to areas list screen</li>
+      <li>BUG: typo error and added change log page</li>
+    </ul>
     <h3>V1.0.0</h3>
     <ul>
       <li>WEB</li>
