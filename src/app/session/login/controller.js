@@ -26,11 +26,7 @@
         Sess.login(user, function() {
           console.info('starts session');
           $scope.loading = false;
-          if (user.role === 'admin') {
-            $state.go('attendance.home');
-          } else {
-            throw new Error('not role asigned');
-          }
+          $state.go('attendance.home');
         });
       }, function(err) {
         $scope.loading = false;

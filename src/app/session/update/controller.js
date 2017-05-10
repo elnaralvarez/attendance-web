@@ -16,8 +16,8 @@ function UpdateUserController($scope, $mdDialog, Global, Toast, LocalError, User
       Toast.show('los passwords no son iguales');
       return;
     }
+    user.password = user.new_password;
     Users.update(user, function(response) {
-
       Global.user = response;
       Store.save('user', user);
       $mdDialog.hide();
