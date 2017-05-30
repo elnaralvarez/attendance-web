@@ -3,16 +3,51 @@
     <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleSidenav('left')">
       <ng-md-icon icon="menu"></ng-md-icon>
     </md-button>
-    <img src="assets/images/attendance-logo.png" alt="logo" />
-    <!-- <h3>Attendance</h3> -->
-    <span flex></span>
+    <h3 ng-click="select_area()">{{area.name}}</h3>
+    <!-- <span flex></span>
     <md-button class="md-icon-button"
                 aria-label="Edit" ui-sref="attendance.detail.people">
       <ng-md-icon icon="people"></ng-md-icon>
-    </md-button>
+    </md-button> -->
   </div>
 </md-toolbar>
-<md-content>
-  <ui-view layout="column" layout-fill>
-  </ui-view>
+<md-content flex>
+  <div layout="row" layout-fill>
+    <div layout="column" flex=20>
+      <md-toolbar>
+        <div class="md-toolbar-tools">
+          <h2 ng-click="select_area()">Salas</h2>
+          <!-- <span flex></span>
+          <md-button class="md-icon-button" aria-label="Edit" ng-click="createEvent()">
+            <ng-md-icon icon="add"></ng-md-icon>
+          </md-button> -->
+        </div>
+      </md-toolbar>
+      <md-content style="background-color:#fff">
+        <md-list>
+          <md-subheader class="md-no-sticky">General</md-subheader>
+          <md-list-item ui-sref="attendance.detail.people">
+            <ng-md-icon icon="people"></ng-md-icon>
+            <p>Personas</p>
+          </md-list-item>
+          <!-- <md-divider></md-divider> -->
+          <md-subheader class="md-no-sticky">Aulas</md-subheader>
+          <div ng-if="rooms.length == 0" class="wargos-text-align">
+              <b>No existe <i>aulas</i> requistrados</b>
+          </div>
+          <md-list-item ng-repeat="room in rooms" ng-click="selectRoom(room, $index)">
+            <img alt="{{room.name}}"
+                 ng-src="{{loadImageGroup(room.image)}}"
+                 class="md-avatar" />
+            <p>{{room.name}}</p>
+          </md-list-item>
+          <md-divider></md-divider>
+        </md-list>
+      </md-content>
+    </div>
+    <div layout="column" flex>
+      <ui-view layout="column" layout-fill>
+      </ui-view>
+    </div>
+  </div>
 </md-content>

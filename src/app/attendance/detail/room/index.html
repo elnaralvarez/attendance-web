@@ -1,10 +1,10 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
-    <h2>
-      {{area.name}} - {{room.name}}
-    </h2>
+    <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleSidenav('rooms')">
+      <ng-md-icon icon="menu"></ng-md-icon>
+    </md-button>
+    <h2>{{area.name}} - {{room.name}}</h2>
     <span flex></span>
-
     <md-button class="md-icon-button" aria-label="group_add" ui-sref="attendance.detail.room.groups">
       <ng-md-icon icon="group_add"></ng-md-icon>
     </md-button>
@@ -17,10 +17,12 @@
     <md-button class="md-icon-button" aria-label="export" ui-sref="attendance.detail.room.export">
       <ng-md-icon icon="import_export"></ng-md-icon>
     </md-button>
-    <md-button class="md-icon-button" aria-label="More" ng-click="goToRoom(room)">
-      <ng-md-icon icon="more_vert"></ng-md-icon>
+    <md-button class="md-icon-button" aria-label="settings" ng-click="goToRoom(room)">
+      <ng-md-icon icon="settings"></ng-md-icon>
     </md-button>
   </div>
 </md-toolbar>
-<ui-view layout="column" layout-fill>
-</ui-view>
+<md-content flex>
+  <ui-view layout="column" layout-fill>
+  </ui-view>
+</md-content>

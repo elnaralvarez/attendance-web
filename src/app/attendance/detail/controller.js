@@ -11,13 +11,14 @@
     UploadImages,
     Area,
     LocalError,
+    Room,
     HelperRoom,
     $window
   ) {
+    // HelperRoom.init($scope);
     var area_id = $state.params.area_id;
     var room_id = null;
 
-    // $scope.groups = HelperRoom.group;
     $scope.room = null;
     $scope.rooms = [];
     $scope.participants = [];
@@ -47,10 +48,37 @@
       $window.history.back();
     }
 
-    Area.get({
-      _id: area_id
-    }, function(response) {
-      $scope.area = response;
-    }, LocalError.request);
+    // helper room
+    // $scope.createRoom = HelperRoom.createRoom;
+    // $scope.loadRooms = HelperRoom.loadRooms;
+    // $scope.loadRoom = HelperRoom.loadRoom;
+    // $scope.validateRoomItem = HelperRoom.validateRoomItem;
+
+    $scope.loadRooms = function(room_id) {
+      Room.query({
+        parent: room_id
+      }, function(response) {
+        $scope.rooms = response;
+      }, LocalError.request);
+    },
+
+    $scope.selectRoom = function(room) {
+      $state.go('attendance.detail.room.main', {
+        area_id: area_id,
+        room_id: room._id
+      });
+      $scope.loadRooms(room._id);
+    };
+
+    $scope.select_area = function() {
+      Area.get({
+        _id: area_id
+      }, function(response) {
+        $scope.area = response;
+        $scope.loadRooms(response.room);
+      }, LocalError.request);
+    };
+
+    $scope.select_area();
   }
 })();

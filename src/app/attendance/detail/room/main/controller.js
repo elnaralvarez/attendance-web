@@ -16,7 +16,6 @@
     Group,
     LocalError
   ) {
-    HelperRoom.init($scope);
     HelperParticipant.init($scope);
 
     var area_id = $state.params.area_id;
@@ -31,22 +30,10 @@
     $scope.goToParticipant = HelperDetailRoute.goToParticipant;
     $scope.goToRoom = HelperDetailRoute.goToRoom;
 
-    // helper room
-    $scope.createRoom = HelperRoom.createRoom;
-    $scope.loadRooms = HelperRoom.loadRooms;
-    $scope.loadRoom = HelperRoom.loadRoom;
-    $scope.validateRoomItem = HelperRoom.validateRoomItem;
-
     // participants
     $scope.createParticipant = HelperParticipant.createParticipant;
     $scope.loadParticipants = HelperParticipant.loadParticipants;
 
-    $scope.selectRoom = function(room) {
-      $state.go('attendance.detail.room.main', {
-        area_id: area_id,
-        room_id: room._id
-      });
-    };
 
     $scope.loadParticipantById = function(participant) {
       console.log(participant);
@@ -116,7 +103,6 @@
 
     $scope.init = function() {
       console.log('init');
-      $scope.loadRooms(room_id);
       $scope.getParticipants();
     }
     $scope.init();
