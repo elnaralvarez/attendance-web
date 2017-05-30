@@ -20,5 +20,11 @@
     }, function(response) {
       $scope.items = response;
     });
+
+    $scope.update_area = function(item, index) {
+      $scope.updateItem(item, function() {
+        $scope.items.splice(index, 1);
+      });
+    }
   }
 })();

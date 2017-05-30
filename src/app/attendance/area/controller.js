@@ -48,10 +48,13 @@
       }, LocalError.request);
     };
 
-    $scope.updateItem = function(item) {
+    $scope.updateItem = function(item, callback) {
       item.$update(function(response) {
         Toast.show('Se actualizo correctamente');
         $scope.loadToolbarAreas();
+        if (callback) {
+          callback();
+        }
       }, LocalError.request);
     };
   }

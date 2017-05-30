@@ -1,38 +1,43 @@
-<md-sidenav layout="column"
-            class="md-sidenav-left md-whiteframe-z2"
-            md-component-id="left"
-            md-is-locked-open="$mdMedia('gt-md')">
-  <md-toolbar class="md-tall md-hue-2">
+<div layout="row" layout-fill>
+  <md-sidenav layout="column"
+              class="md-sidenav-left md-whiteframe-z2"
+              md-component-id="left">
+    <md-toolbar class="md-tall md-hue-2">
+      <span flex></span>
+      <div layout="column" class="md-toolbar-tools-bottom inset">
+        <user-avatar></user-avatar>
+        <span></span>
+        <div ng-click="showDialog($event)">{{user.name}}</div>
+        <div ng-click="showDialog($event)">{{user.email}}</div>
+      </div>
+    </md-toolbar>
+    <md-list>
+      <!-- AREAS -->
+      <md-subheader class="md-no-sticky">Areas</md-subheader>
+      <div ng-if="areas.length == 0" class="wargos-text-align">
+          <b>No existe <i>areas</i> requistrados</b>
+      </div>
+      <md-list-item ng-repeat="area in areas" ng-click="selectArea(area)">
+        <img ng-src="{{loadImageGroup(area.image)}}" class="md-avatar" />
+         <p>{{area.name}}</p>
+      </md-list-item>
+      <!-- SETTINGS -->
+      <md-divider></md-divider>
+      <md-subheader class="md-no-sticky">Opciones globales</md-subheader>
+      <md-list-item ng-repeat="option in options" ng-click="selectOption(option)">
+         <ng-md-icon icon="done" style="fill: black"></ng-md-icon>
+         <p>{{option.title}}</p>
+      </md-list-item>
+      <md-subheader class="md-no-sticky">Salir</md-subheader>
+      <md-list-item ng-click="logout()">
+         <ng-md-icon icon="logout"></ng-md-icon>
+         <p>salir</p>
+      </md-list-item>
+      <md-divider></md-divider>
+    </md-list>
+  </md-sidenav>
 
-    <span flex></span>
-    <div layout="column" class="md-toolbar-tools-bottom inset">
-      <user-avatar></user-avatar>
-      <span></span>
-      <div ng-click="showDialog($event)">{{user.name}}</div>
-      <div ng-click="showDialog($event)">{{user.email}}</div>
-      <div ng-click="logout()">salir session</div>
-    </div>
-  </md-toolbar>
-  <md-list>
-    <!-- AREAS -->
-    <md-subheader class="md-no-sticky">Areas</md-subheader>
-    <div ng-if="areas.length == 0" class="wargos-text-align">
-        <b>No existe <i>areas</i> requistrados</b>
-    </div>
-    <md-list-item ng-repeat="area in areas" ng-click="selectArea(area)">
-      <img ng-src="{{loadImageGroup(area.image)}}" class="md-avatar" />
-       <p>{{area.name}}</p>
-    </md-list-item>
-    <!-- SETTINGS -->
-    <md-divider></md-divider>
-    <md-subheader class="md-no-sticky">Opciones globales</md-subheader>
-    <md-list-item ng-repeat="option in options" ng-click="selectOption(option)">
-       <ng-md-icon icon="done" style="fill: black"></ng-md-icon>
-       <p>{{option.title}}</p>
-    </md-list-item>
-    <md-divider></md-divider>
-  </md-list>
-</md-sidenav>
+  <ui-view layout="column" layout-fill>
+  </ui-view>
 
-<ui-view layout="column" layout-fill>
-</ui-view>
+</div>

@@ -16,6 +16,13 @@
   ) {
     $scope.items = [];
     $scope.count = 1000;
+
+    $scope.update_area = function(item, index) {
+      $scope.updateItem(item, function() {
+        $scope.items.splice(index, 1);
+      });
+    }
+
     $scope.query = {
       users: Global.user._id,
       enabled: false,

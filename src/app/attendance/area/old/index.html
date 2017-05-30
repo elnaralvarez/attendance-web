@@ -16,7 +16,7 @@
                   ng-click="selectItem(item)">
        <p>{{item.name}}</p>
        <md-switch class="md-secondary"
-                  ng-change="updateItem(item)"
+                  ng-change="update_area(item, $index)"
                   ng-model="item.enabled"></md-switch>
     </md-list-item>
     <md-divider></md-divider>

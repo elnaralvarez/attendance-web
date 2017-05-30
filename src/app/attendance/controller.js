@@ -22,7 +22,7 @@
     moment,
     $mdDialog
   ) {
-    $scope.loading = true;
+    $scope.enabled = false;
 
     // images
     $scope.loadImageGroup = UploadImages.loadImageGroup;
@@ -50,7 +50,7 @@
     $scope.loadToolbarAreas();
 
     $scope.options = [{
-      title: 'Areas',
+      title: 'Administrar areas',
       route: 'attendance.area.list'
     }];
 

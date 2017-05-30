@@ -1,22 +1,31 @@
 <div layout="column">
   <md-toolbar>
     <div class="md-toolbar-tools">
-      <md-button ng-click="toggleSidenav('left')" hide-gt-md aria-label="Menu">
+      <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleSidenav('left')">
         <ng-md-icon icon="menu"></ng-md-icon>
       </md-button>
-      <h3>
-        Areas
-      </h3>
-      <span flex></span>
-      <md-button class="md-raised" ui-sref="attendance.area.list">Recientes</md-button>
-      <md-button class="md-raised" ui-sref="attendance.area.old">Historico</md-button>
-      <md-button aria-label="Open Settings" ng-click="showGridBottomSheet($event)">
+      <h3>Areas</h3>
+      <!-- <span flex></span>
+      <md-button class="md-raised" ui-sref="attendance.area.list">Habilitados</md-button>
+      <md-button class="md-raised" ui-sref="attendance.area.old">Deshabilitados</md-button> -->
+      <!-- <md-button aria-label="Open Settings" ng-click="showGridBottomSheet($event)">
         <ng-md-icon icon="more_vert"></ng-md-icon>
-      </md-button>
+      </md-button> -->
     </div>
   </md-toolbar>
 
-  <ui-view layout="column" layout-fill>
-  </ui-view>
+  <md-content>
+    <md-tabs md-dynamic-height md-border-bottom>
+      <md-tab label="Habilitados" ui-sref="attendance.area.list">
+      </md-tab>
+      <md-tab label="Deshabilitados" ui-sref="attendance.area.old">
+      </md-tab>
+    </md-tabs>
+    <ui-view layout="column" layout-fill>
+    </ui-view>
+
+  </md-content>
+
+
 
 </div>
