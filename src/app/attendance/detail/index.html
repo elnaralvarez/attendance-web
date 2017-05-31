@@ -3,7 +3,7 @@
     <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleSidenav('left')">
       <ng-md-icon icon="menu"></ng-md-icon>
     </md-button>
-    <h3 ng-click="select_main_area()">{{area.name}}</h3>
+    <h3>{{area.name}}</h3>
   </div>
 </md-toolbar>
 <md-content flex>
@@ -11,11 +11,7 @@
     <div layout="column" flex=20>
       <md-toolbar>
         <div class="md-toolbar-tools">
-          <h2 ng-click="select_main_area()">Salas</h2>
-          <!-- <span flex></span>
-          <md-button class="md-icon-button" aria-label="Edit" ng-click="createEvent()">
-            <ng-md-icon icon="add"></ng-md-icon>
-          </md-button> -->
+          <h2>Salas</h2>
         </div>
       </md-toolbar>
       <md-content style="background-color:#fff">
@@ -25,17 +21,20 @@
             <ng-md-icon icon="people"></ng-md-icon>
             <p>Personas</p>
           </md-list-item>
+          <md-list-item ng-click="select_main_area()">
+            <ng-md-icon icon="room"></ng-md-icon>
+            <p>Principal</p>
+          </md-list-item>
           <md-subheader class="md-no-sticky">Salas</md-subheader>
-          <div ng-if="rooms.length == 0" class="wargos-text-align">
-              <b>No existe <i>salas</i> requistrados</b>
-          </div>
+          <md-list-item ng-if="rooms.length == 0" class="wargos-text-align">
+            <p>No existe <i>salas</i> requistrados</p>
+          </md-list-item>
           <md-list-item ng-repeat="room in rooms" ng-click="selectRoom(room, $index)">
             <img alt="{{room.name}}"
                  ng-src="{{loadImageGroup(room.image)}}"
                  class="md-avatar" />
             <p>{{room.name}}</p>
           </md-list-item>
-          <!-- <md-divider></md-divider> -->
         </md-list>
         <div layout="row">
           <div flex>
