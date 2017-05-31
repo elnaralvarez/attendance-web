@@ -3,12 +3,7 @@
     <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleSidenav('left')">
       <ng-md-icon icon="menu"></ng-md-icon>
     </md-button>
-    <h3 ng-click="select_area()">{{area.name}}</h3>
-    <!-- <span flex></span>
-    <md-button class="md-icon-button"
-                aria-label="Edit" ui-sref="attendance.detail.people">
-      <ng-md-icon icon="people"></ng-md-icon>
-    </md-button> -->
+    <h3 ng-click="select_main_area()">{{area.name}}</h3>
   </div>
 </md-toolbar>
 <md-content flex>
@@ -16,7 +11,7 @@
     <div layout="column" flex=20>
       <md-toolbar>
         <div class="md-toolbar-tools">
-          <h2 ng-click="select_area()">Salas</h2>
+          <h2 ng-click="select_main_area()">Salas</h2>
           <!-- <span flex></span>
           <md-button class="md-icon-button" aria-label="Edit" ng-click="createEvent()">
             <ng-md-icon icon="add"></ng-md-icon>
@@ -30,10 +25,9 @@
             <ng-md-icon icon="people"></ng-md-icon>
             <p>Personas</p>
           </md-list-item>
-          <!-- <md-divider></md-divider> -->
-          <md-subheader class="md-no-sticky">Aulas</md-subheader>
+          <md-subheader class="md-no-sticky">Salas</md-subheader>
           <div ng-if="rooms.length == 0" class="wargos-text-align">
-              <b>No existe <i>aulas</i> requistrados</b>
+              <b>No existe <i>salas</i> requistrados</b>
           </div>
           <md-list-item ng-repeat="room in rooms" ng-click="selectRoom(room, $index)">
             <img alt="{{room.name}}"
@@ -41,8 +35,18 @@
                  class="md-avatar" />
             <p>{{room.name}}</p>
           </md-list-item>
-          <md-divider></md-divider>
+          <!-- <md-divider></md-divider> -->
         </md-list>
+        <div layout="row">
+          <div flex>
+          </div>
+          <md-button aria-label="create"
+                     class="md-raised md-primary"
+                     ng-click="createRoom($event)">
+            <ng-md-icon icon="add"></ng-md-icon>
+            Sala
+          </md-button>
+        </div>
       </md-content>
     </div>
     <div layout="column" flex>

@@ -9,7 +9,6 @@
   function controller(
     $scope,
     $state,
-    HelperRoom,
     HelperDetailRoute,
     HelperParticipant,
     Participant,
@@ -21,14 +20,12 @@
     var area_id = $state.params.area_id;
     var room_id = $state.params.room_id;
 
-    $scope.loadRoomByURLParam(room_id);
     $scope.search = {
       alive: false
     };
 
     // helper routes
     $scope.goToParticipant = HelperDetailRoute.goToParticipant;
-    $scope.goToRoom = HelperDetailRoute.goToRoom;
 
     // participants
     $scope.createParticipant = HelperParticipant.createParticipant;
