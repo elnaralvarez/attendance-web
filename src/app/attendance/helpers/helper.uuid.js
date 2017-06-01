@@ -19,7 +19,14 @@
       },
       randomString: function(length) {
           return Math.round((Math.pow(36, length + 1) - Math.random() * Math.pow(36, length))).toString(36).slice(1);
-      }
+      },
+      att: function() {
+        var code = 'xxxxx-xxxxx-xxxxx-xxxxx'.replace(/[xy]/g, function(c) {
+            var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+            return v.toString(16);
+        });
+        return code;
+      },
     };
   }
 })();

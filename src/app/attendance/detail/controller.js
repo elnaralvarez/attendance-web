@@ -6,7 +6,8 @@
     .controller('AttendanceDetailController', controller);
 
   /** @ngInject */
-  function controller($scope,
+  function controller(
+    $scope,
     $state,
     UploadImages,
     Area,
@@ -49,6 +50,7 @@
     }
 
     $scope.selectRoom = function(room) {
+      room_id = room._id;
       $state.go('attendance.detail.room.main', {
         area_id: area_id,
         room_id: room._id

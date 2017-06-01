@@ -13,7 +13,7 @@
         scope = local_scope;
       },
       createParticipant: function() {
-        var uuid = UUID.randomString(20);
+        var uuid = UUID.att(20);
         var data = {
           area_id: scope.area._id,
           uid: uuid,

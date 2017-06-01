@@ -1,6 +1,6 @@
 <md-toolbar class="md-primary">
   <h1 class="md-toolbar-tools">
-    Actualizar Grupo
+    Actualizar sala
   </h1>
 </md-toolbar>
 <md-content layout-padding>
@@ -17,74 +17,74 @@
       <md-button type="submit" class="md-raised md-primary">Actualizar</md-button>
     </div>
   </form>
-</md-content>
 
-<!-- PARTICIPANTS  -->
-<md-toolbar class="md-table-toolbar md-default room-groups">
-  <div class="md-toolbar-tools">
-    <div ng-if="!search.alive">
-      <span ng-if="!search.alive">
-        Participantes
-      </span>
-      <md-button class="md-icon-button" aria-label="search" ng-click="search.alive = true">
-        <ng-md-icon icon="search"></ng-md-icon>
-      </md-button>
+  <!-- PARTICIPANTS  -->
+  <md-toolbar class="md-table-toolbar md-default room-groups">
+    <div class="md-toolbar-tools">
+      <div ng-if="!search.alive">
+        <span ng-if="!search.alive">
+          Participantes
+        </span>
+        <md-button class="md-icon-button" aria-label="search" ng-click="search.alive = true">
+          <ng-md-icon icon="search"></ng-md-icon>
+        </md-button>
+      </div>
+      <div ng-if="search.alive" class="search">
+        <md-button class="md-icon-button" aria-label="search" ng-click="cancel_search()">
+          <ng-md-icon icon="keyboard_backspace"></ng-md-icon>
+        </md-button>
+        <md-input-container>
+          <label>Apellido</label>
+          <input ng-model="query.last_name">
+        </md-input-container>
+        <md-input-container>
+          <label>Nombre</label>
+          <input ng-model="query.first_name">
+        </md-input-container>
+        <md-button class="md-icon-button"
+                   aria-label="search"
+                   ng-click="search_participant(query.last_name, query.first_name)">
+          <ng-md-icon icon="search"></ng-md-icon>
+        </md-button>
+      </div>
+      <span flex></span>
     </div>
-    <div ng-if="search.alive" class="search">
-      <md-button class="md-icon-button" aria-label="search" ng-click="cancel_search()">
-        <ng-md-icon icon="keyboard_backspace"></ng-md-icon>
-      </md-button>
-      <md-input-container>
-        <label>Apellido</label>
-        <input ng-model="query.last_name">
-      </md-input-container>
-      <md-input-container>
-        <label>Nombre</label>
-        <input ng-model="query.first_name">
-      </md-input-container>
-      <md-button class="md-icon-button"
-                 aria-label="search"
-                 ng-click="search_participant(query.last_name, query.first_name)">
-        <ng-md-icon icon="search"></ng-md-icon>
-      </md-button>
+  </md-toolbar>
+  <md-table-pagination md-limit="query.limit" md-limit-options="[20, 25, 30]" md-page="query.page" md-total="{{count}}" md-on-paginate="getParticipants" md-page-select></md-table-pagination>
+  <div ng-if="participants.length == 0" class="wargos-text-align">
+    <b>No existe <i>participantes</i> requistrados</b>
+  </div>
+  <div layout="row" layout-wrap>
+    <div flex="33"
+        flex-sm="50"
+        flex-xs="100"
+        ng-repeat="participant in participants">
+      <md-list-item ng-click="add_participant_to_room(participant, $index)"
+                    ng-class="{selectedItem: validate_if_user_is_added(participant)}">
+        <img alt="{{participant.first_name}}"
+             ng-src="{{loadImage(participant.img)}}"
+             class="md-avatar" />
+        <p>{{participant.first_name}} {{participant.last_name}}</p>
+          <div ng-if="!validate_if_user_is_added(participant)">
+            <ng-md-icon icon="exposure_plus_1"
+                        ng-click="add_participant_to_room(participant, $index)"
+                        aria-label="posi"></md-icon>
+          </div>
+      </md-list-item>
     </div>
-    <span flex></span>
   </div>
-</md-toolbar>
-<md-table-pagination md-limit="query.limit" md-limit-options="[20, 25, 30]" md-page="query.page" md-total="{{count}}" md-on-paginate="getParticipants" md-page-select></md-table-pagination>
-<div ng-if="participants.length == 0" class="wargos-text-align">
-  <b>No existe <i>participantes</i> requistrados</b>
-</div>
-<div layout="row" layout-wrap>
-  <div flex="33"
-      flex-sm="50"
-      flex-xs="100"
-      ng-repeat="participant in participants">
-    <md-list-item ng-click="add_participant_to_room(participant, $index)"
-                  ng-class="{selectedItem: validate_if_user_is_added(participant)}">
-      <img alt="{{participant.first_name}}"
-           ng-src="{{loadImage(participant.img)}}"
-           class="md-avatar" />
-      <p>{{participant.first_name}} {{participant.last_name}}</p>
-        <div ng-if="!validate_if_user_is_added(participant)">
-          <ng-md-icon icon="exposure_plus_1"
-                      ng-click="add_participant_to_room(participant, $index)"
-                      aria-label="posi"></md-icon>
-        </div>
-    </md-list-item>
-  </div>
-</div>
-<md-toolbar class="md-warn">
-  <h1 class="md-toolbar-tools">
-    Eliminar
-  </h1>
-</md-toolbar>
-<md-content layout-padding>
-  <div layout="row">
-    <md-button class="md-raised" ng-click="remove(item)">
+  <md-toolbar class="md-warn">
+    <h1 class="md-toolbar-tools">
       Eliminar
-    </md-button>
-  </div>
+    </h1>
+  </md-toolbar>
+  <md-content layout-padding>
+    <div layout="row">
+      <md-button class="md-raised" ng-click="remove(item)">
+        Eliminar
+      </md-button>
+    </div>
+  </md-content>
 </md-content>
 <style media="screen">
 .selectedItem {
