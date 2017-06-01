@@ -29,6 +29,10 @@
       $window.history.back();
     }
 
+    $scope.set_area = function(area) {
+      $scope.area = area;
+    }
+
     // helper room
     $scope.createRoom = function() {
       var data = {

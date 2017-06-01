@@ -19,6 +19,16 @@
       templateUrl: base_url + '/room/index.html',
       controller: 'AreaDetailRoomController'
     });
+    $stateProvider.state('attendance.detail.update', {
+      url: '/update',
+      templateUrl: base_url + '/update/index.html',
+      controller: 'AreaDetailUpdateController'
+    });
+    $stateProvider.state('attendance.detail.administrators', {
+      url: '/administrators',
+      templateUrl: base_url + '/administrators/index.html',
+      controller: 'AreaDetailAdministratorsController'
+    });
 
     // TODO validate if this routes are still used
     $stateProvider.state('attendance.detail.room.update', {
@@ -30,11 +40,6 @@
       url: '/studio',
       templateUrl: base_url + '/studio/index.html',
       controller: 'AreaDetailStudioController'
-    });
-    $stateProvider.state('attendance.detail.update', {
-      url: '/update',
-      templateUrl: base_url + '/update/index.html',
-      controller: 'AreaDetailUpdateController'
     });
     $stateProvider.state('attendance.detail.participant', {
       url: '/participant/:participant_id',
