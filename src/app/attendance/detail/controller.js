@@ -13,6 +13,8 @@
     Area,
     LocalError,
     Room,
+    Toast,
+    $mdDialog,
     $window
   ) {
     var area_id = $state.params.area_id;
@@ -68,6 +70,31 @@
         room_id: $scope.area.room
       });
       $scope.loadRooms($scope.area.room);
+    };
+
+    $scope.show_confirm = function(ev) {
+      var confirm = $mdDialog.confirm()
+      .title('¿Esta seguro que desea eliminar esta area?')
+      .textContent('Todos los elementos asociados se eliminaran (Salas, Personas, Eventos, Etc)')
+      .ariaLabel('confirmation-modal')
+      .targetEvent(ev)
+      .ok('Aceptar')
+      .cancel('Cancelar');
+
+      $mdDialog.show(confirm)
+      .then(function() {
+          $scope.delete_area($scope.area);
+      }, function() {
+          console.log('cancel');
+      });
+    };
+
+    $scope.delete_area = function(item) {
+      item.$delete(function(response) {
+        Toast.show('Se elimino correctamente');
+        $state.go('attendance.area.list');
+        $scope.loadToolbarAreas();
+      }, LocalError.request);
     };
 
     Area.get({

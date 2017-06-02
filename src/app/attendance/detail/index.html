@@ -6,10 +6,13 @@
     <h3>{{area.name}}</h3>
     <span flex></span>
     <md-button class="md-icon-button" aria-label="settings" ui-sref="attendance.detail.administrators">
-      <ng-md-icon icon="accessibility"></ng-md-icon>
-    </md-button>
-    <md-button class="md-icon-button" aria-label="settings" ui-sref="attendance.detail.update">
       <ng-md-icon icon="settings"></ng-md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="edit" ui-sref="attendance.detail.update">
+      <ng-md-icon icon="edit"></ng-md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="delete" ng-click="show_confirm($event)">
+      <ng-md-icon icon="delete"></ng-md-icon>
     </md-button>
   </div>
 </md-toolbar>

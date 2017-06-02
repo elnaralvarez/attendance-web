@@ -39,14 +39,7 @@
         Toast.show('Se actualizo correctamente');
         $scope.set_area(response);
         $scope.loadToolbarAreas();
-      }, LocalError.request);
-    };
-
-    $scope.delete_area = function(item) {
-      item.$delete(function(response) {
-        Toast.show('Se elimino correctamente');
-        $state.go('attendance.area.list');
-        $scope.loadToolbarAreas();
+        $scope.select_main_area();
       }, LocalError.request);
     };
   }
