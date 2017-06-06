@@ -4,10 +4,6 @@
       Identificadores
     </h2>
     <span flex></span>
-    <!-- <md-button class="md-raised"
-               ui-sref="attendance.detail.room.template">
-               Template
-    </md-button> -->
     <div layout="row">
       <input type="number"
              class="wargos-qr-input"
@@ -87,7 +83,7 @@
 </md-toolbar>
 
 <div layout="row" layout-wrap>
-  <div layout-padding ng-repeat="participant in participants">
+  <div layout-padding ng-repeat="participant in participants" class="qr-body-container">
     <!-- <qrcode version="2"
             size="{{size}}"
             error-correction-level="M"
@@ -119,5 +115,8 @@
   text-align: center;
   padding: 0mm;
   margin: 0mm;
+}
+.qr-body-container {
+  text-align: center;
 }
 </style>

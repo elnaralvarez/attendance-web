@@ -1,21 +1,19 @@
-<div layout="raw" ng-if="event">
-    <div flex="80">
-      <md-button class="md-raised"
-                 ng-click="changeAttendanceState(state)"
-                 aria-label="changestatus"
-                 ng-repeat="state in states" style="background:{{state.color}}">
-                 <ng-md-icon icon="done" ng-if="state.status" style="fill: black"></ng-md-icon>
-                 {{state.title}}
-      </md-button>
-    </div>
-    <div flex="20">
-      <md-button class="md-raised md-primary"
-                 aria-label="cleanList">
-        {{currentState.title}}
-      </md-button>
-    </div>
-</div>
-
+<md-toolbar class="md-table-toolbar md-default" ng-if="event">
+  <div class="md-toolbar-tools">
+    <md-button class="md-raised"
+               ng-click="changeAttendanceState(state)"
+               aria-label="changestatus"
+               ng-repeat="state in states" style="background:{{state.color}}">
+               <ng-md-icon icon="done" ng-if="state.status"></ng-md-icon>
+      {{state.title}}
+    </md-button>
+    <span flex></span>
+    <md-button class="md-raised md-primary"
+               aria-label="cleanList">
+      {{currentState.title}}
+    </md-button>
+  </div>
+</md-toolbar>
 <md-toolbar class="md-table-toolbar md-default room-groups">
   <div class="md-toolbar-tools">
     <div ng-if="!search.alive">

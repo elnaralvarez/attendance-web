@@ -73,6 +73,13 @@
       $scope.query.first_name = first_name  == '' ? null : first_name;
       $scope.getParticipants();
     };
+
+    $scope.cancel_search = function() {
+      delete $scope.query.last_name;
+      delete $scope.query.first_name;
+      $scope.search.alive = false;
+      $scope.getParticipants();
+    }
   };
 
 })();

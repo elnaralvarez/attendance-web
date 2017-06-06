@@ -27,82 +27,82 @@
       <md-button type="submit" class="md-raised md-primary">Importar</md-button>
     </div>
   </form>
-</md-content>
-<md-toolbar class="md-table-toolbar md-default">
-  <div class="md-toolbar-tools">
-    <span>Participantes</span>
-  </div>
-</md-toolbar>
-
-<md-toolbar class="md-table-toolbar md-default" ng-show="selected.length">
-  <div class="md-toolbar-tools">
-    <div>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</div>
-    <md-button aria-label="create"
-               class="md-raised"
-               ng-click="remove_participants('done')">
-      <ng-md-icon icon="done"></ng-md-icon>
-      Eliminar correctos
-    </md-button>
-    <md-button aria-label="create"
-               class="md-raised"
-               ng-click="remove_participants('fail')">
-      <ng-md-icon icon="delete"></ng-md-icon>
-      Eliminar fallidos
-    </md-button>
-    <md-button type="button"
-               class="md-raised md-primary"
-               ng-click="createAlistOfParticipants()">
-      <ng-md-icon icon="save"></ng-md-icon>
-      Guardar
-    </md-button>
+  <md-toolbar class="md-table-toolbar md-default">
+    <div class="md-toolbar-tools">
+      <span>Participantes</span>
     </div>
-</md-toolbar>
+  </md-toolbar>
 
-<md-table-container>
-  <table md-table md-row-select multiple ng-model="selected">
-    <thead md-head md-order="query.order" md-on-reorder="getDesserts">
-      <tr md-row>
-        <!-- <th md-column md-order-by="calories.value"><span>UID</span></th> -->
-        <th md-column md-order-by="participant.uid"><span>UID</span></th>
-        <th md-column>Apellidos Nombre</th>
-        <th md-column>Email</th>
-        <th md-column>Celular</th>
-        <!-- <th md-column>CI</th> -->
-        <th md-column>Direccion</th>
-        <th md-column>Grupo</th>
-        <th md-column>States</th>
-      </tr>
-    </thead>
-    <tbody md-body>
-      <tr md-row md-select="participant" md-select-id="uid" md-auto-select ng-repeat="participant in participants">
-        <td md-cell>
-          {{participant.uid}}
-        </td>
-        <td md-cell>
-          {{participant.last_name}} {{participant.first_name}}
-        </td>
-        <td md-cell>
-          {{participant.email}}
-        </td>
-        <td md-cell>
-          {{participant.cel}}
-        </td>
-        <!-- <td md-cell>
-          {{participant.ci}}
-        </td> -->
-        <td md-cell>
-          {{participant.address}}
-        </td>
-        <td md-cell>
-        "{{participant.group_helper.name}}"
-        </td>
-        <td md-cell>
-          {{participant.status.message}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</md-table-container>
-<div layout="row">
-  <md-button class="md-raised" ui-sref="attendance.detail.room">Cancelar</md-button>
-</div>
+  <md-toolbar class="md-table-toolbar md-default" ng-show="selected.length">
+    <div class="md-toolbar-tools">
+      <div>{{selected.length}} {{selected.length > 1 ? 'items' : 'item'}} selected</div>
+      <md-button aria-label="create"
+                 class="md-raised"
+                 ng-click="remove_participants('done')">
+        <ng-md-icon icon="done"></ng-md-icon>
+        Eliminar correctos
+      </md-button>
+      <md-button aria-label="create"
+                 class="md-raised"
+                 ng-click="remove_participants('fail')">
+        <ng-md-icon icon="delete"></ng-md-icon>
+        Eliminar fallidos
+      </md-button>
+      <md-button type="button"
+                 class="md-raised md-primary"
+                 ng-click="createAlistOfParticipants()">
+        <ng-md-icon icon="save"></ng-md-icon>
+        Guardar
+      </md-button>
+      </div>
+  </md-toolbar>
+
+  <md-table-container>
+    <table md-table md-row-select multiple ng-model="selected">
+      <thead md-head md-order="query.order" md-on-reorder="getDesserts">
+        <tr md-row>
+          <!-- <th md-column md-order-by="calories.value"><span>UID</span></th> -->
+          <th md-column md-order-by="participant.uid"><span>UID</span></th>
+          <th md-column>Apellidos Nombre</th>
+          <th md-column>Email</th>
+          <th md-column>Celular</th>
+          <!-- <th md-column>CI</th> -->
+          <th md-column>Direccion</th>
+          <th md-column>Grupo</th>
+          <th md-column>States</th>
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row md-select="participant" md-select-id="uid" md-auto-select ng-repeat="participant in participants">
+          <td md-cell>
+            {{participant.uid}}
+          </td>
+          <td md-cell>
+            {{participant.last_name}} {{participant.first_name}}
+          </td>
+          <td md-cell>
+            {{participant.email}}
+          </td>
+          <td md-cell>
+            {{participant.cel}}
+          </td>
+          <!-- <td md-cell>
+            {{participant.ci}}
+          </td> -->
+          <td md-cell>
+            {{participant.address}}
+          </td>
+          <td md-cell>
+          "{{participant.group_helper.name}}"
+          </td>
+          <td md-cell>
+            {{participant.status.message}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+  <div layout="row">
+    <md-button class="md-raised" ui-sref="attendance.detail.room">Cancelar</md-button>
+  </div>
+</md-content>

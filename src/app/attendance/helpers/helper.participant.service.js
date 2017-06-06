@@ -13,17 +13,17 @@
         scope = local_scope;
       },
       createParticipant: function() {
-        var uuid = UUID.randomString(20);
+        var uuid = UUID.att(20);
         var data = {
           area_id: scope.area._id,
           uid: uuid,
-          first_name: 'lorem ipsum',
-          last_name: 'lorem ipsum',
+          first_name: 'FIRST NAME',
+          last_name: 'LAST NAME',
           image: null,
-          cel: 'lorem ipsum',
-          ci: 'lorem ipsum',
-          address: 'lorem ipsum',
-          email: 'example@wargos.com',
+          cel: '70100000',
+          ci: '10000001',
+          address: 'ADDRESS',
+          email: 'example@wargos.ninja',
           rooms: [scope.room._id]
         };
         Participant.save(data, function(response) {

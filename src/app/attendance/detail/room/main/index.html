@@ -1,4 +1,4 @@
-<ui-view layout="column" layout-fill>
+<ui-view>
   <md-content layout-padding>
     <div layout="row" layout-align="end">
       <md-button aria-label="add att"
@@ -13,15 +13,8 @@
         <ng-md-icon icon="person_add"></ng-md-icon>
         Participante
       </md-button>
-      <md-button aria-label="create"
-                 class="md-raised md-primary"
-                 ng-click="createRoom($event)">
-        <ng-md-icon icon="room"></ng-md-icon>
-        Sala
-      </md-button>
     </div>
   </md-content>
-
   <md-toolbar class="md-table-toolbar md-default room-groups">
     <div class="md-toolbar-tools">
       <div ng-if="!search.alive">
@@ -74,25 +67,6 @@
       <md-list-item ng-click="goToParticipant(participant, $index)">
         <img ng-src="{{loadImage(participant.image)}}" class="md-avatar" />
         <p>{{participant.last_name}} {{participant.first_name}}</p>
-      </md-list-item>
-    </div>
-  </div>
-
-  <!-- ROOM -->
-  <md-subheader class="md-no-sticky">Aulas</md-subheader>
-  <div ng-if="rooms.length == 0" class="wargos-text-align">
-      <b>No existe <i>aulas</i> requistrados</b>
-  </div>
-  <div layout="row" layout-wrap>
-    <div flex="33"
-        flex-sm="50"
-        flex-xs="100"
-        ng-repeat="room in rooms">
-      <md-list-item ng-click="selectRoom(room, $index)">
-        <img alt="{{room.name}}"
-             ng-src="{{loadImageGroup(room.image)}}"
-             class="md-avatar" />
-        <p>{{room.name}}</p>
       </md-list-item>
     </div>
   </div>

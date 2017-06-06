@@ -1,14 +1,9 @@
 <md-toolbar>
   <div class="md-toolbar-tools wargos-main-header">
-    <md-button ng-click="toggleSidenav('left')" hide-gt-md aria-label="Menu">
+    <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleSidenav('left')">
       <ng-md-icon icon="menu"></ng-md-icon>
     </md-button>
     <img src="assets/images/attendance-logo.png" alt="logo" />
-    <!-- <h3> Attendance </h3> -->
-    <span flex></span>
-    <md-button class="md-icon-button" aria-label="More">
-      <ng-md-icon icon="more_vert"></ng-md-icon>
-    </md-button>
   </div>
 </md-toolbar>
 <md-content layout-padding>
@@ -25,6 +20,23 @@
   </blockquote>
   <blockquote>
     <h1>Funcionalidad</h1>
+    <h3>V1.0.5 (Beta)</h3>
+    <ul>
+      <li>Hide left toolbar</li>
+      <li>Refactor disable and enable management area's buttons</li>
+    </ul>
+    <h3>V1.0.4</h3>
+    <ul>
+      <li>Android updated support for 6.1</li>
+      <li>NFC support to take attendance</li>
+      <li>Implemented android NFC scanner</li>
+      <li>BUG: Scanner does not work on adroid 6.0.1</li>
+    </ul>
+    <h3>V1.0.3</h3>
+    <ul>
+      <li>Back-end was migrated to ES6</li>
+      <li>BUG: Fixed overlaping of participant label and the list</li>
+    </ul>
     <h3>V1.0.2</h3>
     <ul>
       <li>Added search filter on people and room manager</li>

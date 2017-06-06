@@ -3,16 +3,64 @@
     <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleSidenav('left')">
       <ng-md-icon icon="menu"></ng-md-icon>
     </md-button>
-    <img src="assets/images/attendance-logo.png" alt="logo" />
-    <!-- <h3>Attendance</h3> -->
+    <h3>{{area.name}}</h3>
     <span flex></span>
-    <md-button class="md-icon-button"
-                aria-label="Edit" ui-sref="attendance.detail.people">
-      <ng-md-icon icon="people"></ng-md-icon>
+    <md-button class="md-icon-button" aria-label="settings" ui-sref="attendance.detail.administrators">
+      <ng-md-icon icon="settings"></ng-md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="edit" ui-sref="attendance.detail.update">
+      <ng-md-icon icon="edit"></ng-md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="delete" ng-click="show_confirm($event)">
+      <ng-md-icon icon="delete"></ng-md-icon>
     </md-button>
   </div>
 </md-toolbar>
-<md-content>
-  <ui-view layout="column" layout-fill>
-  </ui-view>
+<md-content flex>
+  <div layout="row" layout-fill>
+    <div layout="column" flex=20>
+      <md-toolbar class="md-whiteframe-5dp">
+        <div class="md-toolbar-tools">
+          <h2>Salas</h2>
+        </div>
+      </md-toolbar>
+      <md-content style="background-color:#fff" flex>
+        <md-list>
+          <md-subheader class="md-no-sticky">General</md-subheader>
+          <md-list-item ui-sref="attendance.detail.people">
+            <ng-md-icon icon="people"></ng-md-icon>
+            <p>Personas</p>
+          </md-list-item>
+          <md-list-item ng-click="select_main_area()">
+            <ng-md-icon icon="room"></ng-md-icon>
+            <p>Principal</p>
+          </md-list-item>
+          <md-subheader class="md-no-sticky">Salas</md-subheader>
+          <md-list-item ng-if="rooms.length == 0" class="wargos-text-align">
+            <p>No existe <i>salas</i> requistrados</p>
+          </md-list-item>
+          <md-list-item ng-repeat="room in rooms" ng-click="selectRoom(room, $index)">
+            <img alt="{{room.name}}"
+                 ng-src="{{loadImageGroup(room.image)}}"
+                 class="md-avatar" />
+            <p>{{room.name}}</p>
+          </md-list-item>
+        </md-list>
+        <div layout="row">
+          <div flex>
+          </div>
+          <md-button aria-label="create"
+                     class="md-raised md-primary"
+                     ng-click="createRoom($event)">
+            <ng-md-icon icon="add"></ng-md-icon>
+            Sala
+          </md-button>
+        </div>
+      </md-content>
+    </div>
+    <div layout="column" flex>
+      <ui-view layout="column" layout-fill>
+      </ui-view>
+    </div>
+  </div>
 </md-content>

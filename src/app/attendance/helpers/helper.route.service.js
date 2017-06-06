@@ -22,11 +22,6 @@
           event_id: event._id
         });
       }
-
-      //TODO verify
-      // goToUpdate: function() {
-      //   $state.go('attendance.detail.update');
-      // },
     };
   }
 })();

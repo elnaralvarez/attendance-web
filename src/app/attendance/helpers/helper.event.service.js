@@ -11,7 +11,7 @@
 
     var getDateFormated = function(newDate) {
       var day = newDate || new Date();
-      return moment(day).format('YYYY-MM-DD HH:mm:ss');
+      return moment(day).format('YYYY-MM-DD HH:mm');
     }
 
     var loadEvents = function(data) {
