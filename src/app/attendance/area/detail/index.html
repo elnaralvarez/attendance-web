@@ -1,121 +1,41 @@
-<md-content>
-  <md-toolbar class="md-whiteframe-5dp">
-    <div class="md-toolbar-tools">
-      <h1>Actualizar area</h1>
-    </div>
-  </md-toolbar>
-  <md-content layout-padding class="md-inline-form">
-    <div layout="row">
-      <div flex=70>
-        <form ng-submit="updateArea(item)">
-          <div layout="column">
-            <md-input-container class="md-block" flex-gt-xs>
-              <label>titulo</label>
-              <input ng-model="item.name"
-                     type="text"
-                     required>
-            </md-input-container>
+<md-toolbar class="md-whiteframe-5dp">
+  <div class="md-toolbar-tools">
+    <h1>Actualizar area</h1>
+  </div>
+</md-toolbar>
+<md-content layout-padding class="md-inline-form">
+  <div layout="row">
+    <div flex=70>
+      <form ng-submit="updateArea(item)">
+        <div layout="column">
+          <md-input-container class="md-block" flex-gt-xs>
+            <label>titulo</label>
+            <input ng-model="item.name"
+                   type="text"
+                   required>
+          </md-input-container>
 
-            <md-input-container class="md-block" flex-gt-xs>
-              <label>Image</label>
-              <input type="text" name="image" ng-model="item.image">
-              <div ng-messages="containerForm.image.$error">
-                <div ng-message="required">This is required.</div>
-              </div>
-            </md-input-container>
-
-            <div layout="row" layout-align="end">
-              <md-button class="md-raised" ui-sref="attendance.area.list">
-                Cancelar
-              </md-button>
-              <md-button class="md-raised md-primary"
-                         type="submit">Actualizar</md-button>
+          <md-input-container class="md-block" flex-gt-xs>
+            <label>Image</label>
+            <input type="text" name="image" ng-model="item.image">
+            <div ng-messages="containerForm.image.$error">
+              <div ng-message="required">This is required.</div>
             </div>
-          </div>
-        </form>
-      </div>
-      <div flex=30>
-        <img class="md-card-image" ng-src="{{current_image}}" />
-        <button ngf-select="upload($file)">Cargar una foto</button>
-      </div>
-    </div>
-  </md-content>
+          </md-input-container>
 
-  <md-toolbar class="md-primary">
-    <h1 class="md-toolbar-tools">
-      Administradores
-    </h1>
-  </md-toolbar>
-  <md-content layout-padding>
-    <div class="md-actions" layout="column">
-      <md-toolbar class="md-primary">
-        <div layout="row" class="md-toolbar-tools">
-          <div flex>
-            Email
-          </div>
-          <div flex>
-            Nombre
-          </div>
-          <div flex>
-            Celular
-          </div>
-          <div flex>
+          <div layout="row" layout-align="end">
+            <md-button class="md-raised" ui-sref="attendance.area.list">
+              Cancelar
+            </md-button>
+            <md-button class="md-raised md-primary"
+                       type="submit">Actualizar</md-button>
           </div>
         </div>
-      </md-toolbar>
-      <div ng-if="administrators.length == 0" class="wargos-text-align">
-          <b>No existe <i>administradores</i> requistrados</b>
-      </div>
-      <div ng-repeat="admin in administrators" layout="row" class="administrators">
-        <div flex>
-          {{admin.email}}
-        </div>
-        <div flex>
-          {{admin.name}}
-        </div>
-        <div flex>
-          {{admin.cel}}
-        </div>
-        <div flex>
-          <md-button type="submit"
-                     class="md-raised"
-                     ng-click="removeAdministrator(admin, $index)">
-                     Eliminar
-          </md-button>
-        </div>
-      </div>
-      <div layout="column">
-        <md-toolbar class="md-primary">
-          <h1 class="md-toolbar-tools">
-            Agregar nuevo
-          </h1>
-        </md-toolbar>
-        <md-input-container class="md-block" flex-gt-xs>
-          <label>Email</label>
-          <input required type="text" ng-model="userEmail" />
-        </md-input-container>
-        <div>
-          <md-button type="submit"
-                     class="md-raised md-primary"
-                     ng-click="addAdministrator(userEmail)">
-            Agregar nuevo administrador
-          </md-button>
-        </div>
-      </div>
+      </form>
     </div>
-  </md-content>
-
-  <md-toolbar class="md-warn">
-    <h1 class="md-toolbar-tools">
-      Eliminar
-    </h1>
-  </md-toolbar>
-  <md-content layout-padding>
-    <div layout="row">
-      <div flex>
-      </div>
-      <md-button class="md-raised"
-      ng-click="deleteItem(item)">Eliminar</md-button>
+    <div flex=30>
+      <img class="md-card-image" ng-src="{{current_image}}" />
+      <button ngf-select="upload($file)">Cargar una foto</button>
     </div>
-  </md-content>
+  </div>
 </md-content>

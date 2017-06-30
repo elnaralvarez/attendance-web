@@ -18,6 +18,7 @@
     $scope.count = 1000;
 
     $scope.update_area = function(item, index) {
+      item.enabled = true;
       $scope.updateItem(item, function() {
         $scope.items.splice(index, 1);
       });

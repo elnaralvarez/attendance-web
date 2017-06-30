@@ -15,9 +15,10 @@
     <md-list-item ng-repeat="item in items"
                   ng-click="selectItem(item)">
        <p>{{item.name}}</p>
-       <md-switch class="md-secondary"
-                  ng-change="update_area(item, $index)"
-                  ng-model="item.enabled"></md-switch>
+       <md-button class="md-raised md-primary"
+                  ng-click="update_area(item, $index)">
+         habilitar
+       </md-button>
     </md-list-item>
     <md-divider></md-divider>
   </md-list>

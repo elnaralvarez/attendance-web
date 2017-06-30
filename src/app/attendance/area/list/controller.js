@@ -22,6 +22,7 @@
     });
 
     $scope.update_area = function(item, index) {
+      item.enabled = false;
       $scope.updateItem(item, function() {
         $scope.items.splice(index, 1);
       });
