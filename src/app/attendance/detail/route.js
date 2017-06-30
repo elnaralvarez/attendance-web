@@ -31,11 +31,6 @@
     });
 
     // TODO validate if this routes are still used
-    $stateProvider.state('attendance.detail.room.update', {
-      url: '/update',
-      templateUrl: base_url + '/room/update/index.html',
-      controller: 'AreaDetailRoomUpdateController'
-    });
     $stateProvider.state('attendance.detail.studio', {
       url: '/studio',
       templateUrl: base_url + '/studio/index.html',

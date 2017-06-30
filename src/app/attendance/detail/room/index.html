@@ -14,8 +14,14 @@
     <md-button class="md-icon-button" aria-label="export" ui-sref="attendance.detail.room.export">
       <ng-md-icon icon="import_export"></ng-md-icon>
     </md-button>
-    <md-button class="md-icon-button" aria-label="settings" ng-click="goToRoom(room)">
+    <md-button class="md-icon-button" aria-label="export" ui-sref="attendance.detail.room.settings">
       <ng-md-icon icon="settings"></ng-md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="settings" ng-click="goToRoom(room)">
+      <ng-md-icon icon="edit"></ng-md-icon>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="delete" ng-click="show_confirm_room($event)">
+      <ng-md-icon icon="delete"></ng-md-icon>
     </md-button>
   </div>
 </md-toolbar>

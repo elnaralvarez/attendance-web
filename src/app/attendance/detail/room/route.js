@@ -39,6 +39,16 @@
       templateUrl: base_url + '/groups/index.html',
       controller: 'AreaDetailGroupsController'
     });
+    $stateProvider.state('attendance.detail.room.update', {
+      url: '/update',
+      templateUrl: base_url + '/update/index.html',
+      controller: 'AreaDetailRoomUpdateController'
+    });
+    $stateProvider.state('attendance.detail.room.settings', {
+      url: '/settings',
+      templateUrl: base_url + '/settings/index.html',
+      controller: 'AreaDetailRoomSettingsController'
+    });
   }
 
 })();
