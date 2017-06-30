@@ -11,6 +11,7 @@
     $state,
     Room,
     LocalError,
+    Toast,
     HelperDetailRoute,
     $mdDialog
   ) {
@@ -47,6 +48,10 @@
     }
 
     $scope.delete_room = function(item) {
+      if ($scope.area.room === item._id) {
+        Toast.show('No se puede eliminar un sala principal');
+        return;
+      }
       item.$delete(function(response) {
         $scope.select_main_area();
       }, LocalError.request);

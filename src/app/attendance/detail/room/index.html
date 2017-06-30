@@ -2,6 +2,9 @@
   <div class="md-toolbar-tools">
     <h2>{{room.name}}</h2>
     <span flex></span>
+    <md-button class="md-icon-button" aria-label="group_add" ng-click="selectRoom(room)">
+      <ng-md-icon icon="home"></ng-md-icon>
+    </md-button>
     <md-button class="md-icon-button" aria-label="group_add" ui-sref="attendance.detail.room.groups">
       <ng-md-icon icon="group_add"></ng-md-icon>
     </md-button>
