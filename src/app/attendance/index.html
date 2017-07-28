@@ -16,6 +16,7 @@
       <md-subheader class="md-no-sticky">Areas</md-subheader>
       <div ng-if="areas.length == 0" class="wargos-text-align">
           <b>No existe <i>areas</i> requistrados</b>
+          <p>Para crear uno <b>click</b> en el boton <b>Administrar areas</b></p>
       </div>
       <md-list-item ng-repeat="area in areas" ng-click="selectArea(area)">
         <img ng-src="{{loadImageGroup(area.image)}}" class="md-avatar" />

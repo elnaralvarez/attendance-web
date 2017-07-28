@@ -20,8 +20,7 @@
 
     $scope.register = function(item) {
       $scope.loading = true;
-      item.role = "admin";
-      Users.save(item, function() {
+      Users.save(null, item, function() {
         var sessionCredentiales = {
           email: item.email,
           password: item.password
