@@ -29,6 +29,10 @@
     }
 
     $scope.update = function(item) {
+      if (!item.parent) {
+          Toast.show('No se puede editar una sala principal');
+          return;
+      }
       item.$update(function(response) {
         $scope.set_room(response);
         $scope.selectRoom(response);
